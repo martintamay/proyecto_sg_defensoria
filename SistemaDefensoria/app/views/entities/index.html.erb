@@ -1,0 +1,36 @@
+
+<h1>Entidades</h1>
+<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Teléfono</th>
+      <th>Cumpleaños</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.name %></td>
+        <td><%= entity.last_name %></td>
+        <td><%= entity.phone %></td>
+        <td><%= entity.birthdate %></td>
+        <td><%= entity.email %></td>
+        <td>
+          <%= link_to (fa_icon 'search'), entity, class: "btn btn-default" %>
+          <%= link_to (fa_icon 'pencil'), edit_entity_path(entity), class: "btn btn-default" %>
+          <%= link_to (fa_icon 'trash'), entity, method: :delete, data: { confirm: 'Está seguro?' }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to (fa_icon 'plus', text: 'Nueva Entidad'), new_entity_path, class: "btn btn-primary" %>

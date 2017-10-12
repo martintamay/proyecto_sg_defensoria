@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>Detalle Entidad</h1>
+<hr>
+<ul class="list-group">
+  <li class="list-group-item">
+    <strong>Nombre:</strong>
+    <%= @entity.name %>
+  </li>
+  <li class="list-group-item">
+    <strong>Apellido:</strong>
+    <%= @entity.last_name %>
+  </li>
+  <li class="list-group-item">
+    <strong>Teléfono:</strong>
+    <%= @entity.phone %>
+  </li>
+  <li class="list-group-item">
+    <strong>Nacimiento:</strong>
+    <%= @entity.birthdate %>
+  </li>
+  <li class="list-group-item">
+    <strong>Correo:</strong>
+    <%= @entity.email %>
+  </li>
+</ul>
+
+<%= link_to (fa_icon 'pencil', text: 'Editar'), edit_entity_path(@entity), class: "btn btn-primary" %>
+<%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), entities_path, class: "btn btn-default" %>

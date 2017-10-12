@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Detalle Asistente</h1>
+<hr>
+<ul class="list-group">
+  <li class="list-group-item">
+    <strong>Nombre:</strong>
+    <%= @assistant.entity.name %>
+  </li>
+  <li class="list-group-item">
+    <strong>Apellido:</strong>
+    <%= @assistant.entity.last_name %>
+  </li>
+  <li class="list-group-item">
+    <strong>Teléfono:</strong>
+    <%= @assistant.entity.phone %>
+  </li>
+  <li class="list-group-item">
+    <strong>Nacimiento:</strong>
+    <%= @assistant.entity.birthdate %>
+  </li>
+  <li class="list-group-item">
+    <strong>Correo:</strong>
+    <%= @assistant.entity.email %>
+  </li>
+  <li class="list-group-item">
+    <strong>Defensor:</strong>
+    <%= @assistant.lawyer.entity.full_name %>
+  </li>
+</ul>
+
+<%= link_to (fa_icon 'pencil', text: 'Editar'), edit_assistant_path(@assistant), class: "btn btn-primary" %>
+<%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), assistants_path, class: "btn btn-default" %>

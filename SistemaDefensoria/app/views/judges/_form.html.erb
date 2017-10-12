@@ -1,0 +1,28 @@
+<%= bootstrap_form_for(@judge) do |form| %>
+  <% if judge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(judge.errors.count, "error") %> prohibited this judge from being saved:</h2>
+
+      <ul>
+      <% judge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte" %>
+
+  <%= form.fields_for :entity, @judge.entity do |ent| %>
+    <%= render "shared/entity_fields", :form => ent %>
+  <% end %>
+
+  <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <%= fa_icon 'floppy-o', text: 'Guardar' %> Guardar
+    <% end %>
+    <%= link_to (fa_icon 'arrow-circle-left', text: 'Atrás'),judges_path ,class: "btn btn-primary"%>
+  </div>
+  
+<% end %>
+

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @judge.entity.full_name %>
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= @judge.entity.phone %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @judge.entity.email %>
+</p>
+
+<p>
+  <strong>Corte:</strong>
+  <%= @judge.court.name %>
+</p>
+
+<%= link_to (fa_icon 'arrow-circle-left', text: 'Atrás'),judges_path ,class: "btn btn-primary"%>
+<%= link_to (fa_icon 'pencil', text:'Editar'), edit_judge_path(@judge), class: "btn btn-default" %> 

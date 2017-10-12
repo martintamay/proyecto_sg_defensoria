@@ -1,0 +1,31 @@
+<%= bootstrap_form_for(@suspect) do |form| %>
+  <% if suspect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(suspect.errors.count, "error") %> prohibited this suspect from being saved:</h2>
+
+      <ul>
+      <% suspect.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.fields_for :entity, @suspect.entity do |ent| %>
+     <%= render "shared/entity_fields", :form => ent %>
+    <% end %>
+    <%= form.text_field :ci, id: :suspect_ci, label: 'CI' %>
+    <%= form.text_field :reason, id: :suspect_reason, label: 'Causa' %>
+    <%= form.text_field :mothers_name, id: :suspect_mothers_name, label: 'Nombre de Madre' %>
+    <%= form.text_field :fathers_name, id: :suspect_fathers_name, label: 'Nombre de Padre' %>
+    <%= form.text_field :criminal_record, id: :suspect_record, label: 'Antecedentes' %>
+    <%= form.text_field :present_status, id: :suspect_present_status, label: 'Estado Actual' %>
+    <%= form.text_field :nationality, id: :suspect_nationality, label: 'Nacionalidad' %>
+    <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio' %>
+    <%= form.submit 'Guardar', class: 'btn btn-primary' %>
+    <%= link_to 'Volver', suspects_path, class: 'btn btn-default' %>
+
+  </div>
+  <div>
+
+<% end %>
