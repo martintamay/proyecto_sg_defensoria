@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Lista de Imputados</h1>
+<!-- para el borde de la tabla -->
+<div class="panel panel-default">
+<!-- para que seleccione la fila donde apunta el cursor -->
+  <table class="table table-hover">
+   <thead>
+         <tr>
+             <th>Nombre</th>
+             <th>Nacimiento</th>
+             <th>Correo</th>
+             <th>Teléfono</th>
+             <th>CI</th>
+             <th>Nacionalidad</th>
+             <th></th>
+          </tr>
+   </thead>
+
+  <tbody>
+
+    <% @suspects.each do |suspect| %>
+  <tr>
+        <td><%= suspect.entity.full_name %></td>
+        <td><%= suspect.entity.birthdate %></td>
+        <td><%= suspect.entity.email %></td>
+        <td><%= suspect.entity.phone %></td>
+        <td><%= suspect.ci %></td>
+        <td><%= suspect.nationality %></td>
+        <td>
+          <%= link_to (fa_icon 'eye open'), suspect,class: "btn btn-default" %>
+          <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect),class: "btn btn-default" %>
+          <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está Seguro?' }, class: "btn btn-danger" %>
+        </td>    
+        
+      </tr>    
+    </tr>
+   <% end %>
+  </tbody>
+ </table>
+
+</div>
+
+
+<%= link_to (fa_icon 'plus', text: 'Nuevo Imputado'), new_suspect_path, class: 'btn btn-primary' %>

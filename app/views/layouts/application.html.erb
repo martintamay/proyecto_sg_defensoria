@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <div class= "container color_and_margin">
+        <h3 style="text-align:center;">Ministerio De Defensa De Itapúa</h3>
+      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Juzgados', courts_path %></li>
+            <li><%= link_to 'Imputados', suspects_path %></li>
+            <li><%= link_to 'Defensores', lawyers_path %></li>
+            <li><%= link_to 'Asistentes', assistants_path %></li>
+            <li><%= link_to 'Jueces', judges_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %> 
+            </li>
+          </ul>
+        </div>
+      </nav> 
+    <% end %>
+    <p class= "notice"><%= notice %></p>
+    <p class= "alert"><%= alert %></p>
+  	<div class="container">
+    	<%= yield %>
+    </div>
+  </body>
+</html>

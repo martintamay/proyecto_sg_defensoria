@@ -1,0 +1,27 @@
+<%= bootstrap_form_for(@assistant) do |form| %>
+  <% if assistant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(assistant.errors.count, "error") %> prohibited this assistant from being saved:</h2>
+
+      <ul>
+      <% assistant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.text_field :lawyer_id, label: "Defensor", id: :assistant_lawyer_id %>
+
+  <%= form.fields_for :entity, @assistant.entity do |ent| %>
+    <%= render "shared/entity_fields", :form => ent %>
+  <% end %>
+  <%= form.fields_for :user, @assistant.user do |usr| %>
+    <%= render "shared/user_fields", :f => usr %>
+  <% end %>
+
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    <%= fa_icon 'floppy-o', text: 'Guardar' %> Guardar
+  <% end %>
+  <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), assistants_path, class: "btn btn-default" %>
+<% end %>

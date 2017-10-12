@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Juzgados</h1>
+<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courts.each do |court| %>
+      <tr>
+        <td><%= court.name %></td>
+        <td><%= court.phone %></td>
+        <td><%= court.address %></td>
+        <td>
+          <%= link_to (fa_icon 'search'), court, class: 'btn btn-default' %>
+          <%= link_to (fa_icon 'pencil'), edit_court_path(court), class: 'btn btn-default' %>
+          <%= link_to (fa_icon 'trash'), court, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to (fa_icon 'plus', text: 'Nuevo Juzgado'), new_court_path, class: 'btn btn-primary' %>
