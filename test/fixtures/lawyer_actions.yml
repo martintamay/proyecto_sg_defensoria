@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  action_date: 2017-11-03
+  legal_case: one
+  comment: MyText
+
+two:
+  action_date: 2017-11-03
+  legal_case: two
+  comment: MyText

@@ -1,0 +1,35 @@
+<%= form_with(model: equipment_detail, local: true) do |form| %>
+  <% if equipment_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(equipment_detail.errors.count, "error") %> prohibited this equipment_detail from being saved:</h2>
+
+      <ul>
+      <% equipment_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        
+        <div class="panel-body">
+              <%= form.text_field :legal_case_id, Legal_case.all, :id, :name_with_initial, label: "Caso" %>
+            
+              <%= form.text_field :user_id, User.all, :id, :name_with_initial, label: "Usuario" %>
+  
+                  <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),equipment_details_path,class:  'btn btn-default pull-left'%>
+                   
+                     <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                     <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>

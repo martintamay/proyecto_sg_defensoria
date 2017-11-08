@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  legal_case: one
+  comentary: MyText
+  date_ttransfer: 2017-11-03
+
+two:
+  user: two
+  legal_case: two
+  comentary: MyText
+  date_ttransfer: 2017-11-03

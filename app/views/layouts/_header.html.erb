@@ -1,0 +1,21 @@
+		<!-- Header -->
+
+			<header id="header" class="skel-layers-fixed">
+
+				
+				
+				<img src="images/MDP.png" width="80" height="80" id="ima">
+			
+				<nav id="nav">
+					<ul>
+					<li><%= link_to 'Inicio', home_path %></li>
+		            <li><%= link_to 'Juzgados', courts_path %></li>
+		            <li><%= link_to 'Imputados', suspects_path %></li>
+		            <li><%= link_to 'Defensores', lawyers_path %></li>
+		            <li><%= link_to 'Asistentes', assistants_path %></li>
+		            <li><%= link_to 'Jueces', judges_path %></li>
+		            <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+		          </ul>
+					</ul>
+				</nav>
+			</header>

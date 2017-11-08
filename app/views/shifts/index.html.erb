@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Turnos <%= link_to (fa_icon 'plus', text: ''), new_shift_path, class: 'btn btn-primary' %></h1>
+
+ <hr>     
+      
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th>Fecha de Turno</th>
+      <th>Usuario</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shifts.each do |shift| %>
+      <tr>
+        <td><%= shift.shift_date %></td>
+        <td><%= shift.user.entity.full_name %></td>
+        <td align="center" ><%= link_to (fa_icon 'eye'), shift, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_shift_path(shift), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), shift, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

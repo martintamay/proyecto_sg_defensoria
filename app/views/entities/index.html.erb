@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Entidades <%= link_to (fa_icon 'plus', text: ''), new_entity_path, class: 'btn btn-primary' %></h1>
+
+ <hr>     
+      
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Teléfono</th>
+      <th>Cumpleaños</th>
+      <th>Email</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.name %></td>
+        <td><%= entity.last_name %></td>
+        <td><%= entity.phone %></td>
+        <td><%= entity.birthdate %></td>
+        <td><%= entity.email %></td>
+         <td align="center" ><%= link_to (fa_icon 'eye'), entity, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_entity_path(entity), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), entity, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

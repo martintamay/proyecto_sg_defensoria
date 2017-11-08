@@ -1,0 +1,29 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-info">
+    <div class="panel-heading " align="center">
+      <h3>Nuevo Turno</h3> 
+    </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+				  <strong>Fecha de Turno:</strong>
+				  <%= @shift.shift_date %>
+                </li>
+                <li class="list-group-item">
+				  <strong>Usuario:</strong>
+				  <%= @shift.user.entity.full_name %>
+				</p>
+</li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_shift_path(@shift), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), shifts_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div> 
+
+          
+              
+             

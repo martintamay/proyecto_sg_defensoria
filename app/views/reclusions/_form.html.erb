@@ -1,0 +1,37 @@
+<%= bootstrap_form_for(@reclusion) do |form| %>
+
+  <% if reclusion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reclusion.errors.count, "error") %> prohibited this reclusion from being saved:</h2>
+
+      <ul>
+      <% reclusion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        <div class="panel-body">
+
+              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
+              <%= form.text_field :place, id: :reclusion_place,label:"Lugar" %>
+              <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada" %>
+              <%= form.date_select :date_out, id: :reclusion_date_out,label:"Fecha De Salida" %>
+  
+              <!-- Botones -->
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),reclusions_path,class:  'btn btn-default pull-left'%>  
+              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                <%= fa_icon 'floppy-o' %> Guardar
+              <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Acciones Defensores <%= link_to (fa_icon 'plus', text: ''), new_lawyer_action_path,class: 'btn btn-primary' %></h1>
+ <hr>      
+
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th>Fecha de Accion</th>
+      <th>Caso</th>
+      <th>Comentario</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lawyer_actions.each do |lawyer_action| %>
+      <tr>
+        <td><%= lawyer_action.action_date %></td>
+        <td><%= lawyer_action.legal_case.name %></td>
+        <td><%= lawyer_action.comment %></td>
+          <td align="center" ><%= link_to (fa_icon 'eye'), lawyer_action, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_lawyer_action_path(lawyer_action), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), lawyer_action, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

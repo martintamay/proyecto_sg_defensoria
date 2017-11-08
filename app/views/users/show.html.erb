@@ -1,0 +1,39 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-info">
+    <div class="panel-heading " align="center">
+      <h3>Usuario Registrado</h3> 
+    </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <strong>Email:</strong>
+                  <%= @user.email %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Nombre:</strong>
+                  <%= @user.entity.full_name %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Teléfono:</strong>
+                  <%= @user.entity.phone %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Nacimiento:</strong>
+                  <%= @user.entity.birthdate %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Tipo de Usuario:</strong>
+                  <%= @user.type_user %>
+                </li>
+              </ul>
+
+ </li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_user_path(@user), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), users_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div> 

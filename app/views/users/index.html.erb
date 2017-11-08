@@ -1,0 +1,37 @@
+
+<h1 align="center">Usuarios <%= link_to (fa_icon 'plus', text: ''), new_user_path, class: 'btn btn-primary' %></h1>
+
+ <hr>     
+      
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Nacimiento</th>
+      <th>Email (Entidad)</th>
+      <th>Tipo de Usuario</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.entity.full_name %></td>
+        <td><%= user.entity.phone %></td>
+        <td><%= user.entity.birthdate %></td>
+        <td><%= user.entity.email %></td>
+        <td><%= user.type_user %></td>
+        <td align="center" ><%= link_to (fa_icon 'eye'), user, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_user_path(user), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), user, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

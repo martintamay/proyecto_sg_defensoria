@@ -1,0 +1,42 @@
+<%= bootstrap_form_for(@transfer_case) do |form| %>
+  <% if transfer_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transfer_case.errors.count, "error") %> prohibited this transfer_case from being saved:</h2>
+
+      <ul>
+      <% transfer_case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        <div class="panel-body">
+              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor Anterior" %>
+
+              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor Nuevo" %>
+           
+              <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %>
+              
+              <%= form.text_area :comentary, id: :transfer_case_comentary, label: "Comentario" %>
+
+              <%= form.date_select :date_ttransfer, id: :transfer_case_date_transfer, label: "Fecha de Transferencia" %>
+           
+              <!-- Botones -->
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),transfer_cases_path,class:  'btn btn-default pull-left'%>  
+              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                <%= fa_icon 'floppy-o' %> Guardar
+              <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>
+
+   

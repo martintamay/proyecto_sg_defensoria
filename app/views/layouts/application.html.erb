@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <%= csrf_meta_tags %>
+
+    <link href="/assets/application.css" media="all" rel="stylesheet" data-turbolinks-track="true" />
+    <script src="/assets/application.js" data-turbolinks-track' => true ></script>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+   
+
+  </head>
+
+  <body id="top">
+    <% if user_signed_in? %>
+      <div class= "container color_and_margin">
+        <h3 style="text-align:center;">Ministerio De Defensa De Itapúa</h3>
+      </div>
+    <% end %>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+    <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Juzgados', courts_path %></li>
+            <li><%= link_to 'Imputados', suspects_path %></li>
+            <li><%= link_to 'Jueces', judges_path %></li>
+            <li><%= link_to 'Visitantes', visits_path %></li>
+            <li><%= link_to 'Reclusión', reclusions_path %></li>
+             <li><%= link_to 'Casos', legal_cases_path %></li>
+            <li><%= link_to 'Transferia De Casos', transfer_cases_path %></li>
+            <li><%= link_to 'Fichas Penales', criminal_records_path %></li>
+             <li><%= link_to 'Turnos', shifts_path %></li>
+            <li><%= link_to 'Audiencias', hearings_path %></li>
+            <li><%= link_to 'Enviar Correo', "correo#index" %></li>
+             <li><%= link_to 'Accion De los Defensores', lawyer_actions_path %></li>
+          </ul>
+    <% end %>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %> 
+              <% else %>
+                <%= link_to 'Iniciar Sesión', new_user_session_path %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav> 
+  <% if user_signed_in? %>
+      <p class= "notice"><%= notice %></p>
+      <p class= "alert"><%= alert %></p>
+    	<div class="container">
+      	<%= yield %>
+      </div>
+    <% else %>
+      <p class= "notice"><%= notice %></p>
+      <p class= "alert"><%= alert %></p>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<%= bootstrap_form_for(@lawyer_action) do |form| %>
+  <% if lawyer_action.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lawyer_action.errors.count, "error") %> prohibited this lawyer_action from being saved:</h2>
+
+      <ul>
+      <% lawyer_action.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        
+        <div class="panel-body">
+              <%= form.date_select :action_date, id: :lawyer_action_action_date, label: "Fecha de Accion" %>
+              <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %> 
+              <%= form.text_area :comment, id: :lawyer_action_comment, label: "Comentario" %>
+
+              <!-- Botones -->
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),lawyer_actions_path,class:  'btn btn-default pull-left'%>  
+              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                <%= fa_icon 'floppy-o' %> Guardar
+              <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>

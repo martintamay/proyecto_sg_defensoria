@@ -1,0 +1,52 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-info">
+    <div class="panel-heading " align="center">
+      <h3>Nuevo Caso</h3> 
+    </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <strong>Ficha de Entrada:</strong>
+                  <%= @legal_case.entry_form %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Nombre:</strong>
+                  <%= @legal_case.name %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Usuario:</strong>
+                  <%= @legal_case.user.entity.full_name %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Juzgado:</strong>
+                  <%= @legal_case.court.name %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Juez:</strong>
+                  <%= @legal_case.judge.entity.full_name %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Imputado:</strong>
+                  <%= @legal_case.suspect.entity.full_name %>
+                </li>
+                <li class="list-group-item">
+                   <strong>Ficha Penal:</strong>
+                   <%= @legal_case.criminal_record.inquire_number %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Comentario:</strong>
+                  <%= @legal_case.comment %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Sentencia Final:</strong>
+                  <%= @legal_case.final_sentence %>
+                 </li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_legal_case_path(@legal_case), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), legal_cases_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div> 

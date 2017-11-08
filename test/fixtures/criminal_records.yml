@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  procedural_stage: MyString
+  inquire_number: MyString
+  intervention_date: 2017-11-03
+  type_of_crime: MyString
+  commission_place: MyString
+  commission_date: 2017-11-03
+  prosecutor_unit: MyString
+  precautionary_measures: MyText
+
+two:
+  procedural_stage: MyString
+  inquire_number: MyString
+  intervention_date: 2017-11-03
+  type_of_crime: MyString
+  commission_place: MyString
+  commission_date: 2017-11-03
+  prosecutor_unit: MyString
+  precautionary_measures: MyText

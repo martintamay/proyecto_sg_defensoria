@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Jueces <%= link_to (fa_icon 'plus', text: ''), new_judge_path, class: 'btn btn-primary' %></h1>
+
+ <hr>     
+      
+<table id="table_di" class= "table table-hover table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Juzgado</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @judges.each do |judge| %>
+      <tr>
+
+        <td><%= judge.entity.full_name %></td>
+        <td><%= judge.entity.phone %></td>
+        <td><%= judge.entity.email %></td>
+        <td><%= judge.court.name %></td>
+        <td align="center"><%= link_to (fa_icon 'eye'), judge, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_judge_path(judge), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), judge, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

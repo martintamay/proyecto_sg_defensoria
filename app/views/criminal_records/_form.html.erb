@@ -1,0 +1,44 @@
+<%= bootstrap_form_for(@criminal_record) do |form| %>
+  <% if criminal_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(criminal_record.errors.count, "error") %> prohibited this criminal_record from being saved:</h2>
+
+      <ul>
+      <% criminal_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        
+        <div class="panel-body">
+           <%= form.text_field :procedural_stage, id: :criminal_record_procedural_stage, label: "Etapa Procesal" %>
+
+            <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente" %>
+            <%= form.date_select :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion" %>
+            <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito" %>
+            
+            <%= form.text_field :commission_place, id: :criminal_record_commission_place, label: "Lugar de Comision" %>
+            <%= form.date_select :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision" %>
+            <%= form.text_field :prosecutor_unit, id: :criminal_record_prosecutor_unit, label: "Unidad Fiscal" %>
+            <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion" %>
+
+                  <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),criminal_records_path,class:  'btn btn-default pull-left'%>
+                   
+                     <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                     <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>
+
+ 

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entry_form: MyText
+  name: MyString
+  user: one
+  court: one
+  judge: one
+  suspect: one
+  criminal_record: one
+  comment: MyText
+  final_sentence: MyString
+
+two:
+  entry_form: MyText
+  name: MyString
+  user: two
+  court: two
+  judge: two
+  suspect: two
+  criminal_record: two
+  comment: MyText
+  final_sentence: MyString

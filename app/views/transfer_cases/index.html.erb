@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Casos Transferidos<%= link_to (fa_icon 'plus', text: ''), new_transfer_case_path, class: 'btn btn-primary' %></h1>
+
+ <hr>     
+      
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th>Defensor Anterior</th>
+      <th>Defensor Actual</th>
+      <th>Caso</th>
+      <th>Fecha de Transferencia</th>
+      <th>Comentario</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transfer_cases.each do |transfer_case| %>
+      <tr>
+        <td><%= transfer_case.user.entity.full_name %></td>
+        <td><%= transfer_case.user.entity.full_name %></td>
+        <td><%= transfer_case.legal_case.name %></td>
+        <td><%= transfer_case.date_ttransfer %></td>
+        <td><%= transfer_case.comentary %></td>
+        <td align="center" ><%= link_to (fa_icon 'eye'), transfer_case, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_transfer_case_path(transfer_case), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), transfer_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -1,0 +1,25 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-info">
+    <div class="panel-heading " align="center"><h3>Nuevo Equipo</h3> </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+					<p>
+					  <strong>Caso:</strong>
+					  <%= @equipment_detail.legal_case.name %>
+					</p></li>
+				<li class="list-group-item">
+					<p>
+					  <strong>Usuario:</strong>
+					  <%= @equipment_detail.user.entity.full_name %>
+					</p>
+					 </li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_equipment_detail_path(@equipment_detail), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), equipment_details_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div> 

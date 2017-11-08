@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Detalles de Equipo <%= link_to (fa_icon 'plus', text: ''),new_equipment_detail_path,class: 'btn btn-primary' %></h1>
+ <hr>      
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th>Caso</th>
+      <th>Usuario</th>
+      <th class="col-md-2"></th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equipment_details.each do |equipment_detail| %>
+      <tr>
+        <td><%= equipment_detail.legal_case.name %></td>
+        <td><%= equipment_detail.user.entity.full_name %></td>
+        <td align="center" ><%= link_to (fa_icon 'eye'), equipment_detail, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_equipment_detail_path(equipment_detail), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), equipment_detail, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

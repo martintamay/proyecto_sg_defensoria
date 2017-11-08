@@ -1,0 +1,32 @@
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-info">
+    <div class="panel-heading " align="center">
+      <h3>Visita Registrada</h3> 
+    </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+
+			  <strong>Imputado:</strong>
+			  <%= @visit.suspect.entity.full_name %>
+                </li>
+                <li class="list-group-item">
+			  <strong>Visitante:</strong>
+			  <%= @visit.name_visit %>
+                </li>
+                <li class="list-group-item">
+			  <strong>Dia De La Visita:</strong>
+			  <%= @visit.date_visit %>
+                </li>
+                <li class="list-group-item">
+			  <strong>Observacion:</strong>
+			  <%= @visit.observation %>
+			 </li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_visit_path(@visit), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), visits_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div> 

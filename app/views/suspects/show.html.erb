@@ -1,0 +1,75 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-info">
+    <div class="panel-heading " align="center">
+      <h3>Nuevo Imputado</h3> 
+    </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <strong>Nombre y Apellido:</strong>
+                    <%= @suspect.entity.full_name %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Nacimiento:</strong>
+                    <%= @suspect.entity.birthdate %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Correo:</strong>
+                    <%= @suspect.entity.email %>
+                </li>
+                <li class="list-group-item">
+                  <strong>Teléfono:</strong>
+                    <%= @suspect.entity.phone %>
+                </li>
+                <li class="list-group-item">
+                  <strong>CI:</strong>
+                    <%= @suspect.ci %>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>Causa:</strong>
+                    <%= @suspect.reason %>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>Nombre Madre:</strong>
+                    <%= @suspect.mothers_name %>
+               </li>
+
+               <li class="list-group-item">
+                <strong>Nombre Padre:</strong>
+                   <%= @suspect.fathers_name %>
+               </li>
+
+                <li class="list-group-item">
+                  <strong>Antecedentes:</strong>
+                    <%= @suspect.criminal_record %>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>Estado Actual:</strong>
+                    <%= @suspect.present_status %>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>Nacionalidad:</strong>
+                    <%= @suspect.nationality %>
+                </li>
+
+                <li class="list-group-item">
+                  <strong>Domicilio:</strong>
+                    <%= @suspect.home_adress %>
+                </li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_suspect_path(@suspect), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), suspects_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div> 
+
+          
+              
+             

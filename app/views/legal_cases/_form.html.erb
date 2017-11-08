@@ -1,0 +1,48 @@
+<%= bootstrap_form_for(@legal_case) do |form| %>
+  <% if legal_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(legal_case.errors.count, "error") %> prohibited this legal_case from being saved:</h2>
+
+      <ul>
+      <% legal_case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        <div class="panel-body">
+              <%= form.text_field :entry_form, id: :legal_case_entry_form, label: "Formulario de Entrada" %>
+              
+              <%= form.text_field :name, id: :legal_case_name, label: "Nombre" %>
+              
+              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Usuario" %>
+              
+              <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Juzgado" %>
+              
+              <%= form.collection_select :judge_id, Judge.all, :id, :name_with_initial, label: "Juez" %>
+
+              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label: "Imputado" %>
+           
+              <%= form.collection_select :criminal_record_id, CriminalRecord.all, :id, :number_with_initial, label: "Ficha Penal" %>
+           
+              <%= form.text_area :comment, id: :legal_case_comment, label: "Comentario" %>
+
+              <%= form.text_field :final_sentence, id: :legal_case_final_sentence, label: "sentencia" %>
+
+              <!-- Botones -->
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),legal_cases_path,class:  'btn btn-default pull-left'%>  
+              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                <%= fa_icon 'floppy-o' %> Guardar
+              <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>

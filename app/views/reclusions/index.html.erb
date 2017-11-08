@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center">Lugar de Reclusión <%= link_to (fa_icon 'plus', text: ''), new_reclusion_path, class: 'btn btn-primary' %></h1>
+
+ <hr>     
+      
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+   <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Lugar</th>
+      <th>Fecha de entrada</th>
+      <th>Fecha de salida</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reclusions.each do |reclusion| %>
+      <tr>
+        <td><%= reclusion.suspect.entity.full_name%></td>
+        <td><%= reclusion.place %></td>
+        <td><%= reclusion.date_entry %></td>
+        <td><%= reclusion.date_out %></td>
+        <td align="center" ><%= link_to (fa_icon 'eye'), reclusion, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_reclusion_path(reclusion), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), reclusion, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

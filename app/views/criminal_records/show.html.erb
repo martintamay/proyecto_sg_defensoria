@@ -1,0 +1,58 @@
+
+<div class="col-md-4"></div>
+<div class="col-md-5"><!-- Tamaño del formulario --> 
+ <!-- Formulario --> 
+  <div class="panel panel-primary">
+    <div class="panel-heading " align="center"><h3>Nueva Ficha Penal</h3> </div>
+        <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <li class="list-group-item">
+                    <p>
+                      <strong>Etapa Procesal:</strong>
+                      <%= @criminal_record.procedural_stage %>
+                    </p></li>
+                  <li class="list-group-item">
+                    <p>
+                      <strong>Numero de Expediente:</strong>
+                      <%= @criminal_record.inquire_number %>
+                    </p></li>
+                    <li class="list-group-item">
+                    <p>
+                      <strong>Fecha de Intervencion:</strong>
+                      <%= @criminal_record.intervention_date %>
+                    </p></li>
+                    <li class="list-group-item">
+                    <p>
+                      <strong>Clasificacion de Delito:</strong>
+                      <%= @criminal_record.type_of_crime %>
+                    </p></li>
+ <li class="list-group-item">
+                    <p>
+                      <strong>Lugar de Comision:</strong>
+                      <%= @criminal_record.commission_place %>
+                    </p></li>
+ <li class="list-group-item">
+                    <p>
+                      <strong>Fecha de Comision:</strong>
+                      <%= @criminal_record.commission_date %>
+                    </p></li>
+ <li class="list-group-item">
+                    <p>
+                      <strong>Unidad Fiscal:</strong>
+                      <%= @criminal_record.prosecutor_unit %>
+                    </p></li>
+ <li class="list-group-item">
+                    <p>
+                      <strong>Medidas de Prevencion:</strong>
+                      <%= @criminal_record.precautionary_measures %>
+                    </p></li>
+
+
+                </li>
+              </ul>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_criminal_record_path(@criminal_record), class: 'btn btn-success pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), criminal_records_path, class: 'btn btn-default pull-left' %>
+            </div>
+          </div>
+          </div>

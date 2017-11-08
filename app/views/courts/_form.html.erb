@@ -1,0 +1,37 @@
+<%= bootstrap_form_for(@court) do |form| %>
+  <% if court.errors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(court.errors.count, "error") %> prohibited this court from being saved:</h5>
+
+      <ul>
+      <% court.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-4"></div>
+  <div class="col-md-5"><!-- Tamaño del formulario -->
+ 
+ <!-- Formulario --> 
+  <div class="panel panel-primary" >
+        <div class="panel-body">
+              <%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %>
+              <%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %>
+              <%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %>
+
+              <!-- Botones -->
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),courts_path,class:  'btn btn-default pull-left'%>  
+              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                <%= fa_icon 'floppy-o' %> Guardar
+              <% end %> 
+             
+              <% end %>       
+        
+            </div>
+        </div>
+        <hr></hr>
+      </div>
+
+   
+
