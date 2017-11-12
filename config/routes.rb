@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   #get 'home/index'
 
-  root to: "home#index"
+  root to: "legal_cases#index"
+  devise_for :users
 
   resources :equipment_details
   resources :transfer_cases
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
   resources :shifts
   resources :lawyer_actions
   resources :hearings
-  devise_for :users
   resources :judges
   resources :visits
   resources :reclusions

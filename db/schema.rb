@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103185953) do
+ActiveRecord::Schema.define(version: 20171103185719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,16 +53,6 @@ ActiveRecord::Schema.define(version: 20171103185953) do
     t.datetime "updated_at", null: false
     t.index ["legal_case_id"], name: "index_equipment_details_on_legal_case_id"
     t.index ["user_id"], name: "index_equipment_details_on_user_id"
-  end
-
-  create_table "hearings", force: :cascade do |t|
-    t.date "hearing_date"
-    t.bigint "user_id"
-    t.bigint "legal_case_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["legal_case_id"], name: "index_hearings_on_legal_case_id"
-    t.index ["user_id"], name: "index_hearings_on_user_id"
   end
 
   create_table "judges", force: :cascade do |t|
@@ -197,8 +187,6 @@ ActiveRecord::Schema.define(version: 20171103185953) do
 
   add_foreign_key "equipment_details", "legal_cases"
   add_foreign_key "equipment_details", "users"
-  add_foreign_key "hearings", "legal_cases"
-  add_foreign_key "hearings", "users"
   add_foreign_key "judges", "courts"
   add_foreign_key "judges", "entities"
   add_foreign_key "lawyer_actions", "legal_cases"

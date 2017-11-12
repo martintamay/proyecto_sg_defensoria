@@ -33,6 +33,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        if user_params[:type_role]=="admin"
+          @user.add_role :admin
+        else
+          @user.add_role :default
+        end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -49,6 +54,15 @@ class UsersController < ApplicationController
       if @user.update(user_params)
       	@user.email = @user.entity.email
       	@user.save
+
+        if user_params[:type_role]=="admin" && @user.has_role?(:default)
+          @user.add_role :admin
+          @user.revoke :default
+        elsif user_params[:type_role]=="default" && @user.has_role?(:admin)
+          @user.add_role :default
+          @user.revoke :admin
+        end
+
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -61,10 +75,12 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if @user.email != admin
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -81,6 +97,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:password, :password_confirmation, :type_user, entity_attributes: [:name, :last_name, :phone, :birthdate, :email])
+      params.require(:user).permit(:password, :password_confirmation, :type_user, :type_role, entity_attributes: [:name, :last_name, :phone, :birthdate, :email])
     end
 end
