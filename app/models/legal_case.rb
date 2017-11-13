@@ -1,4 +1,5 @@
 class LegalCase < ApplicationRecord
+  
   resourcify
   belongs_to :user
   belongs_to :court
