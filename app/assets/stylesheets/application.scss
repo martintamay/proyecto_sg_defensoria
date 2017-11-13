@@ -17,6 +17,26 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Anton');
 @import "dataTables.bootstrap.min.scss";
+@import "adminlte";
+@import "skin-blue";
+/*-- Font Awesome -*/
+@import "AdminLTE/bower_components/font-awesome/css/font-awesome.min.css";
+/*-- Ionicons --*/
+@import "AdminLTE/bower_components/Ionicons/css/ionicons.min.css";
+/*-- Theme style --*/
+@import "AdminLTE/dist/css/AdminLTE.min.css";
+/*-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. --*/
+@import "AdminLTE/dist/css/skins/_all-skins.min.css";
+/*-- Morris chart --*/
+@import "AdminLTE/bower_components/morris.js/morris.css";
+/*-- jvectormap --*/
+@import "AdminLTE/bower_components/jvectormap/jquery-jvectormap.css";
+
+/*CONTENT*/
+.container {
+  max-width: 100%;
+}
 
 /*MENU*/
 .navbar-inverse {		

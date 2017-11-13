@@ -13,8 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-1.12.4.js
+//= require AdminLTE/bower_components/jquery/dist/jquery.min.js
+//= require AdminLTE/bower_components/jquery-ui/jquery-ui.min.js
 //= require datatables.min.js
 //= require dataTables.bootstrap.min.js
+//= require AdminLTE/bower_components/raphael/raphael.min.js
+//= require AdminLTE/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js
+//= require AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js
+//= require AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js
+//= require AdminLTE/bower_components/jquery-knob/dist/jquery.knob.min.js
+//= require AdminLTE/bower_components/moment/min/moment.min.js
+//= require AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.js
+//= require AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+//= require AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js
+//= require AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+//= require AdminLTE/bower_components/fastclick/lib/fastclick.js
+//= require AdminLTE/dist/js/adminlte.min.js
+//= require AdminLTE/dist/js/pages/dashboard.js
+//= require AdminLTE/dist/js/demo.js
+//= require AdminLTE/bower_components/morris.js/morris.min.js
 //= require_tree .
 
 $(document).ready( function() {
@@ -33,6 +50,8 @@ $(document).ready( function() {
 			      } );
 			    });
 
+/*-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --*/
+$.widget.bridge('uibutton', $.ui.button);
 
 
 /**

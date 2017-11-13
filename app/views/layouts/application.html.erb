@@ -1,46 +1,117 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
-    <%= csrf_meta_tags %>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sistema Defensoría</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+  <%= csrf_meta_tags %>
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="skin-blue sidebar-mini">
+<% if user_signed_in? %>
+<div class="wrapper">
 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-   
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>S</b>DP</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Sistema </b>Defensoría Pública</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
 
-  </head>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">Alexander Pierce</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
 
-  <body>
-    <% if user_signed_in? %>
-
-
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <% if user_signed_in? %>
-                <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %> 
-              <% else %>
-
-
-                <%= link_to 'Iniciar Sesión', new_user_session_path %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </nav> 
-      <% if notice %>
-        <p class= "notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class= "alert"><%= alert %></p>
-      <% end %>
-    	<div class="container">
-      	<%= yield %>
+                <p>
+                  Alexander Pierce
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Modificar</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
       </div>
-    <% else %>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">NAVEGACIÓN</li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Layout Options</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-th"></i> <span>Widgets</span>
+          </a>
+        </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">  
+    <section class="content container-fluid">
+  <% end %>  
       <% if notice %>
         <p class= "notice"><%= notice %></p>
       <% end %>
@@ -49,7 +120,12 @@
       <% end %>
       <div class="container">
         <%= yield %>
-      </div>
-    <% end %>
-  </body>
+      </div>       
+  <% if user_signed_in? %>
+    </section>
+  </div>
+</div>
+<!-- ./wrapper -->
+<% end %>
+</body>
 </html>

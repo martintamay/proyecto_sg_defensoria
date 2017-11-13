@@ -29,6 +29,8 @@ gem 'bootstrap_form'
 gem 'rails_serve_static_assets'
 # use for html icons
 gem "font-awesome-rails"
+gem "font-awesome-sass"
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -74,3 +76,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
+#admin lte
+source 'http://insecure.rails-assets.org/' do 
+  gem 'rails-assets-adminlte'
+end
