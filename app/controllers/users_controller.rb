@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :cambiar_rol]
   #before_action :authenticate_user!
   #load_and_authorize_resource
 
+
+  def cambiar_rol 
+    if @user.has_role? :admin
+      @user.revoke :admin
+      @user.add_role :default
+    else
+      @user.revoke :default
+      @user.add_role :admin
+    end
+    flash[:notice] = 'Se cambió el rol del usuario'
+    redirect_to edit_user_path(@user)
+   end
 
   # GET /users
   # GET /users.json
@@ -33,11 +45,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        if user_params[:type_role]=="admin"
-          @user.add_role :admin
-        else
-          @user.add_role :default
-        end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -54,15 +61,6 @@ class UsersController < ApplicationController
       if @user.update(user_params)
       	@user.email = @user.entity.email
       	@user.save
-
-        if user_params[:type_role]=="admin" && @user.has_role?(:default)
-          @user.add_role :admin
-          @user.revoke :default
-        elsif user_params[:type_role]=="default" && @user.has_role?(:admin)
-          @user.add_role :default
-          @user.revoke :admin
-        end
-
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -97,6 +95,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:password, :password_confirmation, :type_user, :type_role, entity_attributes: [:name, :last_name, :phone, :birthdate, :email])
+      params.require(:user).permit(:password, :password_confirmation, :type_user, entity_attributes: [:name, :last_name, :phone, :birthdate, :email])
     end
 end

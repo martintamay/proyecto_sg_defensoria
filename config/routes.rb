@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   resources :courts
   resources :entities
   resources :shifts
-  resources :users
   resources :correo
+  resources :users do
+    member do
+      get :cambiar_rol
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

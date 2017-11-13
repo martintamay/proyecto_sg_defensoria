@@ -25,6 +25,12 @@
                   <%= @user.entity.birthdate %>
                 </li>
                 <li class="list-group-item">
+                  <strong>Roles: </strong>
+                    <% @user.roles.each do |rol| %>
+                      <%= rol.name %>
+                    <% end %>                  
+                </li>
+                <li class="list-group-item">
                   <strong>Tipo de Usuario:</strong>
                   <%= @user.type_user %>
                 </li>

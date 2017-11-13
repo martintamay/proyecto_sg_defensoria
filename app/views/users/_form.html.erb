@@ -22,6 +22,24 @@
               
               <%= form.password_field :password, id: :user_password, label: "Contraseña", :autocomplete => :off %>
               <%= form.password_field :password_confirmation, id: :user_password_confirmation, label: "Confirmar Contraseña", autocomplete: false %>
+              <% if @user!=nil%>
+                <div class="form-group">
+                  <label>Roles: </label>
+                  <label>
+                    <% @user.roles.each do |rol| %>
+                      <%= rol.name %>
+                    <% end %>
+                  </label>
+                  <label>
+                    <% if @user.has_role? :admin %>
+                      <% cambiar_a_rol = "Default"%>
+                    <% else %>
+                      <% cambiar_a_rol = "Admin" %>
+                    <% end %>
+                    <%= link_to "Hacer "+cambiar_a_rol, {:controller => :users, :action => :cambiar_rol}, class:  'btn btn-default'%>  
+                  </label>
+                </div>
+              <% end %>
               <%= form.text_field :type_user, id: :user_type_user, label: "Tipo de Defensor/Asistente" %>
               <!-- Botones -->
               <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),users_path,class:  'btn btn-default pull-left'%>  
