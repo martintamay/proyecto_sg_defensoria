@@ -12,6 +12,16 @@ class HearingsController < ApplicationController
   # GET /hearings/1
   # GET /hearings/1.json
   def show
+  
+respond_to do |format|
+  format.html
+  format.pdf do
+    pdf = HearingPdf.new
+    send_data pdf.render, filename: "hearing_#{@hearing}.pdf",
+    type: "application/pdf",
+    disposition: "inline"  
+  end
+end
   end
 
   # GET /hearings/new

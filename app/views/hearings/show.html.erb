@@ -27,6 +27,7 @@
               </ul>
               <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_hearing_path(@hearing), class: 'btn btn-success pull-right' %>
               <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), hearings_path, class: 'btn btn-default pull-left' %>
+              <p><%= link_to "Printable Receipt (PDF)", hearing_path(@hearing,format: "pdf")%></p>
             </div>
           </div>
           </div> 
