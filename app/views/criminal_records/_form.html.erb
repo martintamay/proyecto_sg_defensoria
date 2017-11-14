@@ -10,35 +10,73 @@
       </ul>
     </div>
   <% end %>
-<div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        
-        <div class="panel-body">
-           <%= form.text_field :procedural_stage, id: :criminal_record_procedural_stage, label: "Etapa Procesal" %>
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Ficha Penal</b>
+                <span class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  data-parent="#accordion" href="#collapse1"  ></span>
+              </div>
+              <!-- formulario -->
+              <div class="panel-body panel-collapse collapse in" id="collapse1" >
+                   <%= form.text_field :procedural_stage, id: :criminal_record_procedural_stage, label: "Etapa Procesal" %>
 
-            <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente" %>
-            <%= form.date_select :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion" %>
-            <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito" %>
-            
-            <%= form.text_field :commission_place, id: :criminal_record_commission_place, label: "Lugar de Comision" %>
-            <%= form.date_select :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision" %>
-            <%= form.text_field :prosecutor_unit, id: :criminal_record_prosecutor_unit, label: "Unidad Fiscal" %>
-            <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion" %>
-
-                  <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),criminal_records_path,class:  'btn btn-default pull-left'%>
-                   
+                    <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente" %>
+                    <%= form.date_select :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion" %>
+                    <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito" %>
+                    
+                    <%= form.text_field :commission_place, id: :criminal_record_commission_place, label: "Lugar de Comision" %>
+                    <%= form.date_select :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision" %>
+                    <%= form.text_field :prosecutor_unit, id: :criminal_record_prosecutor_unit, label: "Unidad Fiscal" %>
+                    <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion" %>
+                   <div>
                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
                      <% end %> 
-             
-              <% end %>       
-        
-            </div>
-        </div>
-        <hr></hr>
-      </div>
+                    </div>  
+                
 
- 
+            <% end %>          
+          </div> <!-- fin panel default -->
+        </div> <!-- fin group -->
+   <!-- MUESTRA LA TABLA -->
+    <div class="panel-group" >
+        <table id="table_di" class= "table table-hover  table-striped table-bordered" >
+            <thead>
+              <tr>
+                <th>Etapa Procesal</th>
+                <th>Numero de Expediente</th>
+                <th>Fecha de Intervención</th>
+                <th>Clasificación de Delito</th>
+                <th>Lugar de Comisión</th>
+                <th>Fecha de Comisión</th>
+                <th>Unidad Fiscal</th>
+                <th>Medida de Prevención</th>
+                <th class="col-md-2"></th>
+                
+                
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @criminal_records.each do |criminal_record| %>
+                <tr>
+                  <td><%= criminal_record.procedural_stage %></td>
+                  <td><%= criminal_record.inquire_number %></td>
+                  <td><%= criminal_record.intervention_date %></td>
+                  <td><%= criminal_record.type_of_crime %></td>
+                  <td><%= criminal_record.commission_place %></td>
+                  <td><%= criminal_record.commission_date %></td>
+                  <td><%= criminal_record.prosecutor_unit %></td>
+                  <td><%= criminal_record.precautionary_measures %></td>
+                  <td align="center" ><%= link_to (fa_icon 'eye'), criminal_record, class: 'btn btn-info'  %>
+                   <%= link_to (fa_icon 'pencil'), edit_criminal_record_path(criminal_record), class: 'btn btn-success' %>
+                   <%= link_to (fa_icon 'trash'), criminal_record, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+                </tr>
+             <% end %>
+           </tbody>
+        </table>
+    </div>
+</div>

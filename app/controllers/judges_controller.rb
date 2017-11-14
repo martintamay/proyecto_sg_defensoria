@@ -1,11 +1,13 @@
 class JudgesController < ApplicationController
   before_action :set_judge, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :obtenerListado
   load_and_authorize_resource
 
-  # GET /judges
-  # GET /judges.json
   def index
+    redirect_to :action => "new"     
+  end
+  def obtenerListado
     @judges = Judge.all
   end
 
@@ -31,8 +33,8 @@ class JudgesController < ApplicationController
 
     respond_to do |format|
       if @judge.save
-        format.html { redirect_to @judge, notice: 'Judge was successfully created.' }
-        format.json { render :show, status: :created, location: @judge }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :created, location: @judge }
       else
         format.html { render :new }
         format.json { render json: @judge.errors, status: :unprocessable_entity }
@@ -45,10 +47,10 @@ class JudgesController < ApplicationController
   def update
     respond_to do |format|
       if @judge.update(judge_params)
-        format.html { redirect_to @judge, notice: 'Judge was successfully updated.' }
-        format.json { render :show, status: :ok, location: @judge }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :ok, location: @judge }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @judge.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +61,7 @@ class JudgesController < ApplicationController
   def destroy
     @judge.destroy
     respond_to do |format|
-      format.html { redirect_to judges_url, notice: 'Judge was successfully destroyed.' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end

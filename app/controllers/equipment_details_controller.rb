@@ -1,11 +1,13 @@
 class EquipmentDetailsController < ApplicationController
   before_action :set_equipment_detail, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+ before_action :obtenerListado
   load_and_authorize_resource
 
-  # GET /equipment_details
-  # GET /equipment_details.json
   def index
+    redirect_to :action => "new"     
+  end
+  def obtenerListado
     @equipment_details = EquipmentDetail.all
   end
 
@@ -30,8 +32,8 @@ class EquipmentDetailsController < ApplicationController
 
     respond_to do |format|
       if @equipment_detail.save
-        format.html { redirect_to @equipment_detail, notice: 'Equipment detail was successfully created.' }
-        format.json { render :show, status: :created, location: @equipment_detail }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :created, location: @equipment_detail }
       else
         format.html { render :new }
         format.json { render json: @equipment_detail.errors, status: :unprocessable_entity }
@@ -44,10 +46,10 @@ class EquipmentDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @equipment_detail.update(equipment_detail_params)
-        format.html { redirect_to @equipment_detail, notice: 'Equipment detail was successfully updated.' }
-        format.json { render :show, status: :ok, location: @equipment_detail }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :ok, location: @equipment_detail }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @equipment_detail.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +60,7 @@ class EquipmentDetailsController < ApplicationController
   def destroy
     @equipment_detail.destroy
     respond_to do |format|
-      format.html { redirect_to equipment_details_url, notice: 'Equipment detail was successfully destroyed.' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end

@@ -10,28 +10,61 @@
       </ul>
     </div>
   <% end %>
-  <div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        <div class="panel-body">
-              <%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %>
-              <%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %>
-              <%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %>
 
-              <!-- Botones -->
-              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),courts_path,class:  'btn btn-default pull-left'%>  
-              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                <%= fa_icon 'floppy-o' %> Guardar
-              <% end %> 
-             
-              <% end %>       
-        
-            </div>
-        </div>
-        <hr></hr>
-      </div>
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Juzgado</b>
+                <span class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  data-parent="#accordion" href="#collapse1"  ></span>
+              </div>
+              <!-- formulario -->
+              <div class="panel-body panel-collapse collapse in" id="collapse1" >
+                    <div class="col-md-4"><%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %></div>
+                      
+                    <div class="col-md-4"><%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %></div>
+                      
+                    <div class="col-md-4"><%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %></div>
+                   <!-- Boton agregar -->
+                    <div >    
+                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                      <% end %> 
+                    </div>  
+                </div>
+
+            <% end %>          
+          </div> <!-- fin panel default -->
+        </div> <!-- fin group -->
+   <!-- MUESTRA LA TABLA -->
+    <div class="panel-group" >
+        <table id="table_di" class= "table table-hover  table-striped table-bordered" >
+                  <thead>
+                    <tr >
+                      <th>Nombre</th>
+                      <th>Teléfono</th>
+                      <th>Dirección</th>
+                      <th class="col-md-2"></th> 
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @courts.each do |court| %>
+                      <tr >
+                        <td><%= court.name %></td>
+                        <td><%= court.phone %></td>
+                        <td><%= court.address %></td>
+                        <td align="center"  ><%= link_to (fa_icon 'eye'), judge, class: 'btn btn-info'  %>
+                         <%= link_to (fa_icon 'pencil'), edit_court_path(court), class: 'btn btn-success' %>
+                         <%= link_to (fa_icon 'trash'), court, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+        </table>
+    </div>
+</div>
 
    
 

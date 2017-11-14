@@ -32,11 +32,13 @@
 //= require AdminLTE/dist/js/pages/dashboard.js
 //= require AdminLTE/dist/js/demo.js
 //= require AdminLTE/bower_components/morris.js/morris.min.js
+//= require  bootstrap.min.js
+
 //= require_tree .
 
 $(document).ready( function() {
 			     $('#table_di').DataTable( {
-			     	lengthMenu: [[5, 25, 50, -1],[5, 25, 50, "Todas"]],
+			     	lengthMenu: [[2, 25, 50, -1],[2, 25, 50, "Todas"]],
 			        language: {
 			          search: '<i class="fa fa-search "></i>',
 			          sLengthMenu:'Mostrar _MENU_ entradas',

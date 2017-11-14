@@ -25,11 +25,9 @@
         <td><%= suspect.entity.phone %></td>
         <td><%= suspect.ci %></td>
         <td><%= suspect.nationality %></td>
-        <td align="center" >
-          <%= link_to (fa_icon 'eye'), suspect, class: 'btn btn-info'  %>
-          <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
-          <%= link_to (fa_icon 'trash'), suspect, :method => :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
-        </td>
+         <td align="center" ><%= link_to (fa_icon 'eye'), suspect, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
       </tr>    
     </tr>
    <% end %>

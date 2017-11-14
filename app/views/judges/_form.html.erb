@@ -10,30 +10,60 @@
       </ul>
     </div>
   <% end %>
-  <div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        
-        <div class="panel-body">
-        <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte" %>
 
-        <%= form.fields_for :entity, @judge.entity do |ent| %>
-          <%= render "shared/entity_fields", :form => ent %>
-        <% end %>
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Juez</b>
+                <span class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  data-parent="#accordion" href="#collapse1"  ></span>
+              </div>
+              <!-- formulario -->
+              <div class="panel-body panel-collapse collapse in" id="collapse1" >
+                    <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte" %>
+                    <%= form.fields_for :entity, @judge.entity do |ent| %>
+                      <%= render "shared/entity_fields", :form => ent %>
+                    <% end %>
+                  <!-- Boton agregar -->
+                    <div >    
+                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                      <% end %> 
+                    </div>  
+                </div>
 
-        <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),judges_path,class:  'btn btn-default pull-left'%>
-                   
-         <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-         <%= fa_icon 'floppy-o' %> Guardar
-         <% end %> 
-             
-              <% end %>       
-        
-            </div>
-        </div>
-        <hr></hr>
-      </div>
+            <% end %>          
+          </div> <!-- fin panel default -->
+        </div> <!-- fin group -->
+   <!-- MUESTRA LA TABLA -->
+    <div class="panel-group" >
+        <table id="table_di" class= "table table-hover  table-striped table-bordered" >
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Juzgado</th>
+                <th class="col-md-2"></th>
+              </tr>
+            </thead>
 
+            <tbody>
+              <% @judges.each do |judge| %>
+                <tr>
 
+                  <td><%= judge.entity.full_name %></td>
+                  <td><%= judge.entity.phone %></td>
+                  <td><%= judge.entity.email %></td>
+                  <td><%= judge.court.name %></td>
+                  <td align="center"><%= link_to (fa_icon 'eye'), judge, class: 'btn btn-info'  %>
+                   <%= link_to (fa_icon 'pencil'), edit_judge_path(judge), class: 'btn btn-success' %>
+                   <%= link_to (fa_icon 'trash'), judge, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+                </tr>
+                    <% end %>
+                  </tbody>
+        </table>
+    </div>
+</div>
