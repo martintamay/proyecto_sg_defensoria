@@ -1,11 +1,13 @@
 class SuspectsController < ApplicationController
   before_action :set_suspect, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :obtenerListado
   load_and_authorize_resource
 
-  # GET /suspects
-  # GET /suspects.json
   def index
+    redirect_to :action => "new"     
+  end
+  def obtenerListado
     @suspects = Suspect.all
   end 
 
@@ -31,8 +33,8 @@ class SuspectsController < ApplicationController
 
     respond_to do |format|
       if @suspect.save
-        format.html { redirect_to @suspect, notice: 'Suspect was successfully created.' }
-        format.json { render :show, status: :created, location: @suspect }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :created, location: @suspect }
       else
         format.html { render :new }
         format.json { render json: @suspect.errors, status: :unprocessable_entity }
@@ -45,10 +47,10 @@ class SuspectsController < ApplicationController
   def update
     respond_to do |format|
       if @suspect.update(suspect_params)
-        format.html { redirect_to @suspect, notice: 'Suspect was successfully updated.' }
-        format.json { render :show, status: :ok, location: @suspect }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :ok, location: @suspect }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @suspect.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +61,7 @@ class SuspectsController < ApplicationController
   def destroy
     @suspect.destroy
     respond_to do |format|
-      format.html { redirect_to suspects_url, notice: 'Suspect was successfully destroyed.' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end

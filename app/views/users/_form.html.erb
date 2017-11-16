@@ -36,7 +36,9 @@
                     <% else %>
                       <% cambiar_a_rol = "Admin" %>
                     <% end %>
-                    <%= link_to "Hacer "+cambiar_a_rol, {:controller => :users, :action => :cambiar_rol}, class:  'btn btn-default'%>  
+                    <% if @user==nil %>
+                      <%= link_to "Hacer "+cambiar_a_rol, cambiar_rol_user_path, class: 'btn btn-default'%>
+                    <% end %>  
                   </label>
                 </div>
               <% end %>

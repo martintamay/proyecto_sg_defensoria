@@ -10,12 +10,17 @@
       </ul>
     </div>
   <% end %>
- <div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        <div class="panel-body">
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Imputado</b>
+                <span class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  data-parent="#accordion" href="#collapse1"  ></span>
+              </div>
+              <!-- formulario -->
+              <div class="panel-body panel-collapse collapse in" id="collapse1" >
               <%= form.fields_for :entity, @suspect.entity do |ent| %>
                <%= render "shared/entity_fields", :form => ent %>
               <% end %>
@@ -27,17 +32,47 @@
               <%= form.text_field :present_status, id: :suspect_present_status, label: 'Estado Actual' %>
               <%= form.text_field :nationality, id: :suspect_nationality, label: 'Nacionalidad' %>
               <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio' %>
-              <!-- Botones -->
-              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),suspects_path,class:  'btn btn-default pull-left'%>  
-              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                <%= fa_icon 'floppy-o' %> Guardar
-              <% end %> 
-             
-              <% end %>       
-        
-            </div>
-        </div>
-        <hr></hr>
-      </div>
+              <!-- Boton agregar -->
+                    <div >    
+                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                      <% end %> 
+                    </div>  
+                
 
-   
+            <% end %>          
+          </div> <!-- fin panel default -->
+        </div> <!-- fin group -->
+   <!-- MUESTRA LA TABLA -->
+    <div class="panel-group" >
+        <table id="table_di" class= "table table-hover  table-striped table-bordered" >
+          <table id="table_di" class= "table table-hover  table-striped table-bordered" >
+   <thead>
+         <tr>
+             <th>Nombre</th>
+             <th>Fecha de Nacimiento</th>
+             <th>Correo</th>
+             <th>Teléfono</th>
+             <th>Cédula de Identidad</th>
+             <th>Nacionalidad</th>
+             <th class="col-md-2"></th>
+          </tr>
+   </thead>
+  <tbody>
+
+    <% @suspects.each do |suspect| %>
+  <tr>
+        <td><%= suspect.entity.full_name %></td>
+        <td><%= suspect.entity.birthdate %></td>
+        <td><%= suspect.entity.email %></td>
+        <td><%= suspect.entity.phone %></td>
+        <td><%= suspect.ci %></td>
+        <td><%= suspect.nationality %></td>
+         <td align="center" ><%= link_to (fa_icon 'eye'), suspect, class: 'btn btn-info'  %>
+         <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
+         <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+      </tr>    
+    </tr>
+   <% end %>
+  </tbody>
+ </table>

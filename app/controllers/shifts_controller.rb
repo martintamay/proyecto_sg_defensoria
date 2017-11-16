@@ -1,11 +1,13 @@
 class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+ before_action :obtenerListado
   load_and_authorize_resource
 
-  # GET /shifts
-  # GET /shifts.json
   def index
+    redirect_to :action => "new"     
+  end
+  def obtenerListado
     @shifts = Shift.all
   end
 
@@ -30,8 +32,8 @@ class ShiftsController < ApplicationController
 
     respond_to do |format|
       if @shift.save
-        format.html { redirect_to @shift, notice: 'Shift was successfully created.' }
-        format.json { render :show, status: :created, location: @shift }
+        format.html { render :new, notice: '' }
+        format.json {render :new, status: :created, location: @shift }
       else
         format.html { render :new }
         format.json { render json: @shift.errors, status: :unprocessable_entity }
@@ -44,10 +46,10 @@ class ShiftsController < ApplicationController
   def update
     respond_to do |format|
       if @shift.update(shift_params)
-        format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shift }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :ok, location: @shift }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @shift.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +60,7 @@ class ShiftsController < ApplicationController
   def destroy
     @shift.destroy
     respond_to do |format|
-      format.html { redirect_to shifts_url, notice: 'Shift was successfully destroyed.' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end

@@ -1,11 +1,13 @@
 class HearingsController < ApplicationController
   before_action :set_hearing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+before_action :obtenerListado
   load_and_authorize_resource
 
-  # GET /hearings
-  # GET /hearings.json
   def index
+    redirect_to :action => "new"     
+  end
+  def obtenerListado
     @hearings = Hearing.all
     respond_to do |format|
    format.html
@@ -39,8 +41,8 @@ end
 
     respond_to do |format|
       if @hearing.save
-        format.html { redirect_to @hearing, notice: 'Hearing was successfully created.' }
-        format.json { render :show, status: :created, location: @hearing }
+        format.html { render :new , notice: '' }
+        format.json { render :new, status: :created, location: @hearing }
       else
         format.html { render :new }
         format.json { render json: @hearing.errors, status: :unprocessable_entity }
@@ -53,10 +55,10 @@ end
   def update
     respond_to do |format|
       if @hearing.update(hearing_params)
-        format.html { redirect_to @hearing, notice: 'Hearing was successfully updated.' }
-        format.json { render :show, status: :ok, location: @hearing }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :ok, location: @hearing }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @hearing.errors, status: :unprocessable_entity }
       end
     end
@@ -67,7 +69,7 @@ end
   def destroy
     @hearing.destroy
     respond_to do |format|
-      format.html { redirect_to hearings_url, notice: 'Hearing was successfully destroyed.' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end

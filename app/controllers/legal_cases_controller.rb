@@ -1,18 +1,16 @@
 class LegalCasesController < ApplicationController
   before_action :set_legal_case, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :obtenerListado
   load_and_authorize_resource
-
-  # GET /legal_cases
-  # GET /legal_cases.json
-  def index
+def index
+    redirect_to :action => "new"     
+  end
+  def obtenerListado
     @legal_cases = LegalCase.all
   end
 
-  # GET /legal_cases/1
-  # GET /legal_cases/1.json
-  def show
-  end
+
 
   # GET /legal_cases/new
   def new
@@ -30,8 +28,8 @@ class LegalCasesController < ApplicationController
 
     respond_to do |format|
       if @legal_case.save
-        format.html { redirect_to @legal_case, notice: 'Legal case was successfully created.' }
-        format.json { render :show, status: :created, location: @legal_case }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :created, location: @legal_case }
       else
         format.html { render :new }
         format.json { render json: @legal_case.errors, status: :unprocessable_entity }
@@ -44,8 +42,8 @@ class LegalCasesController < ApplicationController
   def update
     respond_to do |format|
       if @legal_case.update(legal_case_params)
-        format.html { redirect_to @legal_case, notice: 'Legal case was successfully updated.' }
-        format.json { render :show, status: :ok, location: @legal_case }
+        format.html { render :new, notice: '' }
+        format.json { render :new, status: :ok, location: @legal_case }
       else
         format.html { render :edit }
         format.json { render json: @legal_case.errors, status: :unprocessable_entity }
@@ -58,7 +56,7 @@ class LegalCasesController < ApplicationController
   def destroy
     @legal_case.destroy
     respond_to do |format|
-      format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully destroyed.' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end

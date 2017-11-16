@@ -1,4 +1,10 @@
 class Suspect < ApplicationRecord
+  validates :ci, numericality: { only_integer: true}
+  validates :reason, :presence => true
+  validates :criminal_record, :presence => true
+  validates :present_status, :presence => true
+  validates :nationality, :presence => true
+  validates :home_adress, :presence => true
   resourcify
   belongs_to :entity
   accepts_nested_attributes_for :entity
