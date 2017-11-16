@@ -7,23 +7,22 @@ class HearingsController < ApplicationController
   # GET /hearings.json
   def index
     @hearings = Hearing.all
+    respond_to do |format|
+   format.html
+   format.pdf do
+    pdf = HearingPdf.new(@hearing)
+    send_data pdf.render, filename: "hearing_#{@hearing}.pdf",
+    type: "application/pdf",
+    disposition: "inline"  
+     end
+      end
   end
 
   # GET /hearings/1
   # GET /hearings/1.json
   def show
   
-respond_to do |format|
-  format.html
-  format.pdf do
-    pdf = HearingPdf.new
-    send_data pdf.render, filename: "hearing_#{@hearing}.pdf",
-    type: "application/pdf",
-    disposition: "inline"  
-  end
 end
-  end
-
   # GET /hearings/new
   def new
     @hearing = Hearing.new
@@ -83,4 +82,5 @@ end
     def hearing_params
       params.require(:hearing).permit(:hearing_date, :user_id, :legal_case_id)
     end
-end
+  end
+

@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h1 align="center">Audiencias <%= link_to (fa_icon 'plus', text: ''), new_hearing_path,class: 'btn btn-primary' %></h1>
+ <%= link_to "Reporte (PDF)",hearings_path(format: 'pdf'), class: "btn btn-info" %>
  <hr>      
 <table id="table_di" class= "table table-hover  table-striped table-bordered" >
   <thead>
