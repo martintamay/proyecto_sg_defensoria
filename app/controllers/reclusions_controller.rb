@@ -1,13 +1,10 @@
 class ReclusionsController < ApplicationController
   before_action :set_reclusion, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-before_action :obtenerListado
   load_and_authorize_resource
 
+  # GET /reclusions
+  # GET /reclusions.json
   def index
-    redirect_to :action => "new"     
-  end
-  def obtenerListado
     @reclusions = Reclusion.all
   end
 
@@ -32,8 +29,8 @@ before_action :obtenerListado
 
     respond_to do |format|
       if @reclusion.save
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :created, location: @reclusion }
+        format.html { redirect_to @reclusion, notice: 'Reclusion was successfully created.' }
+        format.json { render :show, status: :created, location: @reclusion }
       else
         format.html { render :new }
         format.json { render json: @reclusion.errors, status: :unprocessable_entity }
@@ -46,10 +43,10 @@ before_action :obtenerListado
   def update
     respond_to do |format|
       if @reclusion.update(reclusion_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @reclusion }
+        format.html { redirect_to @reclusion, notice: 'Reclusion was successfully updated.' }
+        format.json { render :show, status: :ok, location: @reclusion }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @reclusion.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +57,7 @@ before_action :obtenerListado
   def destroy
     @reclusion.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to reclusions_url, notice: 'Reclusion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

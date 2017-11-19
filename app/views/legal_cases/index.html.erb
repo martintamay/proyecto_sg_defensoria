@@ -1,45 +1,61 @@
 <p id="notice"><%= notice %></p>
-<h1 align="center">Casos <%= link_to (fa_icon 'plus', text: ''), new_legal_case_path, class: 'btn btn-primary' %></h1>
 
- <hr>     
-      
-<table id="table_di" class= "table table-hover  table-striped table-bordered" >
- 
-  <thead>
-    <tr>
-      <th>Formulario de Entrada</th>
-      <th>Nombre</th>
-      <th>Usuario</th>
-      <th>Juzgado</th>
-      <th>Juez</th>
-      <th>Imputado</th>
-      <th>Ficha Penal</th>
-      <th>Comentario</th>
-      <th>Sentencia</th>
-      <th class="col-md-2"></th>
-    </tr>
-  </thead>
+<!-- PANEL PRINCIPAL -->
+  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">LISTA DE CASOS</h3>
+               <div class="box-tools">
+                  <ul class=" no-margin pull-right">
+                    <%= link_to (fa_icon 'plus', text: 'Crear'), new_legal_case_path, class: 'btn btn-primary' %>
+                  </ul> 
+               </div>
+            </div>
+                         
 
-  <tbody>
-    <% @legal_cases.each do |legal_case| %>
-      <tr>
-        <td><%= legal_case.entry_form %></td>
-        <td><%= legal_case.name %></td>
-        <td><%= legal_case.user.entity.full_name %></td>
-        <td><%= legal_case.court.name %></td>
-        <td><%= legal_case.judge.entity.full_name %></td>
-        <td><%= legal_case.suspect.entity.full_name %></td>
-        <td><%= legal_case.criminal_record.inquire_number %></td>
-        <td><%= legal_case.comment %></td>
-        <td><%= legal_case.final_sentence %></td>
-         <td align="center" ><%= link_to (fa_icon 'eye'), legal_case, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <!-- TABLA -->
+            <div class="panel-body "  >   
+                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+                    <thead>  <!-- TITULOS DE LA TABLE -->
+                        <tr>
+                          <!-- <th>Formulario de Entrada</th>-->
+                          <th>Nombre del Caso</th>
+                          <th>Defensor</th>
+                          <th>Juzgado</th>
+                          <th>Juez</th>
+                          <th>Imputado</th>
+                          <th>Ficha Penal Nro.</th>
+                          <!--<th>Comentario</th>-->
+                          <th>Sentencia</th>
+                          <th class="col-md-2"></th>
+                        </tr>
+                    </thead>
+                    <!-- CAMPOS QUE CONTENDRA -->
+                    <tbody>
+                        <% @legal_cases.each do |legal_case| %>
+                          <tr>
+                            <!--td><%= legal_case.entry_form %></td> -->
+                            <td><%= legal_case.name %></td>
+                            <td><%= legal_case.user.entity.full_name %></td>
+                            <td><%= legal_case.court.name %></td>
+                            <td><%= legal_case.judge.entity.full_name %></td>
+                            <td><%= legal_case.suspect.entity.full_name %></td>
+                            <td><%= legal_case.criminal_record.inquire_number %></td>
+                            <!--<td><%= legal_case.comment %></td>-->
+                            <td><%= legal_case.final_sentence %></td>
+                            <td align="center" >
+                              <div class="btn-group">
+                                <%= link_to (fa_icon 'eye' ), legal_case ,class: "btn btn-default" %>
+                                <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case),class: "btn btn-default" %>
+                                <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+                              </div>
+                            </td>
+                          </tr>
+                        <% end %>
+                    </tbody>
+              </table>
+</div>
+</div>
 
-<br>
+                 
 
 

@@ -1,16 +1,18 @@
 class CourtsController < ApplicationController
   before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :obtenerListado
   load_and_authorize_resource
 
+  # GET /courts
+  # GET /courts.json
   def index
-    redirect_to :action => "new"     
+    @courts = Court.all
   end
-  def obtenerListado
-     @courts = Court.all
+
+  # GET /courts/1
+  # GET /courts/1.json
+  def show
   end
-  
 
   # GET /courts/new
   def new
@@ -25,10 +27,11 @@ class CourtsController < ApplicationController
   # POST /courts.json
   def create
     @court = Court.new(court_params)
+
     respond_to do |format|
       if @court.save
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :created, location: @court }
+        format.html { redirect_to @court, notice: '' }
+        format.json { render :show, status: :created, location: @court }
       else
         format.html { render :new }
         format.json { render json: @court.errors, status: :unprocessable_entity }
@@ -41,10 +44,10 @@ class CourtsController < ApplicationController
   def update
     respond_to do |format|
       if @court.update(court_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @court }
+        format.html { redirect_to @court, notice: '' }
+        format.json { render :show, status: :ok, location: @court }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @court.errors, status: :unprocessable_entity }
       end
     end
@@ -55,7 +58,7 @@ class CourtsController < ApplicationController
   def destroy
     @court.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to courts_url, notice: '' }
       format.json { head :no_content }
     end
   end

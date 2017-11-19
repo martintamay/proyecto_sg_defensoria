@@ -1,30 +1,18 @@
 class HearingsController < ApplicationController
   before_action :set_hearing, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-before_action :obtenerListado
   load_and_authorize_resource
 
+  # GET /hearings
+  # GET /hearings.json
   def index
-    redirect_to :action => "new"     
-  end
-  def obtenerListado
     @hearings = Hearing.all
-    respond_to do |format|
-   format.html
-   format.pdf do
-    pdf = HearingPdf.new(@hearing)
-    send_data pdf.render, filename: "hearing_#{@hearing}.pdf",
-    type: "application/pdf",
-    disposition: "inline"  
-     end
-      end
   end
 
   # GET /hearings/1
   # GET /hearings/1.json
   def show
-  
-end
+  end
+
   # GET /hearings/new
   def new
     @hearing = Hearing.new
@@ -41,8 +29,8 @@ end
 
     respond_to do |format|
       if @hearing.save
-        format.html { render :new , notice: '' }
-        format.json { render :new, status: :created, location: @hearing }
+        format.html { redirect_to @hearing, notice: 'Hearing was successfully created.' }
+        format.json { render :show, status: :created, location: @hearing }
       else
         format.html { render :new }
         format.json { render json: @hearing.errors, status: :unprocessable_entity }
@@ -55,10 +43,10 @@ end
   def update
     respond_to do |format|
       if @hearing.update(hearing_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @hearing }
+        format.html { redirect_to @hearing, notice: 'Hearing was successfully updated.' }
+        format.json { render :show, status: :ok, location: @hearing }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @hearing.errors, status: :unprocessable_entity }
       end
     end
@@ -69,7 +57,7 @@ end
   def destroy
     @hearing.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to hearings_url, notice: 'Hearing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,5 +72,4 @@ end
     def hearing_params
       params.require(:hearing).permit(:hearing_date, :user_id, :legal_case_id)
     end
-  end
-
+end

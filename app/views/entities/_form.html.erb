@@ -10,30 +10,45 @@
       </ul>
     </div>
   <% end %>
-    <div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        
-        <div class="panel-body">
-            <form class="form-inline">
-    <div class="form-group">
-      <%= form.text_field :name, id: :entity_name, label: "Nombre" ,class: "form-group"%>
-      <%= form.text_field :last_name, id: :entity_last_name, label: "Apellido",class: "form-group"%>
-      <%= form.phone_field :phone, id: :entity_phone, label: "Teléfono" ,class: "form-group"%>
-      <%= form.date_select :birthdate, id: :entity_birthdate, label: "Nacimiento", start_year: 1850, use_month_numbers: true, end_year: 2050 ,class: "form-group"%>
-      <%= form.email_field :email, id: :entity_email, label: "Email",class: "form-group"%>
-      </div>
-                  <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),entities_path,class:  'btn btn-default pull-left'%>
-                   
-                     <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Guardar
-                     <% end %> 
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Entidades</b>
+               
+              </div>
+              <!-- formulario -->
+              <div class="panel-body " >
+<div>&nbsp</div>
+                     <div class="col-md-6">
+                    <%= form.text_field :name, id: :entity_name, label: "Nombre" %></div>
+
+                     <div class="col-md-6">
+                    <%= form.text_field :last_name, id: :entity_last_name, label: "Apellido"%></div>
+                      
+<div>&nbsp</div>
+                     <div class="col-md-6">
+                    <%= form.phone_field :phone, id: :entity_phone, label: "Teléfono"%></div>
+
+                     <div class="col-md-6">
+                    <%= form.date_select :birthdate, id: :entity_birthdate, label: "Nacimiento", start_year: 1850, use_month_numbers: true, end_year: 2050 %></div>
+<div>&nbsp</div>
+                     <div class="col-md-6">
+                    <%= form.email_field :email, id: :entity_email, label: "Email"%></div>
+<div>&nbsp</div>
+                    <div class="col-md-12">
+                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                                      <%= fa_icon 'floppy-o' %> Guardar
+                                   <% end %> 
+                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), entities_path, class: 'btn btn-default pull-left' %>
+                    </div>
+                                   
              
               <% end %>       
         
             </div>
         </div>
-        <hr></hr>
+
       </div>

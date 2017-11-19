@@ -10,24 +10,30 @@
       </ul>
     </div>
   <% end %>
-    <div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        
-        <div class="panel-body">
- 
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Audiencia</b>
+                
+              </div>
+              <!-- formulario -->
+              <div class="panel-body " >
+                <div>&nbsp</div>
          <%= form.date_select :hearing_date, id: :hearing_hearing_date, label:"Fecha de Audiencia" %>
-           <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Usuario" %>
+         <div>&nbsp</div>
+           <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor" %>
+           <div>&nbsp</div>
          <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %>
-
-          <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),hearings_path,class:  'btn btn-default pull-left'%>
-                   
-          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-          <%= fa_icon 'floppy-o' %> Guardar
-                     <% end %> 
-             
+<div>&nbsp</div>
+         <div class="col-md-12">    
+                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                      <% end %> 
+                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),   hearings_path, class: 'btn btn-default pull-left' %>
+                    </div>  
               <% end %>       
         
             </div>

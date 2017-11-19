@@ -10,26 +10,36 @@
       </ul>
     </div>
   <% end %>
-<div class="col-md-4"></div>
-  <div class="col-md-5"><!-- Tamaño del formulario -->
- 
- <!-- Formulario --> 
-  <div class="panel panel-primary" >
-        
-        <div class="panel-body">
+ <div class="container">
+  <!-- Muestra el panel de agregacion -->
+      <div class="panel-group" >
+          <div class="panel panel-default" >
+            <!-- encabezado -->
+              <div class="panel-heading ">
+                <b class="panel-title">Accion defensor</b>
+                
+              </div>
+              <!-- formulario -->
+              <div class="panel-body " >
+                <div>&nbsp</div>
               <%= form.date_select :action_date, id: :lawyer_action_action_date, label: "Fecha de Accion" %>
+              <div>&nbsp</div>
               <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %> 
+              <div>&nbsp</div>
               <%= form.text_area :comment, id: :lawyer_action_comment, label: "Comentario" %>
 
-              <!-- Botones -->
-              <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),lawyer_actions_path,class:  'btn btn-default pull-left'%>  
-              <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                <%= fa_icon 'floppy-o' %> Guardar
-              <% end %> 
-             
-              <% end %>       
-        
-            </div>
+                  <!-- Boton agregar -->
+                  <div>&nbsp</div>
+                    <div class="col-md-12">    
+                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                        <%= fa_icon 'floppy-o' %> Guardar
+                      <% end %> 
+                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), lawyer_actions_path, class: 'btn btn-default pull-left' %>
+                    </div>  
+                
+
+            <% end %>          
+          </div> <!-- fin panel default -->
+        </div> <!-- fin group -->
         </div>
-        <hr></hr>
-      </div>
+        

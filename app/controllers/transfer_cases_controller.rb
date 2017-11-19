@@ -1,13 +1,10 @@
 class TransferCasesController < ApplicationController
   before_action :set_transfer_case, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
- before_action :obtenerListado
   load_and_authorize_resource
 
+  # GET /transfer_cases
+  # GET /transfer_cases.json
   def index
-    redirect_to :action => "new"     
-  end
-  def obtenerListado
     @transfer_cases = TransferCase.all
   end
 
@@ -32,8 +29,8 @@ class TransferCasesController < ApplicationController
 
     respond_to do |format|
       if @transfer_case.save
-        format.html { render :new, notice: '' }
-        format.json { render :new tatus: :created, location: @transfer_case }
+        format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully created.' }
+        format.json { render :show, status: :created, location: @transfer_case }
       else
         format.html { render :new }
         format.json { render json: @transfer_case.errors, status: :unprocessable_entity }
@@ -46,10 +43,10 @@ class TransferCasesController < ApplicationController
   def update
     respond_to do |format|
       if @transfer_case.update(transfer_case_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @transfer_case }
+        format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully updated.' }
+        format.json { render :show, status: :ok, location: @transfer_case }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @transfer_case.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +57,7 @@ class TransferCasesController < ApplicationController
   def destroy
     @transfer_case.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to transfer_cases_url, notice: 'Transfer case was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

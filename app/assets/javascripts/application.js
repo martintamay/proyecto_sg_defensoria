@@ -38,11 +38,11 @@
 
 $(document).ready( function() {
 			     $('#table_di').DataTable( {
-			     	lengthMenu: [[2, 25, 50, -1],[2, 25, 50, "Todas"]],
+			     	lengthMenu: [[4, 25, 50, -1],[4, 25, 50, "Todas"]],
 			        language: {
-			          search: '<i class="fa fa-search "></i>',
-			          sLengthMenu:'Mostrar _MENU_ entradas',
-			          sInfo:'Mostrando _START_ - _END_ de un total de _TOTAL_ entradas',
+			          search: ' <i class=" btn btn-default fa fa-search"></i>',
+			          sLengthMenu:'Mostrar _MENU_ registros',
+			          sInfo:'Total de registros: _TOTAL_',
 			          sInfoEmpty: 'No hay datos registrados',
 			        oPaginate:{
 			          	sNext: '<i class="fa fa-arrow-circle-right"></i>',

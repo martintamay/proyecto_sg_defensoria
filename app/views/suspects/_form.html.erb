@@ -17,62 +17,41 @@
             <!-- encabezado -->
               <div class="panel-heading ">
                 <b class="panel-title">Imputado</b>
-                <span class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  data-parent="#accordion" href="#collapse1"  ></span>
+               
               </div>
               <!-- formulario -->
-              <div class="panel-body panel-collapse collapse in" id="collapse1" >
+              <div class="panel-body " >
+                <div class="col-md-6">
               <%= form.fields_for :entity, @suspect.entity do |ent| %>
                <%= render "shared/entity_fields", :form => ent %>
-              <% end %>
-              <%= form.text_field :ci, id: :suspect_ci, label: 'CI' %>
-              <%= form.text_field :reason, id: :suspect_reason, label: 'Causa' %>
-              <%= form.text_field :mothers_name, id: :suspect_mothers_name, label: 'Nombre de Madre' %>
-              <%= form.text_field :fathers_name, id: :suspect_fathers_name, label: 'Nombre de Padre' %>
-              <%= form.text_field :criminal_record, id: :suspect_record, label: 'Antecedentes' %>
-              <%= form.text_field :present_status, id: :suspect_present_status, label: 'Estado Actual' %>
-              <%= form.text_field :nationality, id: :suspect_nationality, label: 'Nacionalidad' %>
-              <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio' %>
+              <% end %></div>
+              <div class="col-md-6">
+              <%= form.text_field :ci, id: :suspect_ci, label: 'CI' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :reason, id: :suspect_reason, label: 'Causa' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :mothers_name, id: :suspect_mothers_name, label: 'Nombre de Madre' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :fathers_name, id: :suspect_fathers_name, label: 'Nombre de Padre' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :criminal_record, id: :suspect_record, label: 'Antecedentes' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :present_status, id: :suspect_present_status, label: 'Estado Actual' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :nationality, id: :suspect_nationality, label: 'Nacionalidad' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio' %></div>
               <!-- Boton agregar -->
-                    <div >    
+
+                    <div class="col-md-12">    
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
                       <% end %> 
+                       <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), suspects_path, class: 'btn btn-default pull-left' %>
                     </div>  
                 
 
             <% end %>          
           </div> <!-- fin panel default -->
         </div> <!-- fin group -->
-   <!-- MUESTRA LA TABLA -->
-    <div class="panel-group" >
-        <table id="table_di" class= "table table-hover  table-striped table-bordered" >
-          <table id="table_di" class= "table table-hover  table-striped table-bordered" >
-   <thead>
-         <tr>
-             <th>Nombre</th>
-             <th>Fecha de Nacimiento</th>
-             <th>Correo</th>
-             <th>Teléfono</th>
-             <th>Cédula de Identidad</th>
-             <th>Nacionalidad</th>
-             <th class="col-md-2"></th>
-          </tr>
-   </thead>
-  <tbody>
-
-    <% @suspects.each do |suspect| %>
-  <tr>
-        <td><%= suspect.entity.full_name %></td>
-        <td><%= suspect.entity.birthdate %></td>
-        <td><%= suspect.entity.email %></td>
-        <td><%= suspect.entity.phone %></td>
-        <td><%= suspect.ci %></td>
-        <td><%= suspect.nationality %></td>
-         <td align="center" ><%= link_to (fa_icon 'eye'), suspect, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-      </tr>    
-    </tr>
-   <% end %>
-  </tbody>
- </table>
+   

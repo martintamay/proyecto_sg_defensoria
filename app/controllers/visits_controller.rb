@@ -1,13 +1,10 @@
 class VisitsController < ApplicationController
   before_action :set_visit, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  before_action :obtenerListado
   load_and_authorize_resource
 
+  # GET /visits
+  # GET /visits.json
   def index
-    redirect_to :action => "new"     
-  end
-  def obtenerListado
     @visits = Visit.all
   end
 
@@ -32,8 +29,8 @@ class VisitsController < ApplicationController
 
     respond_to do |format|
       if @visit.save
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :created, location: @visit }
+        format.html { redirect_to @visit, notice: 'Visit was successfully created.' }
+        format.json { render :show, status: :created, location: @visit }
       else
         format.html { render :new }
         format.json { render json: @visit.errors, status: :unprocessable_entity }
@@ -46,10 +43,10 @@ class VisitsController < ApplicationController
   def update
     respond_to do |format|
       if @visit.update(visit_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @visit }
+        format.html { redirect_to @visit, notice: 'Visit was successfully updated.' }
+        format.json { render :show, status: :ok, location: @visit }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @visit.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +57,7 @@ class VisitsController < ApplicationController
   def destroy
     @visit.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to visits_url, notice: 'Visit was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
