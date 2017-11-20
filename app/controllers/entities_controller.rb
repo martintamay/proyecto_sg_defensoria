@@ -1,14 +1,12 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
- before_action :obtenerListado
   load_and_authorize_resource
 
+ 
+  # GET /entities
+  # GET /entities.json
   def index
-    redirect_to :action => "new"     
-  end
-  def obtenerListado
-  
     @entities = Entity.all
   end
 
@@ -33,8 +31,8 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.save
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :created, location: @entity }
+        format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
+        format.json { render :show, status: :created, location: @entity }
       else
         format.html { render :new }
         format.json { render json: @entity.errors, status: :unprocessable_entity }
@@ -47,10 +45,10 @@ class EntitiesController < ApplicationController
   def update
     respond_to do |format|
       if @entity.update(entity_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @entity }
+        format.html { redirect_to @entity, notice: 'Entity was successfully updated.' }
+        format.json { render :show, status: :ok, location: @entity }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @entity.errors, status: :unprocessable_entity }
       end
     end
@@ -61,7 +59,7 @@ class EntitiesController < ApplicationController
   def destroy
     @entity.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to entities_url, notice: 'Entity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,13 +1,10 @@
 class LawyerActionsController < ApplicationController
   before_action :set_lawyer_action, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  before_action :obtenerListado
   load_and_authorize_resource
 
+  # GET /lawyer_actions
+  # GET /lawyer_actions.json
   def index
-    redirect_to :action => "new"     
-  end
-  def obtenerListado
     @lawyer_actions = LawyerAction.all
   end
 
@@ -32,8 +29,8 @@ class LawyerActionsController < ApplicationController
 
     respond_to do |format|
       if @lawyer_action.save
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :created, location: @lawyer_action }
+        format.html { redirect_to @lawyer_action, notice: 'Lawyer action was successfully created.' }
+        format.json { render :show, status: :created, location: @lawyer_action }
       else
         format.html { render :new }
         format.json { render json: @lawyer_action.errors, status: :unprocessable_entity }
@@ -46,10 +43,10 @@ class LawyerActionsController < ApplicationController
   def update
     respond_to do |format|
       if @lawyer_action.update(lawyer_action_params)
-        format.html { render :new, notice: '' }
-        format.json { render :new, status: :ok, location: @lawyer_action }
+        format.html { redirect_to @lawyer_action, notice: 'Lawyer action was successfully updated.' }
+        format.json { render :show, status: :ok, location: @lawyer_action }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @lawyer_action.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +57,7 @@ class LawyerActionsController < ApplicationController
   def destroy
     @lawyer_action.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to lawyer_actions_url, notice: 'Lawyer action was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
