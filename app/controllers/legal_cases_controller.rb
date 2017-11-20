@@ -8,6 +8,15 @@ def index
   end
   def obtenerListado
     @legal_cases = LegalCase.all
+     respond_to do |format|
+   format.html
+   format.pdf do
+    pdf = LegalCasePdf.new(@legal_case)
+    send_data pdf.render, filename: "nada.pdf",
+    type: "application/pdf",
+    disposition: "inline"  
+     end
+      end
   end
 
 

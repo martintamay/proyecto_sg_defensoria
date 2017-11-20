@@ -13,7 +13,7 @@ before_action :obtenerListado
    format.html
    format.pdf do
     pdf = HearingPdf.new(@hearing)
-    send_data pdf.render, filename: "hearing_#{@hearing}.pdf",
+    send_data pdf.render, filename: "nada.pdf",
     type: "application/pdf",
     disposition: "inline"  
      end

@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+
+
 <h1 align="center">Casos <%= link_to (fa_icon 'plus', text: ''), new_legal_case_path, class: 'btn btn-primary' %></h1>
+
+</body>
+
 
  <hr>     
       
-<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+ <div class="container">
+      <div class="panel-group" >
+  <table id="table_di" class= "table table-hover  table-striped table-bordered" >
  
   <thead>
     <tr>
@@ -21,6 +27,8 @@
   </thead>
 
   <tbody>
+    
+
     <% @legal_cases.each do |legal_case| %>
       <tr>
         <td><%= legal_case.entry_form %></td>
@@ -35,11 +43,28 @@
          <td align="center" ><%= link_to (fa_icon 'eye'), legal_case, class: 'btn btn-info'  %>
          <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case), class: 'btn btn-success' %>
          <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+        
       </tr>
+
     <% end %>
+
+
   </tbody>
 </table>
+<input id="pdf-button" type="button" value="Download PDF" onclick="html_to_pdf()" />
+<p id="notice"><%= notice %></p>
+</div>
+</div>
+
+<script type="text/javascript">
+  function html_to_pdf(){
+
+    window.print();
+  }
+
+</script>
 
 <br>
 
 
+  

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sistema Defensoría</title>
+ 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
@@ -79,8 +80,11 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="hearings#index.html"><i class="fa fa-circle-o"></i> Audiencia</a></li>
-            <li><a href="legal_cases#index.html"><i class="fa fa-circle-o"></i> Ficha de Casos</a></li>
-            <li><a href="criminal_records#index.html"><i class="fa fa-circle-o"></i> Fichas Penales</a></li>
+            <li><a href="<%=legal_cases_path %>"><i class="fa fa-circle-o"></i> Ficha de Casos</a></li>
+
+            <li><a href="<%=legal_cases_path(format: 'pdf')%>"><i class="fa fa-circle-o"></i> Reporte de Casos</a></li>
+
+            <li><a href="<%=criminal_records_path %>"><i class="fa fa-circle-o"></i> Fichas Penales</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -92,9 +96,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="judges#index.html"><i class="fa fa-circle-o"></i> Jueces </a></li>
-            <li><a href="users#index.html"><i class="fa fa-circle-o"></i>Usuarios</a></li>
-            <li><a href="suspects#index.html"><i class="fa fa-circle-o"></i> Imputados</a></li> 
+            <li><a href="<%=judges_path %>"><i class="fa fa-circle-o"></i> Jueces </a></li>
+            <li><a href="<%=users_path %>"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+            <li><a href="<%=suspects_path %>"><i class="fa fa-circle-o"></i> Imputados</a></li> 
 
           </ul>
         </li>
@@ -107,9 +111,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="lawyer_actions#index.html"><i class="fa fa-circle-o"></i> Acciones de Defensores </a></li>
-            <li><a href="transfer_cases#index.html"><i class="fa fa-circle-o"></i> Transferencia de casos</a></li>
-            <li><a href="visits#index.html"><i class="fa fa-circle-o"></i> Visitas</a></li>
+            <li><a href="<%=lawyer_actions_path %>"><i class="fa fa-circle-o"></i> Acciones de Defensores </a></li>
+            <li><a href="<%=transfer_cases_path %>"><i class="fa fa-circle-o"></i> Transferencia de casos</a></li>
+            <li><a href="<%=visits_path %>"><i class="fa fa-circle-o"></i> Visitas</a></li>
           </ul>
         </li>
 
