@@ -1,20 +1,24 @@
 class LegalCasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_legal_case, only: [:show, :edit, :update, :destroy]
+  before_action :obtenerListado, only: [:new, :edit, :show, :update]
   load_and_authorize_resource
 
   # GET /legal_cases
   # GET /legal_cases.json
   def index
     @legal_cases = LegalCase.all
-     respond_to do |format|
-   format.html
-   format.pdf do
-    pdf = LegalCasePdf.new(@legal_case)
-    send_data pdf.render, filename: "nada.pdf",
-    type: "application/pdf",
-    disposition: "inline"  
-     end
+    respond_to do |format|
+      format.html do
+        redirect_to :action => "new"
       end
+      format.pdf do
+        pdf = LegalCasePdf.new(@legal_case)
+        send_data pdf.render, filename: "LegalCaseReport.pdf",
+        type: "application/pdf",
+        disposition: "inline"
+      end
+    end
   end
 
   # GET /legal_cases/1
@@ -38,7 +42,7 @@ class LegalCasesController < ApplicationController
 
     respond_to do |format|
       if @legal_case.save
-        format.html { redirect_to @legal_case, notice: 'Legal case was successfully created.' }
+        format.html { render :new, notice: 'Legal case was successfully created.' }
         format.json { render :show, status: :created, location: @legal_case }
       else
         format.html { render :new }
@@ -52,7 +56,7 @@ class LegalCasesController < ApplicationController
   def update
     respond_to do |format|
       if @legal_case.update(legal_case_params)
-        format.html { redirect_to @legal_case, notice: 'Legal case was successfully updated.' }
+        format.html { render :new, notice: 'Legal case was successfully updated.' }
         format.json { render :show, status: :ok, location: @legal_case }
       else
         format.html { render :edit }
@@ -66,12 +70,17 @@ class LegalCasesController < ApplicationController
   def destroy
     @legal_case.destroy
     respond_to do |format|
-      format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully destroyed.' }
+      format.html { render :new, notice: 'Legal case was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    #Usado para obtener la lista de casos
+    def obtenerListado
+      @legal_cases = LegalCase.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_legal_case
       @legal_case = LegalCase.find(params[:id])

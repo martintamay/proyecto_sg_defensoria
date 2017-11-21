@@ -1,28 +1,28 @@
 
- <div class="container">
-      <div class="panel-group" >
-          <div class="panel panel-primary" >
-              <div class="panel-heading ">
-                <b class="panel-title">Juzgado</b>
-                <span  class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  href="#collapse1"  ></span>
-              </div>
-                <div class="panel-body" id="collapse1">
-                  <div class="col-md-4"><%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %></div>
-                      
-                  <div class="col-md-4"><%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %></div>
-                      
-                  <div class="col-md-4"><%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %></div>
-                   <!-- Botones -->
-                    <div align="center">    
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Agregar
-                      <% end %> 
-                    </div>  
-                </div>
-            <% end %>          
-          </div>
-
-
-         </div>
+<div class="container">
+  <div class="panel-group" >
+    <div class="panel panel-primary" >
+      <div class="panel-heading ">
+        <b class="panel-title">Juzgado</b>
+        <span  class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  href="#collapse1"  ></span>
+      </div>
+      <div class="panel-body" id="collapse1">
+        <div class="col-md-4">
+          <%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %>
         </div>
-          
+        <div class="col-md-4">
+          <%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %>
+        </div>
+        <div class="col-md-4">
+          <%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %>
+        </div>
+        <!-- Botones -->
+        <div align="center">
+          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+            <%= fa_icon 'floppy-o' %> Agregar
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
