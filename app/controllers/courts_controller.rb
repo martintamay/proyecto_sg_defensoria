@@ -1,12 +1,13 @@
 class CourtsController < ApplicationController
-  before_action :set_court, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_court, only: [:show, :edit, :update, :destroy]
+  before_action :obtenerListado, only: [:index, :new, :edit, :show, :update]
   load_and_authorize_resource
 
   # GET /courts
   # GET /courts.json
   def index
-    @courts = Court.all
+    redirect_to :action => "new"
   end
 
   # GET /courts/1
@@ -30,7 +31,7 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
-        format.html { redirect_to @court, notice: '' }
+        format.html { render :new, notice: '' }
         format.json { render :show, status: :created, location: @court }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class CourtsController < ApplicationController
   def update
     respond_to do |format|
       if @court.update(court_params)
-        format.html { redirect_to @court, notice: '' }
+        format.html { render :new, notice: '' }
         format.json { render :show, status: :ok, location: @court }
       else
         format.html { render :edit }
@@ -58,12 +59,16 @@ class CourtsController < ApplicationController
   def destroy
     @court.destroy
     respond_to do |format|
-      format.html { redirect_to courts_url, notice: '' }
+      format.html { render :new, notice: '' }
       format.json { head :no_content }
     end
   end
 
   private
+    def obtenerListado
+      @courts = Court.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_court
       @court = Court.find(params[:id])

@@ -10,59 +10,53 @@
       </ul>
     </div>
   <% end %>
- 
+
       <div class="panel-group" >
           <div class="panel panel-default" >
             <!-- encabezado -->
               <div class="panel-heading ">
                 <b class="panel-title"  >Caso</b>
-                
+
               </div>
               <!-- formulario -->
               <div class="panel-body "  >
-              
+
 
                       <div class="col-md-6"><%= form.text_field :name, id: :legal_case_name, label: "Nombre del caso" %></div>
 
                       <div class="col-md-6"><%= form.text_field :entry_form, id: :legal_case_entry_form, label: "Formulario de Entrada" %></div>
 
-                      <div>&nbsp</div>
-
                       <div class="col-md-6"><%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label: "Imputado" %></div>
 
-                      <div class="col-md-6"><%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor" %></div> 
+                      <div class="col-md-6"><%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor" %></div>
 
-                      <div>&nbsp</div>
                       <div class="col-md-6"><%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Juzgado" %></div>
 
                       <div class="col-md-6"><%= form.collection_select :judge_id, Judge.all, :id, :name_with_initial, label: "Juez" %></div>
 
-                      <div>&nbsp</div>
- 
-                      <div class="col-md-6"><%= form.collection_select :criminal_record_id, CriminalRecord.all, :id, :number_with_initial, label: "Ficha Penal" %></div> 
+                      <div class="col-md-6"><%= form.collection_select :criminal_record_id, CriminalRecord.all, :id, :number_with_initial, label: "Ficha Penal" %></div>
 
                       <div class="col-md-6"><%= form.text_field :final_sentence, id: :legal_case_final_sentence, label: "Sentencia" %></div>
 
-                      <div>&nbsp</div>
-                      
-                     <div class="col-md-6"><%= form.text_area :comment, label: "Comentario", id: :legal_case_comment %></div>   
-                 
+                     <div class="col-md-6"><%= form.text_area :comment, label: "Comentario", id: :legal_case_comment %></div>
+
                    <!-- Boton agregar -->
-                    <div class="col-md-12">    
+                    <div class="col-md-12">
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
+                      <% end %>
                       <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), legal_cases_path, class: 'btn btn-default pull-left' %>
-                    </div> 
-                    <div></div> 
+                    </div>
+                    <div></div>
                 </div>
 
-            <% end %>          
+            <% end %>
           </div> <!-- fin panel default -->
         </div> <!-- fin group -->
-<<<<<<< HEAD
+
+
     <!-- MUESTRA LA TABLA-->
-         <!-- ESTO HACE QUE SE MANTENGA CERRADO EL PANEL: -> panel-collapse collapse IN" id="collapse1"-->
+    <!-- ESTO HACE QUE SE MANTENGA CERRADO EL PANEL: -> panel-collapse collapse IN" id="collapse1"-->
 
     <div  class="panel-group" >
         <table id="table_di" class= "table table-hover  table-striped table-bordered" >
@@ -74,7 +68,7 @@
                 <th>Defensor</th>
                 <th>Juzgado</th>
                 <th>Juez</th>
-                
+
                 <th>Nro. Ficha Penal</th>
               <!--  <th>Comentario</th> -->
                 <th>Sentencia</th>
@@ -92,11 +86,11 @@
                   <td><%= legal_case.user.entity.full_name %></td>
                   <td><%= legal_case.court.name %></td>
                   <td><%= legal_case.judge.entity.full_name %></td>
-                  
+
                   <td><%= legal_case.criminal_record.inquire_number %></td>
                   <!-- <td>   </td>     -->
                     <%= legal_case.comment %>
-                 
+
                   <td><%= legal_case.final_sentence %></td>
                    <td align="center" ><%= link_to (fa_icon 'eye'), legal_case, class: 'btn btn-info'  %>
                    <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case), class: 'btn btn-success' %>
@@ -105,11 +99,5 @@
               <% end %>
             </tbody>
         </table>
-        <input id="pdf-button" type="button" value="Download PDF" onclick="html_to_pdf()" />
-
-=======
-    
-   
->>>>>>> 4e92a82111c8d8760a6a5d85d44582579369c11f
+        <input id="pdf-button" type="button" value="Descargar Como PDF" onclick="html_to_pdf()" />
     </div>
-
