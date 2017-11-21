@@ -28,5 +28,16 @@ Rails.application.routes.draw do
       get :cambiar_rol
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+ resources :cases_reports do
+    collection do
+       get "listar_casos"
+    end
+  end
+  
+ resources :suspects_reports do
+     collection do
+       get "listar_imputados"
+     end
+ end
+ 
+ end

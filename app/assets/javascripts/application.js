@@ -56,6 +56,13 @@ $(document).ready( function() {
 			        }
 			      } );
 			    });
+$(document).ready(function() {
+    $('#dato').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+    } );
+} );
 
 /*-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --*/
 $.widget.bridge('uibutton', $.ui.button);
@@ -122,3 +129,4 @@ $(function(){
     });
 
 });
+

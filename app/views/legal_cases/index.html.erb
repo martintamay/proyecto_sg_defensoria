@@ -1,70 +1,3 @@
-<<<<<<< HEAD
-
-
-<h1 align="center">Casos <%= link_to (fa_icon 'plus', text: ''), new_legal_case_path, class: 'btn btn-primary' %></h1>
-
-</body>
-
-
- <hr>     
-      
- <div class="container">
-      <div class="panel-group" >
-  <table id="table_di" class= "table table-hover  table-striped table-bordered" >
- 
-  <thead>
-    <tr>
-      <th>Formulario de Entrada</th>
-      <th>Nombre</th>
-      <th>Usuario</th>
-      <th>Juzgado</th>
-      <th>Juez</th>
-      <th>Imputado</th>
-      <th>Ficha Penal</th>
-      <th>Comentario</th>
-      <th>Sentencia</th>
-      <th class="col-md-2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-
-    <% @legal_cases.each do |legal_case| %>
-      <tr>
-        <td><%= legal_case.entry_form %></td>
-        <td><%= legal_case.name %></td>
-        <td><%= legal_case.user.entity.full_name %></td>
-        <td><%= legal_case.court.name %></td>
-        <td><%= legal_case.judge.entity.full_name %></td>
-        <td><%= legal_case.suspect.entity.full_name %></td>
-        <td><%= legal_case.criminal_record.inquire_number %></td>
-        <td><%= legal_case.comment %></td>
-        <td><%= legal_case.final_sentence %></td>
-         <td align="center" ><%= link_to (fa_icon 'eye'), legal_case, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-        
-      </tr>
-
-    <% end %>
-
-
-  </tbody>
-</table>
-<input id="pdf-button" type="button" value="Download PDF" onclick="html_to_pdf()" />
-<p id="notice"><%= notice %></p>
-</div>
-</div>
-
-<script type="text/javascript">
-  function html_to_pdf(){
-
-    window.print();
-  }
-
-</script>
-=======
 <p id="notice"><%= notice %></p>
 
 <!-- PANEL PRINCIPAL -->
@@ -122,7 +55,7 @@
               </table>
 </div>
 </div>
->>>>>>> 4e92a82111c8d8760a6a5d85d44582579369c11f
+
 
                  
 
