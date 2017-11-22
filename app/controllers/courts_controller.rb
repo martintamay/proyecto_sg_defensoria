@@ -7,7 +7,6 @@ class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
   def index
-    redirect_to :action => "new"
   end
 
   # GET /courts/1

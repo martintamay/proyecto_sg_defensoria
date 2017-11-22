@@ -1,7 +1,6 @@
 class LegalCasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_legal_case, only: [:show, :edit, :update, :destroy]
-  before_action :obtenerListado, only: [:new, :edit, :show, :update]
   load_and_authorize_resource
 
   # GET /legal_cases
@@ -9,9 +8,7 @@ class LegalCasesController < ApplicationController
   def index
     @legal_cases = LegalCase.all
     respond_to do |format|
-      format.html do
-        redirect_to :action => "new"
-      end
+      format.html
       format.pdf do
         pdf = LegalCasePdf.new(@legal_case)
         send_data pdf.render, filename: "LegalCaseReport.pdf",
@@ -76,10 +73,6 @@ class LegalCasesController < ApplicationController
   end
 
   private
-    #Usado para obtener la lista de casos
-    def obtenerListado
-      @legal_cases = LegalCase.all
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_legal_case
