@@ -22,13 +22,13 @@
               </div>
               <!-- formulario -->
               <div class="panel-body " >
-                <div>&nbsp</div>
+                <div>&nbsp;</div>
               <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
-<div>&nbsp</div>
+<div>&nbsp;</div>
               <%= form.text_field :name_visit, id: :visit_name_visit,label:"Nombre" %>
-<div>&nbsp</div>
+<div>&nbsp;</div>
               <%= form.date_select :date_visit, id: :visit_date_visit ,label:"Dia De La Visita"%>
-              <div>&nbsp</div>
+              <div>&nbsp;</div>
               <%= form.text_field :observation, id: :visit_observation,label:"Observacion" %>
               <!-- Botones -->
               <div class="col-md-12">    

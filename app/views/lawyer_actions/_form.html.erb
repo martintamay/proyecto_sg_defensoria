@@ -21,15 +21,15 @@
               </div>
               <!-- formulario -->
               <div class="panel-body " >
-                <div>&nbsp</div>
+                <div>&nbsp;</div>
               <%= form.date_select :action_date, id: :lawyer_action_action_date, label: "Fecha de Accion" %>
-              <div>&nbsp</div>
+              <div>&nbsp;</div>
               <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %> 
-              <div>&nbsp</div>
+              <div>&nbsp;</div>
               <%= form.text_area :comment, id: :lawyer_action_comment, label: "Comentario" %>
 
                   <!-- Boton agregar -->
-                  <div>&nbsp</div>
+                  <div>&nbsp;</div>
                     <div class="col-md-12">    
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar

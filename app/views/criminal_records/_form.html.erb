@@ -17,14 +17,14 @@
             <!-- encabezado -->
               <div class="panel-heading ">
                 <b class="panel-title">Ficha Penal</b>
-               
+
               </div>
               <!-- formulario -->
               <div class="panel-body  " >
                 <div class="col-md-6">
                    <%= form.text_field :procedural_stage, id: :criminal_record_procedural_stage, label: "Etapa Procesal" %></div>
 
-                <div class="col-md-6">   
+                <div class="col-md-6">
                       <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente" %></div>
 
                 <div class="col-md-6">
@@ -36,26 +36,25 @@
                 <div class="col-md-6">
                   <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito" %>
                 </div>
-                
-                <div class="col-md-6">    
+
+                <div class="col-md-6">
                     <%= form.text_field :commission_place, id: :criminal_record_commission_place, label: "Lugar de Comision" %></div>
 
                  <div class="col-md-6">
-                    <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion" %></div>    
-                
-                <div class="col-md-6">    
+                    <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion" %></div>
+
+                <div class="col-md-6">
                     <%= form.text_field :prosecutor_unit, id: :criminal_record_prosecutor_unit, label: "Unidad Fiscal" %></div>
-                
-               
+
+
                    <div class="col-md-12">
                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
-                     <% end %> 
+                     <% end %>
                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), criminal_records_path, class: 'btn btn-default pull-left' %>
-                    </div>  
-                
+                    </div>
 
-            <% end %>          
+
+            <% end %>
           </div> <!-- fin panel default -->
         </div> <!-- fin group -->
-  

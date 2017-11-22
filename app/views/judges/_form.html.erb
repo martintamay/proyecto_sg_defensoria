@@ -2,44 +2,36 @@
   <% if judge.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(judge.errors.count, "error") %> prohibited this judge from being saved:</h2>
-
       <ul>
-      <% judge.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% judge.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
- <div class="container">
   <!-- Muestra el panel de agregacion -->
-      <div class="panel-group" >
-          <div class="panel panel-default" >
-            <!-- encabezado -->
-              <div class="panel-heading ">
-                <b class="panel-title">Juez</b>
-                
-              </div>
-              <!-- formulario -->
-              <div class="panel-body " >
-                    <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte" %>
-                    <%= form.fields_for :entity, @judge.entity do |ent| %>
-                      <%= render "shared/entity_fields", :form => ent %>
-                    <% end %>
-                  <!-- Boton agregar -->
-                  <div>&nbsp</div>
-                    <div class="col-md-12">    
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
-                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  judges_path, class: 'btn btn-default pull-left' %>
-                    </div>  
-                
-
-            <% end %>          
-          </div> <!-- fin panel default -->
-        </div> <!-- fin group -->
+  <div class="panel-group" >
+    <div class="panel panel-default" >
+      <!-- encabezado -->
+      <div class="panel-heading ">
+        <b class="panel-title">Juez</b>
+      </div>
+      <!-- formulario -->
+      <div class="panel-body " >
+        <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte" %>
+        <%= form.fields_for :entity, @judge.entity do |ent| %>
+          <%= render "shared/entity_fields", :form => ent %>
+        <% end %>
+        <!-- Boton agregar -->
+        <div>&nbsp;</div>
+        <div class="col-md-12">
+          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+            <%= fa_icon 'floppy-o' %> Guardar
+          <% end %>
+          <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  judges_path, class: 'btn btn-default pull-left' %>
         </div>
-        
-
-   
+      </div> <!-- fin panel default -->
+    </div> <!-- fin group -->
+  </div>
+<% end %>

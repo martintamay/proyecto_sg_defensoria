@@ -30,7 +30,7 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
-        format.html { render :new, notice: '' }
+        format.html { redirect_to courts_url, notice: 'Juzgado creado' }
         format.json { render :show, status: :created, location: @court }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class CourtsController < ApplicationController
   def update
     respond_to do |format|
       if @court.update(court_params)
-        format.html { render :new, notice: '' }
+        format.html { redirect_to courts_url, notice: 'Juzgado Modificado' }
         format.json { render :show, status: :ok, location: @court }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class CourtsController < ApplicationController
   def destroy
     @court.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to courts_url, notice: 'El Juzgado Fue Eliminado' }
       format.json { head :no_content }
     end
   end

@@ -1,76 +1,36 @@
 <%= bootstrap_form_for(@court) do |form| %>
   <% if court.errors.any? %>
     <div id="error_explanation">
-      <h5><%= pluralize(court.errors.count, "error") %> prohibited this court from being saved:</h5>
-
+      <h2><%= pluralize(court.errors.count, "error") %> prohibited this court from being saved:</h2>
       <ul>
-      <% court.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% court.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-      <div class="panel-group" >
-          <div class="panel panel-default" >
-            <!-- encabezado -->
-              <div class="panel-heading ">
-                <b class="panel-title">Juzgado</b>
-
-              </div>
-              <!-- formulario -->
-              <div class="panel-body ">
-                    <div class="col-md-12"><%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %></div>
-
-                    <div ></div>
-
-                    <div class="col-md-12"><%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %></div>
-
-                    <div ></div>
-
-                    <div class="col-md-12"><%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %></div>
-
-                    <div ></div>
-                   <!-- Boton agregar -->
-                    <div class="col-md-12">
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Guardar
-
-                      <% end %>
-                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), courts_path, class: 'btn btn-default pull-left' %>
-                    </div>
-                </div>
-
-            <% end %>
-          </div> <!-- fin panel default -->
-
-          <div class="panel panel-default">
-            <table id="table_di" class= "table table-hover  table-striped table-bordered" >
-               <thead>
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th class="col-md-2"></th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <% @courts.each do |court| %>
-                    <tr>
-                    <%= court.entry_form %>
-                      <td><%= court.name %></td>
-                      <td><%= court.phone %></td>
-                      <td><%= court.address %></td>
-                      <td align="center" >
-                         <%= link_to (fa_icon 'eye'), court, class: 'btn btn-info'  %>
-                         <%= link_to (fa_icon 'pencil'), edit_court_path(court), class: 'btn btn-success' %>
-                         <%= link_to (fa_icon 'trash'), court, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
-                      </td>
-                    <% end %>
-                 </tr>
-                </tbody>
-            </table>
-          </div>
-        </div> <!-- fin group -->
-    </div>
+  <!-- Muestra el panel de agregacion -->
+  <div class="panel-group" >
+    <div class="panel panel-default" >
+      <!-- encabezado -->
+      <div class="panel-heading ">
+        <b class="panel-title">Juzgado</b>
+      </div>
+      <!-- formulario -->
+      <div class="panel-body " >
+        <%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %>
+        <%= form.text_field :phone, id: :court_phone, label: 'Teléfono',placeholder:""  %>
+        <%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:""  %>
+        <!-- Boton agregar -->
+        <div>&nbsp;</div>
+        <div class="col-md-12">
+          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+            <%= fa_icon 'floppy-o' %> Guardar
+          <% end %>
+          <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  courts_path, class: 'btn btn-default pull-left' %>
+        </div>
+      </div> <!-- fin panel default -->
+    </div> <!-- fin group -->
+  </div>
+<% end %>
