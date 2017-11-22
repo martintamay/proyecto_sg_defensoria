@@ -4,39 +4,32 @@
       <h2><%= pluralize(equipment_detail.errors.count, "error") %> prohibited this equipment_detail from being saved:</h2>
 
       <ul>
-      <% equipment_detail.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% equipment_detail.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="container">
   <!-- Muestra el panel de agregacion -->
-      <div class="panel-group" >
-          <div class="panel panel-default" >
-            <!-- encabezado -->
-              <div class="panel-heading ">
-                <b class="panel-title">Equipo</b>
-                
-              </div>
-              <!-- formulario -->
-              <div class="panel-body " >
-              <%= form.text_field :legal_case_id, Legal_case.all, :id, :name_with_initial, label: "Caso" %>
-            
-              <%= form.text_field :user_id, User.all, :id, :name_with_initial, label: "Defensor" %>
-  
-                                   <!-- Boton agregar -->
-                  <div>&nbsp;</div>
-                    <div class="col-md-12">    
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
-                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  equipment_details_path, class: 'btn btn-default pull-left' %>
-                    </div>  
-                
-
-            <% end %>          
-          </div> <!-- fin panel default -->
-        </div> <!-- fin group -->
+  <div class="panel-group" >
+    <div class="panel panel-default" >
+    <!-- encabezado -->
+      <div class="panel-heading ">
+        <b class="panel-title">Equipo</b>
+      </div>
+      <!-- formulario -->
+      <div class="panel-body " >
+        <%= form.text_field :legal_case_id, Legal_case.all, :id, :name_with_initial, label: "Caso" %>
+        <%= form.text_field :user_id, User.all, :id, :name_with_initial, label: "Defensor" %>
+       <!-- Boton agregar -->
+        <div>&nbsp;</div>
+        <div class="col-md-12">
+          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+            <%= fa_icon 'floppy-o' %> Guardar
+          <% end %>
+          <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  equipment_details_path, class: 'btn btn-default pull-left' %>
         </div>
-        
+      </div> <!-- fin panel default -->
+    </div> <!-- fin group -->
+  </div>
+<% end %>
