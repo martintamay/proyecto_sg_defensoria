@@ -20,7 +20,7 @@
 
       <%= form.password_field :password, id: :user_password, label: "Contraseña", :autocomplete => :off %>
       <%= form.password_field :password_confirmation, id: :user_password_confirmation, label: "Confirmar Contraseña", autocomplete: false %>
-      <% if @user!=nil%>
+      <% if @user!=nil && @user.email != ""%>
         <div class="form-group">
           <p><b>Roles:</b>
             <% @user.roles.each do |rol| %>
@@ -39,9 +39,12 @@
         </div>
         <div class="form-group">
           <% if @user.has_role? :admin %>
-            <% cambiar_a_rol = "Default"%>
+            <% cambiar_a_rol = "Quitar Administrador"%>
           <% elsif @user.has_role? :default %>
-            <% cambiar_a_rol = "Admin" %>
+            <% cambiar_a_rol = "Hacer Administrador" %>
+          <% else %>
+            <% @user.add_role :default %>
+            <% cambiar_a_rol = "Hacer Admin" %>
           <% end %>
 
           <% if @user.has_role? :lawyer %>
@@ -52,8 +55,8 @@
             <% @user.add_role :assistant %>
             <% cambiar_a_tipo = "Defensor" %>
           <% end %>
-          <%= link_to "Hacer "+cambiar_a_rol, cambiar_rol_user_path( :type_rol => "acceso" ), class: 'btn btn-default'%>
-          <%= link_to "Convertir a "+cambiar_a_tipo, cambiar_rol_user_path( :type_rol => "tipo" ), class: 'btn btn-default' %>
+          <%= link_to cambiar_a_rol, cambiar_rol_user_path( @user, :type_rol => "acceso"), class: 'btn btn-default'%>
+          <%= link_to "Convertir a "+cambiar_a_tipo, cambiar_rol_user_path( @user, :type_rol => "tipo"), class: 'btn btn-default' %>
         </div>
       <% end %>
       <%= form.text_field :type_user, id: :user_type_user, label: "Tipo de Defensor/Asistente" %>
