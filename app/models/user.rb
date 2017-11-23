@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  audited
   after_create :assign_default_role
   resourcify
   rolify
