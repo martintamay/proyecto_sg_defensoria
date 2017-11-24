@@ -19,13 +19,13 @@
       </div>
       <!-- formulario -->
       <div class="panel-body " >
-        <%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %>
-        <%= form.text_field :phone, id: :court_phone, label: 'Teléfono',placeholder:""  %>
-        <%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:""  %>
+        <%= form.text_field :name, id: :court_name, label: 'Nombre ', required: "true", placeholder: 'Este campo es Obligatorio' %>
+        <%= form.text_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"", minlength: 4, type: "number"  %>
+        <%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"Este campo es obligatorio", class: "", required: "true"  %>
         <!-- Boton agregar -->
         <div>&nbsp;</div>
         <div class="col-md-12">
-          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+          <%= button_tag(type: 'submit',class: "btn btn-primary pull-right", value: "Submit") do %>
             <%= fa_icon 'floppy-o' %> Guardar
           <% end %>
           <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  courts_path, class: 'btn btn-default pull-left' %>

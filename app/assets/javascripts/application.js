@@ -33,6 +33,8 @@
 //= require AdminLTE/dist/js/demo.js
 //= require AdminLTE/bower_components/morris.js/morris.min.js
 //= require  bootstrap.min.js
+//= require jquery.validate
+//= require jquery.validate.localization/messages_es
 
 //= require_tree .
 
@@ -129,4 +131,8 @@ $(function(){
     });
 
 });
-
+$(document).ready(function(){
+    $("form").validate({lang: "es"});
+    console.log($("form"));
+    console.log("Se ejecuto");
+});
