@@ -1,4 +1,68 @@
 
+<<<<<<< HEAD
+ <p id="notice"><%= notice %></p>
+
+<!-- PANEL PRINCIPAL -->
+  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"> FICHAS PENALES </h3>
+               <div class="box-tools">
+                  <ul class=" no-margin pull-right">
+                    <%= link_to (fa_icon 'plus', text: 'Crear'), new_criminal_record_path, class: 'btn btn-primary' %>
+                  </ul> 
+               </div>
+            </div>
+                         
+
+              <!-- TABLA -->
+            <div class="panel-body "  >   
+                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+                    <thead>  <!-- TITULOS DE LA TABLE -->
+
+                          <tr>
+                            <th>Etapa Procesal</th>
+                            <th>Numero de Expediente</th>
+                            <th>Fecha de Intervención</th>
+                            <th>Clasificación de Delito</th>
+                            <th>Lugar de Comisión</th>
+                            <th>Fecha de Comisión</th>
+                            <th>Unidad Fiscal</th>
+                            <th>Medida de Prevención</th>
+                            <th class="col-md-2"></th>
+                            
+                            
+                          </tr>
+                        </thead>
+
+                      
+                        <tbody>
+                          <% @criminal_records.each do |criminal_record| %>
+                            <tr>
+                              <td><%= criminal_record.procedural_stage %></td>
+                              <td><%= criminal_record.inquire_number %></td>
+                              <td><%= criminal_record.intervention_date %></td>
+                              <td><%= criminal_record.type_of_crime %></td>
+                              <td><%= criminal_record.commission_place %></td>
+                              <td><%= criminal_record.commission_date %></td>
+                              <td><%= criminal_record.prosecutor_unit %></td>
+                              <td><%= criminal_record.precautionary_measures %></td>
+                             <td align="center" >
+                                                    <div class="btn-group">
+                                                      <%= link_to (fa_icon 'eye' ), criminal_record ,class: "btn btn-default" %>
+                                                      <%= link_to (fa_icon 'pencil'), edit_criminal_record_path(criminal_record),class: "btn btn-default" %>
+                                                      <%= link_to (fa_icon 'trash'), criminal_record, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+                                                    </div>
+                                                  </td>
+                                                </tr>
+                                              <% end %>
+                                          </tbody>
+                                    </table>
+                      </div>
+                      </div>
+
+                                       
+
+=======
 <!-- PANEL PRINCIPAL -->
 <div class="box">
   <div class="box-header">
@@ -9,6 +73,7 @@
         </ul>
      </div>
   </div>
+>>>>>>> 93c7cbafb2810113ceb33c2ad221508d3e48de0c
 
 
   <!-- TABLA -->

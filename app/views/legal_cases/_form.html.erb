@@ -7,7 +7,7 @@
       <% legal_case.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
+      </ul> 
     </div>
   <% end %>
 
@@ -24,7 +24,15 @@
 
                       <div class="col-md-6"><%= form.text_field :name, id: :legal_case_name, label: "Nombre del caso", required: "true", placeholder: 'Este campo es Obligatorio'%></div>
 
+<<<<<<< HEAD
                       <div class="col-md-6"><%= form.text_field :entry_form, id: :legal_case_entry_form, label: "Formulario de Entrada", required: "true", placeholder: 'Este campo es Obligatorio' %></div>
+=======
+                      <div class="col-md-6"><%= form.text_field :entry_form, id: :legal_case_entry_form, label: "Formulario de Entrada" %></div>
+<<<<<<< HEAD
+                      <div>&nbsp</div>
+=======
+>>>>>>> 93c7cbafb2810113ceb33c2ad221508d3e48de0c
+>>>>>>> b45da8be86d31d2ebcaef7f4e6d94af1ceef500b
 
                       <div class="col-md-6"><%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label: "Imputado", required: "true", placeholder: 'Este campo es Obligatorio' %></div>
 
