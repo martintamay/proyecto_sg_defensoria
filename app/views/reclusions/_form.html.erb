@@ -17,14 +17,14 @@
           <div class="panel panel-default" >
             <!-- encabezado -->
               <div class="panel-heading ">
-                <b class="panel-title">Recluido</b>
+                <b class="panel-title">Recluso</b>
                 
               </div>
               <!-- formulario -->
               <div class="panel-body " >
                 <div>&nbsp</div>
-              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
-              <%= form.text_field :place, id: :reclusion_place,label:"Lugar" %>
+              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Nombre" %>
+              <%= form.text_field :place, id: :reclusion_place,label:"Lugar de Reclusión" %>
               <div>&nbsp</div>
               <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada" %>
               <div>&nbsp</div>

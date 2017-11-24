@@ -1,37 +1,53 @@
 
-<h1 align="center">Usuarios <%= link_to (fa_icon 'plus', text: ''), new_user_path, class: 'btn btn-primary' %></h1>
+<p id="notice"><%= notice %></p>
 
- <hr>     
-      
-<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+<!-- PANEL PRINCIPAL -->
+  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">LISTA DE USUARIOS</h3>
+               <div class="box-tools">
+                  <ul class=" no-margin pull-right">
+                    <%= link_to (fa_icon 'plus', text: 'Crear'), new_user_path, class: 'btn btn-primary' %>
+                  </ul> 
+               </div>
+            </div>
+                         
 
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Nombre</th>
-      <th>Teléfono</th>
-      <th>Nacimiento</th>
-      <th>Email (Entidad)</th>
-      <th>Tipo de Usuario</th>
-      <th class="col-md-2"></th>
-    </tr>
-  </thead>
+              <!-- TABLA -->
+            <div class="panel-body "  >   
+                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+                    <thead>  <!-- TITULOS DE LA TABLE -->
+                        <tr>
+                          <th>Nombre Apellido</th>
+                          <th>Teléfono</th>
+                          <th>Fecha de Nacimiento</th>
+                          <th>Email</th>
+                          <th>Tipo de Usuario</th>
+                          <th class="col-md-2"></th>
+                        </tr>
+                      </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.entity.full_name %></td>
-        <td><%= user.entity.phone %></td>
-        <td><%= user.entity.birthdate %></td>
-        <td><%= user.entity.email %></td>
-        <td><%= user.type_user %></td>
-        <td align="center" ><%= link_to (fa_icon 'eye'), user, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_user_path(user), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), user, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                      <tbody>
+                        <% @users.each do |user| %>
+                          <tr>
+                            <td><%= user.entity.full_name %></td>
+                            <td><%= user.entity.phone %></td>
+                            <td><%= user.entity.birthdate %></td>
+                            <td><%= user.entity.email %></td>
+                            <td><%= user.type_user %></td>
+                           <td align="center" >
+                              <div class="btn-group">
+                                <%= link_to (fa_icon 'eye' ), user ,class: "btn btn-default" %>
+                                <%= link_to (fa_icon 'pencil'), edit_user_path(user),class: "btn btn-default" %>
+                                <%= link_to (fa_icon 'trash'), user, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+                              </div>
+                            </td>
+                          </tr>
+                        <% end %>
+                    </tbody>
+              </table>
+</div>
+</div>
 
-<br>
+                 
+

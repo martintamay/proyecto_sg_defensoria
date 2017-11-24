@@ -7,7 +7,7 @@
       <% legal_case.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
+      </ul> 
     </div>
   <% end %>
  
@@ -25,7 +25,6 @@
                       <div class="col-md-6"><%= form.text_field :name, id: :legal_case_name, label: "Nombre del caso" %></div>
 
                       <div class="col-md-6"><%= form.text_field :entry_form, id: :legal_case_entry_form, label: "Formulario de Entrada" %></div>
-
                       <div>&nbsp</div>
 
                       <div class="col-md-6"><%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label: "Imputado" %></div>

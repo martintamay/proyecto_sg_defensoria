@@ -1,28 +1,46 @@
+<p id="notice"><%= notice %></p>
+<!-- PANEL PRINCIPAL -->
+  <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">LISTA DE JUZGADOS</h3>
+               <div class="box-tools">
+                  <ul class=" no-margin pull-right">
+                    <%= link_to (fa_icon 'plus', text: 'Crear'), new_court_path, class: 'btn btn-primary' %>
+                  </ul> 
+               </div>
+            </div>
+                         
 
- <div class="container">
-      <div class="panel-group" >
-          <div class="panel panel-primary" >
-              <div class="panel-heading ">
-                <b class="panel-title">Juzgado</b>
-                <span  class="glyphicon glyphicon-minus " float='left'   data-toggle="collapse"  href="#collapse1"  ></span>
-              </div>
-                <div class="panel-body" id="collapse1">
-                  <div class="col-md-4"><%= form.text_field :name, id: :court_name, label: 'Nombre',placeholder:""  %></div>
-                      
-                  <div class="col-md-4"><%= form.phone_field :phone, id: :court_phone, label: 'Teléfono',placeholder:"" %></div>
-                      
-                  <div class="col-md-4"><%= form.text_field :address, id: :court_address, label: 'Dirección',placeholder:"" %></div>
-                   <!-- Botones -->
-                    <div align="center">    
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Agregar
-                      <% end %> 
-                    </div>  
-                </div>
-            <% end %>          
-          </div>
+              <!-- TABLA -->
+            <div class="panel-body "  >   
+                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+                    <thead>  <!-- TITULOS DE LA TABLE -->
+                            <tr >
+                              <th>Nombre</th>
+                              <th>Teléfono</th>
+                              <th>Dirección</th>
+                              <th class="col-md-2"></th> 
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% @courts.each do |court| %>
+                              <tr >
+                                <td><%= court.name %></td>
+                                <td><%= court.phone %></td>
+                                <td><%= court.address %></td>
+                               <td align="center" >
+                              <div class="btn-group">
+                                <%= link_to (fa_icon 'eye' ), court ,class: "btn btn-default" %>
+                                <%= link_to (fa_icon 'pencil'), edit_court_path(court),class: "btn btn-default" %>
+                                <%= link_to (fa_icon 'trash'), court, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+                              </div>
+                            </td>
+                          </tr>
+                        <% end %>
+                    </tbody>
+              </table>
+</div>
+</div>
 
 
-         </div>
-        </div>
-          
