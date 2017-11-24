@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sistema Defensoría</title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  
+
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
   <%= csrf_meta_tags %>
@@ -31,34 +32,16 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
- 
+
       <div class="navbar-custom-menu">
 
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- <span class="glyphicon glyphicon-user"></span>!-->
-             <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %> 
-
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Modificar</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
+             <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %>
           </li>
-          
+
         </ul>
       </div>
     </nav>
@@ -70,7 +53,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Manejo de Casos</span>
             <span class="pull-right-container">
@@ -79,8 +62,11 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="hearings#index.html"><i class="fa fa-circle-o"></i> Audiencia</a></li>
-            <li><a href="legal_cases#index.html"><i class="fa fa-circle-o"></i> Ficha de Casos</a></li>
-            <li><a href="criminal_records#index.html"><i class="fa fa-circle-o"></i> Fichas Penales</a></li>
+            <li><a href="<%=legal_cases_path %>"><i class="fa fa-circle-o"></i> Ficha de Casos</a></li>
+
+            <li><a href="<%=legal_cases_path(format: 'pdf')%>"><i class="fa fa-circle-o"></i> Reporte de Casos</a></li>
+
+            <li><a href="<%=criminal_records_path %>"><i class="fa fa-circle-o"></i> Fichas Penales</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -92,9 +78,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="judges#index.html"><i class="fa fa-circle-o"></i> Jueces </a></li>
-            <li><a href="users#index.html"><i class="fa fa-circle-o"></i>Usuarios</a></li>
-            <li><a href="suspects#index.html"><i class="fa fa-circle-o"></i> Imputados</a></li> 
+            <li><a href="<%=courts_path %>"><i class="fa fa-circle-o"></i>Juzgados </a></li>
+            <li><a href="<%=judges_path %>"><i class="fa fa-circle-o"></i>Jueces </a></li>
+            <li><a href="<%=users_path %>"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+            <li><a href="<%=suspects_path %>"><i class="fa fa-circle-o"></i> Imputados</a></li>
 
           </ul>
         </li>
@@ -107,34 +94,33 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="lawyer_actions#index.html"><i class="fa fa-circle-o"></i> Acciones de Defensores </a></li>
-            <li><a href="transfer_cases#index.html"><i class="fa fa-circle-o"></i> Transferencia de casos</a></li>
-            <li><a href="visits#index.html"><i class="fa fa-circle-o"></i> Visitas</a></li>
+            <li><a href="<%=lawyer_actions_path %>"><i class="fa fa-circle-o"></i> Acciones de Defensores </a></li>
+            <li><a href="<%=transfer_cases_path %>"><i class="fa fa-circle-o"></i> Transferencia de casos</a></li>
+            <li><a href="<%=visits_path %>"><i class="fa fa-circle-o"></i> Visitas</a></li>
           </ul>
         </li>
-
-
-        </ul>
+      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+  <% end %>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">  
-    <section class="content container-fluid">
-  <% end %>  
-      <% if notice %>
-        <p class= "notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class= "alert"><%= alert %></p>
-      <% end %>
-      <div class="container">
-        <%= yield %>
-      </div>       
+  <% if notice %>
+    <p class= "notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class= "alert"><%= alert %></p>
+  <% end %>
   <% if user_signed_in? %>
+  <div class="content-wrapper">
+    <section class="content container-fluid">
+      <% end %>
+      <%= yield %>
+      <% if user_signed_in? %>
     </section>
   </div>
+
 </div>
 <!-- ./wrapper -->
 <% end %>

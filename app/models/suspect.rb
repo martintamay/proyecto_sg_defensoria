@@ -1,4 +1,5 @@
 class Suspect < ApplicationRecord
+  audited
   validates :ci, numericality: { only_integer: true}
   validates :reason, :presence => true
   validates :criminal_record, :presence => true
@@ -12,9 +13,8 @@ class Suspect < ApplicationRecord
   has_many :legal_case
   has_many :reclusion
 
-  def name_with_initial 
+  def name_with_initial
   	"#{entity.full_name}"
   end
-  	
+
 end
- 

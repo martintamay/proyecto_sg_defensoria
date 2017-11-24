@@ -1,36 +1,41 @@
-<p id="notice"><%= notice %></p>
-<h1 align="center">Visitas <%= link_to (fa_icon 'plus', text: ''), new_visit_path, class: 'btn btn-primary' %></h1>
 
- <hr>     
-      
-<table id="table_di" class= "table table-hover  table-striped table-bordered" >
-
-  <thead>
-    <tr>
-      <th>Imputado</th>
-      <th>Visitante</th>
-      <th>Dia Visitado</th>
-      <th>Observacion</th>
-      <th class="col-md-2"></th>
-    </tr>
-  </thead>
-  
-
-  <tbody>
-    <% @visits.each do |visit| %>
-      <tr>
-        <td><%= visit.suspect.entity.full_name%></td>
-        <td><%= visit.name_visit %></td>
-        <td><%= visit.date_visit %></td>
-        <td><%= visit.observation %></td>
-         <td align="center" ><%= link_to (fa_icon 'eye'), visit, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_visit_path(visit), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), visit, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Visitas</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_visit_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
 
 
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Imputado</th>
+          <th>Visitante</th>
+          <th>Dia Visitado</th>
+          <th>Observacion</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visits.each do |visit| %>
+          <tr>
+            <td><%= visit.suspect.entity.full_name%></td>
+            <td><%= visit.name_visit %></td>
+            <td><%= visit.date_visit %></td>
+            <td><%= visit.observation %></td>
+             <td align="center" ><%= link_to (fa_icon 'eye'), visit, class: 'btn btn-info'  %>
+             <%= link_to (fa_icon 'pencil'), edit_visit_path(visit), class: 'btn btn-success' %>
+             <%= link_to (fa_icon 'trash'), visit, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

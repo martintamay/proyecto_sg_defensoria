@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center"> Historial de Imputados </h1>
+<input id="pdf-button" type="button" value="Download PDF" onclick="html_to_pdf()" />
+ <hr>    
+
+ 
+    <div  class="panel-group" >
+        <table  id= "table-di" class= "table table-hover  table-striped table-bordered" >
+   <thead>
+         <tr>
+             <th>Nombre</th>
+             <th>Fecha de Nacimiento</th>
+             <th>Correo</th>
+             <th>Teléfono</th>
+             <th>Cédula de Identidad</th>
+             <th>Nacionalidad</th>
+             <th class="col-md-2"></th>
+          </tr>
+   </thead>
+  <tbody>
+
+    <% @sospechoso.each do |suspect| %>
+  <tr>
+        <td><%= suspect.entity.full_name %></td>
+        <td><%= suspect.entity.birthdate %></td>
+        <td><%= suspect.entity.email %></td>
+        <td><%= suspect.entity.phone %></td>
+        <td><%= suspect.ci %></td>
+        <td><%= suspect.nationality %></td>
+          
+    </tr>
+   <% end %>
+
+  </tbody>
+  
+ </table>
+</div>
+</div>
+<script type="text/javascript">
+	function html_to_pdf(){
+
+		window.print();
+	}
+</script>

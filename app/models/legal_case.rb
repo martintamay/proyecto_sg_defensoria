@@ -1,5 +1,5 @@
 class LegalCase < ApplicationRecord
-  
+  audited
   resourcify
   belongs_to :user
   belongs_to :court
@@ -9,8 +9,8 @@ class LegalCase < ApplicationRecord
   has_many :transfer_case
   belongs_to :criminal_record
 
- def name_with_initial 
+ def name_with_initial
     "#{name}"
   end
-  
+
 end

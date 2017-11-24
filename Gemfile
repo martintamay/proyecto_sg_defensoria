@@ -31,6 +31,8 @@ gem 'rails_serve_static_assets'
 gem "font-awesome-rails"
 gem "font-awesome-sass"
 
+#gema para la auditoria
+gem "audited"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -78,6 +80,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'prawn-rails'
 #admin lte
-source 'http://insecure.rails-assets.org/' do 
+source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-adminlte'
 end

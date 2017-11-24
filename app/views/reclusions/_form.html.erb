@@ -22,14 +22,21 @@
               </div>
               <!-- formulario -->
               <div class="panel-body " >
+<<<<<<< HEAD
                 <div>&nbsp</div>
               <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Nombre" %>
               <%= form.text_field :place, id: :reclusion_place,label:"Lugar de Reclusión" %>
               <div>&nbsp</div>
+=======
+                <div>&nbsp;</div>
+              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
+              <%= form.text_field :place, id: :reclusion_place,label:"Lugar" %>
+              <div>&nbsp;</div>
+>>>>>>> 93c7cbafb2810113ceb33c2ad221508d3e48de0c
               <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada" %>
-              <div>&nbsp</div>
+              <div>&nbsp;</div>
               <%= form.date_select :date_out, id: :reclusion_date_out,label:"Fecha De Salida" %>
-  <div>&nbsp</div>
+  <div>&nbsp;</div>
              <div class="col-md-12">    
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar

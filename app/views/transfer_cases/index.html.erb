@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <p id="notice"><%= notice %></p>
 
@@ -48,5 +49,49 @@
               </table>
 </div>
 </div>
+=======
 
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Transferencias de Casos</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_transfer_case_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
 
+>>>>>>> 93c7cbafb2810113ceb33c2ad221508d3e48de0c
+
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Defensor Anterior</th>
+          <th>Defensor Actual</th>
+          <th>Caso</th>
+          <th>Fecha de Transferencia</th>
+          <th>Comentario</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @transfer_cases.each do |transfer_case| %>
+          <tr>
+            <td><%= transfer_case.user.entity.full_name %></td>
+            <td><%= transfer_case.user.entity.full_name %></td>
+            <td><%= transfer_case.legal_case.name %></td>
+            <td><%= transfer_case.date_ttransfer %></td>
+            <td><%= transfer_case.comentary %></td>
+            <td align="center" ><%= link_to (fa_icon 'eye'), transfer_case, class: 'btn btn-info'  %>
+             <%= link_to (fa_icon 'pencil'), edit_transfer_case_path(transfer_case), class: 'btn btn-success' %>
+             <%= link_to (fa_icon 'trash'), transfer_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

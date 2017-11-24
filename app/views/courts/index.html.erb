@@ -11,6 +11,7 @@
             </div>
                          
 
+<<<<<<< HEAD
               <!-- TABLA -->
             <div class="panel-body "  >   
                 <table id="table_di" class= "table table-hover   table-bordered table-striped" >
@@ -44,3 +45,44 @@
 </div>
 
 
+=======
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Juzgados</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_court_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
+
+
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courts.each do |court| %>
+          <tr>
+            <td><%= court.name %></td>
+            <td><%= court.phone %></td>
+            <td><%= court.address %></td>
+            <td align="center" >
+              <%= link_to (fa_icon 'pencil'), edit_court_path(court), class: 'btn btn-success' %>
+              <%= link_to (fa_icon 'trash'), court, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+>>>>>>> 93c7cbafb2810113ceb33c2ad221508d3e48de0c

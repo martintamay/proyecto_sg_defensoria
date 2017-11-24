@@ -4,16 +4,34 @@ class UsersController < ApplicationController
   #load_and_authorize_resource
 
 
-  def cambiar_rol 
-    if @user.has_role? :admin
-      @user.revoke :admin
-      @user.add_role :default
-    else
-      @user.revoke :default
-      @user.add_role :admin
+  def cambiar_rol
+    if params[:type_rol]
+      type_rol = params[:type_rol]
+      if type_rol == "acceso"
+        if @user.has_role? :admin
+          @user.revoke :admin
+          @user.add_role :default
+        else
+          @user.revoke :default
+          @user.add_role :admin
+        end
+      elsif type_rol == "tipo"
+          if @user.has_role? :lawyer
+            @user.revoke :lawyer
+            @user.add_role :assistant
+          else
+            @user.revoke :assistant
+            @user.add_role :lawyer
+          end
+      else
+        respond_to do |format|
+          format.html { render :edit, alert: "Tipo de rol equivocado para cambiar" }
+        end
+      end
+      respond_to do |format|
+        format.html { render :edit, notice: 'Se cambió el rol del usuario.' }
+      end
     end
-    flash[:notice] = 'Se cambió el rol del usuario'
-    redirect_to edit_user_path(@user)
    end
 
   # GET /users
@@ -89,7 +107,7 @@ class UsersController < ApplicationController
         sign_out
         redirect_to "/"
       else
-        @user = User.find(params[:id])        
+        @user = User.find(params[:id])
       end
     end
 

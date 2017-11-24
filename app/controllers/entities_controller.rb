@@ -3,13 +3,13 @@ class EntitiesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
- 
+
   # GET /entities
   # GET /entities.json
   def index
     @entities = Entity.all
   end
-
+  
   # GET /entities/1
   # GET /entities/1.json
   def show
