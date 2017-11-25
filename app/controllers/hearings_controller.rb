@@ -5,7 +5,7 @@ before_action :obtenerListado
   load_and_authorize_resource
 
   def index
-    redirect_to :action => "new"     
+    @hearings = Hearing.all()   
   end
   def obtenerListado
     @hearings = Hearing.all
