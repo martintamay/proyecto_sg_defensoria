@@ -39,9 +39,14 @@ class LegalCasesController < ApplicationController
 
     respond_to do |format|
       if @legal_case.save
+<<<<<<< HEAD
         UserMailer.notificar(@legal_case.user, "Notificaion de caso", "Se le asignó un caso").deliver()
         format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully created.' }
         format.json { render :show, status: :created, location: @legal_case }    
+=======
+        format.html { redirect_to @legal_case , notice: 'Legal case was successfully created.' }
+        format.json { render :show, status: :created, location: @legal_case }
+>>>>>>> 6861ddc1368ffd9bc1323c05ce458ec585fb80ff
       else
         format.html { render :new }
         format.json { render json: @legal_case.errors, status: :unprocessable_entity }
