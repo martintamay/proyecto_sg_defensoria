@@ -57,7 +57,7 @@ class ReclusionsController < ApplicationController
   def destroy
     @reclusion.destroy
     respond_to do |format|
-      format.html { redirect_to reclusions_url, notice: 'Reclusion was successfully destroyed.' }
+      format.html { redirect_to reclusions_url, notice: 'La Reclusion fue eliminada' }
       format.json { head :no_content }
     end
   end

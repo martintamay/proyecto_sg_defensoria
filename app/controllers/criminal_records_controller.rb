@@ -55,12 +55,19 @@ class CriminalRecordsController < ApplicationController
   # DELETE /criminal_records/1
   # DELETE /criminal_records/1.json
   def destroy
+    casos= LegalCase.all().where(criminal_record: @criminal_record);
+    if casos.length>0
+      respond_to do |format|
+      format.html { redirect_to criminal_records_url, notice: 'Esta ficha penal esta en un caso y no se puede eliminar' }
+    end
+else
     @criminal_record.destroy
     respond_to do |format|
-      format.html { redirect_to criminal_records_url, notice: 'Criminal record was successfully destroyed.' }
+      format.html { redirect_to criminal_records_url, notice: 'Esta ficha penal fue eliminada' }
       format.json { head :no_content }
     end
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

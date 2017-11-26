@@ -90,15 +90,22 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy
-    if @user.email != admin
-      @user.destroy
-      respond_to do |format|
-        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    end
-  end
+  # no se deberia poder eliminar ningún usuario 
+  # def destroy
+   # usuario= User.all().where(legal_case: @legal_case);
+   # if usuario.length()>0
+    #  respond_to do |format|
+     # format.html { redirect_to users_url, alert: 'Esta entidad tiene asignado un caso y no se puede eliminar' }
+     # end
+    #else
+     # @user.destroy
+      #respond_to do |format|
+       # format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+       # format.json { head :no_content }
+      #end
+    #end
+  #end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

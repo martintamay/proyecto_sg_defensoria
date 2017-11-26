@@ -54,13 +54,7 @@ class TransferCasesController < ApplicationController
 
   # DELETE /transfer_cases/1
   # DELETE /transfer_cases/1.json
-  def destroy
-    @transfer_case.destroy
-    respond_to do |format|
-      format.html { redirect_to transfer_cases_url, notice: 'Transfer case was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+ #NO se puede destruir una transferencia
 
   private
     # Use callbacks to share common setup or constraints between actions.

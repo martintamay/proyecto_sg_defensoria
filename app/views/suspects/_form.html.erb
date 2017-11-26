@@ -26,7 +26,7 @@
                <%= render "shared/entity_fields", :form => ent %>
               <% end %></div>
               <div class="col-md-6">
-              <%= form.text_field :ci, id: :suspect_ci, label: 'CI' %></div>
+              <%= form.text_field :ci, id: :suspect_ci, label: 'CI', required: "true", placeholder: 'Este campo es Obligatorio', type: 'digits' %></div>
               <div class="col-md-6">
               <%= form.text_field :reason, id: :suspect_reason, label: 'Causa', required: "true", placeholder: 'Este campo es Obligatorio' %></div>
               <div class="col-md-6">

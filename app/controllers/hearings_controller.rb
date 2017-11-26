@@ -4,7 +4,13 @@ class HearingsController < ApplicationController
 before_action :obtenerListado
   load_and_authorize_resource
 
+<<<<<<< HEAD
 
+=======
+  def index
+    @hearings = Hearing.all()   
+  end
+>>>>>>> a3c78eaae21c2e542aebce4e78963c9fd0920b59
   def obtenerListado
     @hearings = Hearing.all
     respond_to do |format|

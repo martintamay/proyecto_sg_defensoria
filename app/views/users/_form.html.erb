@@ -10,62 +10,62 @@
       </ul>
     </div>
   <% end %>
+  <!-- Formulario -->
+  <div class="panel panel-primary" >
+    <div class="panel-body">
+      <%= form.fields_for :entity, @user.entity do |ent| %>
+        <%= render "shared/entity_fields", :form => ent %>
+      <% end %>
 
-      <div class="panel-group" >
-          <div class="panel panel-default" >
-            <!-- encabezado -->
-              <div class="panel-heading ">
-                <b class="panel-title" >USUARIO</b>
-                
-              </div>
-              <!-- formulario -->
-              <div class="panel-body "  >
-                    <div class="col-md-6">
-                          <%= form.fields_for :entity, @user.entity do |ent| %>
-                            <%= render "shared/entity_fields", :form => ent %>
-                          <% end %>
-                    </div>
+      <%= form.password_field :password, id: :user_password, label: "Contraseña", :autocomplete => :off %>
+      <%= form.password_field :password_confirmation, id: :user_password_confirmation, label: "Confirmar Contraseña", autocomplete: false %>
+      <% if @user!=nil && @user.email != ""%>
+        <div class="form-group">
+          <p><b>Roles:</b>
+            <% @user.roles.each do |rol| %>
+              <% case rol.name %>
+                <% when "admin"%>
+                Administrador
+                <% when "default"%>
+                Usuario
+                <% when "lawyer"%>
+                Defensor
+                <% when "assistant"%>
+                Asistente
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+        <div class="form-group">
+          <% if @user.has_role? :admin %>
+            <% cambiar_a_rol = "Quitar Administrador"%>
+          <% elsif @user.has_role? :default %>
+            <% cambiar_a_rol = "Hacer Administrador" %>
+          <% else %>
+            <% @user.add_role :default %>
+            <% cambiar_a_rol = "Hacer Admin" %>
+          <% end %>
 
-                    <div class="col-md-6">
-                        <%= form.password_field :password, id: :user_password, label: "Contraseña", :autocomplete => :off %>
+          <% if @user.has_role? :lawyer %>
+            <% cambiar_a_tipo = "Asistente" %>
+          <% elsif @user.has_role? :assistant %>
+            <% cambiar_a_tipo = "Defensor" %>
+          <% else %>
+            <% @user.add_role :assistant %>
+            <% cambiar_a_tipo = "Defensor" %>
+          <% end %>
+          <% link_to cambiar_a_rol, cambiar_rol_user_path( @user, :type_rol => "acceso"), class: 'btn btn-default'%>
+          <% link_to "Convertir a "+cambiar_a_tipo, cambiar_rol_user_path( @user, :type_rol => "tipo"), class: 'btn btn-default' %>
+        </div>
+      <% end %>
+      <%= form.text_field :type_user, id: :user_type_user, label: "Tipo de Defensor/Asistente" %>
+      <!-- Botones -->
+      <%= link_to (fa_icon 'arrow-circle-left', text: 'Atras'),users_path,class:  'btn btn-default pull-left'%>
+      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+      <%= fa_icon 'floppy-o' %> Guardar
+      <% end %>
 
-                        <%= form.password_field :password_confirmation, id: :user_password_confirmation, label: "Confirmar Contraseña", autocomplete: false %>
-                        <% if @user!=nil%>
-                              <div class="form-group">
-                                      <label>Roles: </label>
-                                      <label>
-                                        <% @user.roles.each do |rol| %>
-                                          <%= rol.name %>
-                                        <% end %>
-                                      </label>
-                                      <label>
-                                        <% if @user.has_role? :admin %>
-                                          <% cambiar_a_rol = "Default"%>
-                                        <% else %>
-                                          <% cambiar_a_rol = "Admin" %>
-                                        <% end %>
-                                        <% if @user==nil %>
-                                          <%= link_to "Hacer "+cambiar_a_rol, cambiar_rol_user_path, class: 'btn btn-default'%>
-                                        <% end %>  
-                                      </label>
-                              </div>
-                        <% end %>
-                        <%= form.text_field :type_user, id: :user_type_user, label: "Tipo de Usuario" %>
-                    </div>
-                  <!-- Boton agregar -->
-                    <div class="col-md-12">    
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
-                      <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), users_path, class: 'btn btn-default pull-left' %>
-                    </div> 
-                    <div></div> 
-                </div>
-
-            <% end %>          
-          </div> <!-- fin panel default -->
-        </div> <!-- fin group -->
-    
-   
     </div>
+  </div>
 
+<% end %>
