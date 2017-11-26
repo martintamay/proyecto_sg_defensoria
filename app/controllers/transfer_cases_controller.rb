@@ -29,7 +29,7 @@ class TransferCasesController < ApplicationController
 
     respond_to do |format|
       if @transfer_case.save
-        format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully created.' }
+        format.html { redirect_to transfer_cases_url, notice: 'Transfer case was successfully created.' }
         format.json { render :show, status: :created, location: @transfer_case }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class TransferCasesController < ApplicationController
   def update
     respond_to do |format|
       if @transfer_case.update(transfer_case_params)
-        format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully updated.' }
+        format.html { redirect_to transfer_cases_url, notice: 'Transfer case was successfully updated.' }
         format.json { render :show, status: :ok, location: @transfer_case }
       else
         format.html { render :edit }

@@ -23,14 +23,13 @@
               <div class="panel-body " >
                 <div>&nbsp;</div>
               <%= form.date_select :shift_date, id: :shift_shift_date, label:"Fecha de Turno" %>
-<<<<<<< HEAD
+
               <div>&nbsp</div>
               <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor" %>
-=======
+
               <div>&nbsp;</div>
               <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Usuario" %>
->>>>>>> 93c7cbafb2810113ceb33c2ad221508d3e48de0c
-              <!-- Botones -->
+             <!-- Botones -->
               <div>&nbsp;</div>
               <div class="col-md-12">    
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>

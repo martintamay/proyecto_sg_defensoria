@@ -4,9 +4,7 @@ class HearingsController < ApplicationController
 before_action :obtenerListado
   load_and_authorize_resource
 
-  def index
-    redirect_to :action => "new"     
-  end
+
   def obtenerListado
     @hearings = Hearing.all
     respond_to do |format|
@@ -41,7 +39,7 @@ end
 
     respond_to do |format|
       if @hearing.save
-        format.html { render :new , notice: '' }
+        format.html { redirect_to @hearing , notice: '' }
         format.json { render :new, status: :created, location: @hearing }
       else
         format.html { render :new }

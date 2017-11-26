@@ -39,7 +39,7 @@ class LegalCasesController < ApplicationController
 
     respond_to do |format|
       if @legal_case.save
-        format.html { redirect_to @legal_case , notice: 'Legal case was successfully created.' }
+        format.html { redirect_to legal_cases_url , notice: 'Legal case was successfully created.' }
         format.json { render :show, status: :created, location: @legal_case }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class LegalCasesController < ApplicationController
   def update
     respond_to do |format|
       if @legal_case.update(legal_case_params)
-        format.html { render :new, notice: 'Legal case was successfully updated.' }
+        format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully updated.' }
         format.json { render :show, status: :ok, location: @legal_case }
       else
         format.html { render :edit }
