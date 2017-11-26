@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center"> Reporte de Transferencias de Casos </h1>
+<%= link_to "PDF File", transfer_cases_reports_path(format: 'pdf') %>
+
+ <hr>    
+     
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+   <thead>
+         <tr>
+         	 <th>Defensor Anterior</th>
+             <th>Defensor Actual</th>
+             <th>Caso</th>
+             <th>Fecha de Transferencia</th>
+             <th>Comentario</th>
+             <th class="col-md-2"></th>
+        </tr>
+  </thead>
+
+  <tbody>
+    <% @transferencia.each do |transfer_case| %>
+      <tr>
+        <td><%= transfer_case.user.entity.full_name %></td>
+        <td><%= transfer_case.user.entity.full_name %></td>
+        <td><%= transfer_case.legal_case.name %></td>
+        <td><%= transfer_case.date_ttransfer %></td>
+        <td><%= transfer_case.comentary %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

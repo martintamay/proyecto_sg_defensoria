@@ -1,0 +1,41 @@
+  <!-- TABLA -->
+            <div class="panel-body "  >
+                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+                    <thead>  <!-- TITULOS DE LA TABLE -->
+                        <tr>
+                          <!-- <th>Formulario de Entrada</th>-->
+                          <th>Nombre del Caso</th>
+                          <th>Defensor</th>
+                          <th>Juzgado</th>
+                          <th>Juez</th>
+                          <th>Imputado</th>
+                          <th>Ficha Penal Nro.</th>
+                          <!--<th>Comentario</th>-->
+                          <th>Sentencia</th>
+                          <th>Fecha De Audiencia</th>
+                          <th>Fecha De Transferencia</th>
+
+                        </tr>
+                    </thead>
+                    <!-- CAMPOS QUE CONTENDRA -->
+                    <tbody>
+                           <% @hearings.each do |hearing| %>
+                          <tr>
+                            <td><%= hearing.legal_case.name %></td>
+                            <td><%= hearing.legal_case.user.entity.full_name %></td>
+                            <td><%= hearing.legal_case.court.name %></td>
+                            <td><%= hearing.legal_case.judge.entity.full_name %></td>
+                            <td><%= hearing.legal_case.suspect.entity.full_name %></td>
+                            <td><%= hearing.legal_case.criminal_record.inquire_number %></td>
+                            <td><%= hearing.legal_case.final_sentence %></td>
+                            <td><%= hearing.hearing_date %></td>
+                            <% end %>
+                             
+
+
+                          </tr>
+                        
+                        
+                    </tbody>
+              </table>
+</div>

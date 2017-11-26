@@ -5,6 +5,14 @@ class LegalCasesController < ApplicationController
 
   # GET /legal_cases
   # GET /legal_cases.json
+
+def reporte
+  # @legal_cases = LegalCase.all
+  @hearings = Hearing.includes(:legal_case).all
+ @transfers = TransferCase.includes(:legal_case).all
+end
+
+
   def index
     @legal_cases = LegalCase.all
     respond_to do |format|

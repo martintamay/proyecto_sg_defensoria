@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h1 align="center"> Historial de Imputados </h1>
-<%= link_to "PDF File", suspects_reports_path(format: 'pdf') %>
-
-
+<input id="pdf-button" type="button" value="Download PDF" onclick="html_to_pdf()" />
  <hr>    
 
-
+ 
+    
+        <table id="table_di" class= "table table-hover   table-bordered table-striped" >
    <thead>
          <tr>
              <th>Nombre</th>
@@ -19,7 +19,7 @@
    </thead>
   <tbody>
 
-    <% @sospechoso.each do |suspect| %>
+    <% @suspect.each do |suspect| %>
   <tr>
         <td><%= suspect.entity.full_name %></td>
         <td><%= suspect.entity.birthdate %></td>
@@ -34,5 +34,11 @@
   </tbody>
   
  </table>
+</div>
 
- 
+<script type="text/javascript">
+	function html_to_pdf(){
+
+		window.print();
+	}
+</script>

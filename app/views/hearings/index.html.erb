@@ -15,7 +15,7 @@
   <tbody>
     <% @hearings.each do |hearing| %>
       <tr>
-        <td><%= hearing.hearing_date %></td>
+        <td><%= hearing.audiencia %></td>
         <td><%= hearing.user.entity.full_name %></td>
         <td><%= hearing.legal_case.name %></td>
         <td align="center" ><%= link_to (fa_icon 'eye'), hearing, class: 'btn btn-info'  %>
