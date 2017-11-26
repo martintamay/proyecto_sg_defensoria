@@ -64,8 +64,6 @@
             <li class="active"><a href="hearings#index.html"><i class="fa fa-circle-o"></i> Audiencia</a></li>
             <li><a href="<%=legal_cases_path %>"><i class="fa fa-circle-o"></i> Ficha de Casos</a></li>
 
-            <li><a href="<%=legal_cases_path(format: 'pdf')%>"><i class="fa fa-circle-o"></i> Reporte de Casos</a></li>
-
             <li><a href="<%=criminal_records_path %>"><i class="fa fa-circle-o"></i> Fichas Penales</a></li>
           </ul>
         </li>
@@ -99,10 +97,39 @@
             <li><a href="<%=visits_path %>"><i class="fa fa-circle-o"></i> Visitas</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Reportes</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+           <li><a href="<%=cases_reports_path%>"><i class="fa fa-circle-o"></i> Reporte de Casos</a></li>
+           <li><a href="<%=users_reports_path%>"><i class="fa fa-circle-o"></i> Reporte de Usuarios</a></li>
+           <li><a href="<%=transfer_cases_reports_path%>"><i class="fa fa-circle-o"></i> Reporte de Transferencia</a></li>
+           <li><a href="<%=suspects_reports_path%>"><i class="fa fa-circle-o"></i> Reporte de Imputados</a></li>
+           <li><a href="<%=shifts_reports_path%>"><i class="fa fa-circle-o"></i> Reporte de Turnos</a></li>
+          </ul>
+        </li>
+                   <!-- Dejo estatico mientras  -->
+          <li><a href="correo#index"><i class="fa fa-circle-o"></i> Enviar Mail</a></li>
+                            <!-- Dejo estatico mientras  -->
+          <li><a href="<%=equipment_details_path%>"><i class="fa fa-circle-o"></i>Detalles de equipo</a></li>
+
       </ul>
+
     </section>
     <!-- /.sidebar -->
   </aside>
+
+      <footer class="footer">
+        <div class="container">
+          <span>Copyright © 2017 - Univeridad Nacional de Itapúa - Facultad de Ingeniería.</span>
+        </div>
+    </footer>
   <% end %>
 
   <!-- Content Wrapper. Contains page content -->

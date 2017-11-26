@@ -40,7 +40,16 @@ function html_to_pdf(){
 
     window.print();
   }
-
+$(document).ready(function() {
+    $('#dato').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+       
+        
+    
+    } );
+} );
 $(document).ready( function() {
 			     $('#table_di').DataTable( {
 			     	lengthMenu: [[4, 25, 50, -1],[4, 25, 50, "Todas"]],
@@ -56,13 +65,6 @@ $(document).ready( function() {
 			        }
 			      } );
 			    });
-$(document).ready(function() {
-    $('#dato').DataTable( {
-        "paging":   false,
-        "ordering": false,
-        "info":     false
-    } );
-} );
 
 /*-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --*/
 $.widget.bridge('uibutton', $.ui.button);

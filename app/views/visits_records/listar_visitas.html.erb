@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center"> Historial de Visitas </h1>
+<%= link_to "PDF File", visits_records_path(format: 'pdf') %>
+
+ <hr>    
+     
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+   <thead>
+         <tr>
+         	 <th>Imputado</th>
+             <th>Visitante</th>
+             <th>Dia Visitado</th>
+             <th>Observacion</th>
+             <th class="col-md-2"></th>
+        </tr>
+  </thead>
+  
+
+  <tbody>
+    <% @visita.each do |visit| %>
+      <tr>
+        <td><%= visit.suspect.entity.full_name%></td>
+        <td><%= visit.name_visit %></td>
+        <td><%= visit.date_visit %></td>
+        <td><%= visit.observation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

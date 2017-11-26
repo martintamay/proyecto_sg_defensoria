@@ -5,12 +5,13 @@ class LegalCase < ApplicationRecord
   belongs_to :court
   belongs_to :judge
   belongs_to :suspect
-  has_many :hearing
-  has_many :transfer_case
+  has_many :hearings  
+  has_many :transfer_cases
   belongs_to :criminal_record
 
  def name_with_initial 
     "#{name}"
   end
+ 
   
 end

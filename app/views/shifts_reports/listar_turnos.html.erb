@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1 align="center"> Reporte de Turnos </h1>
+<%= link_to "PDF File", shifts_reports_path(format: 'pdf') %>
+
+ <hr>    
+     
+<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+   <thead>
+         <tr>
+         	 <th>Fecha de Turno</th>
+             <th>Usuario</th>
+             <th class="col-md-2"></th>
+        </tr>
+  </thead>
+
+  <tbody>
+    <% @turno.each do |shift| %>
+      <tr>
+        <td><%= shift.shift_date %></td>
+        <td><%= shift.user.entity.full_name %></td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

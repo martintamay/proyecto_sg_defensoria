@@ -52,8 +52,8 @@
             <% @user.add_role :assistant %>
             <% cambiar_a_tipo = "Defensor" %>
           <% end %>
-          <%= link_to "Hacer "+cambiar_a_rol, cambiar_rol_user_path( :type_rol => "acceso" ), class: 'btn btn-default'%>
-          <%= link_to "Convertir a "+cambiar_a_tipo, cambiar_rol_user_path( :type_rol => "tipo" ), class: 'btn btn-default' %>
+      
+        
         </div>
       <% end %>
       <%= form.text_field :type_user, id: :user_type_user, label: "Tipo de Defensor/Asistente" %>

@@ -1,24 +1,13 @@
 class HearingsController < ApplicationController
   before_action :set_hearing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-before_action :obtenerListado
+
   load_and_authorize_resource
 
   def index
-    redirect_to :action => "new"     
+    @hearings = Hearing.all    
   end
-  def obtenerListado
-    @hearings = Hearing.all
-    respond_to do |format|
-   format.html
-   format.pdf do
-    pdf = HearingPdf.new(@hearing)
-    send_data pdf.render, filename: "nada.pdf",
-    type: "application/pdf",
-    disposition: "inline"  
-     end
-      end
-  end
+
 
   # GET /hearings/1
   # GET /hearings/1.json
