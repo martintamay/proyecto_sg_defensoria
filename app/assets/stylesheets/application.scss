@@ -39,17 +39,25 @@
 }
 
 /*MENU*/
-.navbar-inverse {		
-	border-radius: 0 0 0 0;
-	-moz-border-radius: 0 0 0 0;
-	-webkit-border-radius: 0 0 0 0;
-	border: 0px solid #000000;
+.navbar-inverse {   
+  border-radius: 0 0 0 0;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  border: 0px solid #000000;
 }
-
-
+/*FOOTER*/
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    text-align: center
+}
 /*NOTICE AND ALERT STYLES*/
 p.notice, p.alert {
-	max-height: 35px;
+  max-height: 35px;
     line-height: 20px;
     border-radius: 0;
     margin: 0 0;
@@ -59,28 +67,28 @@ p.notice, p.alert {
 }
 
 p.alert {
-	background-color: red;
+  background-color: red;
 }
 
 p.notice {
-	background-color: orange;
+  background-color: orange;
 }
 
 /*FORMS*/
 .form-group > * {
-	display: inline-block;
-	max-width: 75%;
+  display: inline-block;
+  max-width: 75%;
 }
 
 .form-group > label {
-	min-width: 100px;
-	width: 20%;
+  min-width: 100px;
+  width: 20%;
 }
 
 .color_and_margin{
-	background: #8395ad; 
-	height: 90px; 
-	width: 100%;
+  background: #8395ad; 
+  height: 90px; 
+  width: 100%;
 }
 
 
@@ -101,7 +109,7 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
 }
 
 .iconmelon img {
-	max-width: 150px;
+  max-width: 150px;
 }
 
 #form > div {
@@ -113,7 +121,7 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
     margin-bottom: 10px;
 }
 #logenbox {
-	text-align: center;
+  text-align: center;
 }
 #loginbox .panel {    
     background-color: transparent;
@@ -121,12 +129,12 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
 }
 
 #loginbox .panel-heading {
-	background-color: darkgray !important;
+  background-color: darkgray !important;
 }
 
 #loginbox .panel-heading img {
-	width: 250px;
-	max-width: 80%;
+  width: 250px;
+  max-width: 80%;
 }
 
 #loginbox .panel-body {
@@ -135,12 +143,12 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
 }
 
 #loginbox .input-group {
-	padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 #loginbox .form-group .controls {
-	text-align: right;
-	min-width: 100%;
+  text-align: right;
+  min-width: 100%;
 }
 
 #particles {
