@@ -15,15 +15,7 @@ end
 
   def index
     @legal_cases = LegalCase.all
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = LegalCasePdf.new(@legal_case)
-        send_data pdf.render, filename: "LegalCaseReport.pdf",
-        type: "application/pdf",
-        disposition: "inline"
-      end
-    end
+   
   end
 
   # GET /legal_cases/1
