@@ -12,8 +12,4 @@ class LegalCase < ApplicationRecord
  def name_with_initial
     "#{name}"
   end
-  
 end
-
-end
-

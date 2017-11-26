@@ -7,15 +7,12 @@ class HearingsController < ApplicationController
 
   def index
 
-    @hearings = Hearing.all    
-
         
     @hearings = Hearing.all()   
   end
   def obtenerListado
     @hearings = Hearing.all
    
-
 
   end
 

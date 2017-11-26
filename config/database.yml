@@ -26,7 +26,9 @@ development:
   <<: *default
   database: SistemaDefensoria_development
   username: postgres
-  password:
+  password: salome12
+
+  
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,7 +64,8 @@ test:
   <<: *default
   database: SistemaDefensoria_test
   username: postgres
-  password:
+  password: salome12
+
 
 
 # As with config/secrets.yml, you never want to store sensitive information,

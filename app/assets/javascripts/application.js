@@ -39,10 +39,6 @@
 //= require_tree .
 
 
-function html_to_pdf(){
-
-    window.print();
-  }
 $(document).ready(function() {
     $('#dato').DataTable( {
         "paging":   false,
