@@ -29,7 +29,7 @@ class CriminalRecordsController < ApplicationController
 
     respond_to do |format|
       if @criminal_record.save
-        format.html { redirect_to @criminal_record, notice: 'Criminal record was successfully created.' }
+        format.html { redirect_to criminal_records_url, notice: 'Criminal record was successfully created.' }
         format.json { render :show, status: :created, location: @criminal_record }
       else
         format.html { render :new }
@@ -38,12 +38,12 @@ class CriminalRecordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /criminal_records/1
-  # PATCH/PUT /criminal_records/1.json
+  # PATCH/PUT /criminal_records/
+  # PATCH/PUT s_url/criminal_records/1.json
   def update
     respond_to do |format|
       if @criminal_record.update(criminal_record_params)
-        format.html { redirect_to @criminal_record, notice: 'Criminal record was successfully updated.' }
+        format.html { redirect_to criminal_records_url, notice: 'Criminal record was successfully updated.' }
         format.json { render :show, status: :ok, location: @criminal_record }
       else
         format.html { render :edit }
@@ -55,12 +55,19 @@ class CriminalRecordsController < ApplicationController
   # DELETE /criminal_records/1
   # DELETE /criminal_records/1.json
   def destroy
+    casos= LegalCase.all().where(criminal_record: @criminal_record);
+    if casos.length>0
+      respond_to do |format|
+      format.html { redirect_to criminal_records_url, notice: 'Esta ficha penal esta en un caso y no se puede eliminar' }
+    end
+else
     @criminal_record.destroy
     respond_to do |format|
-      format.html { redirect_to criminal_records_url, notice: 'Criminal record was successfully destroyed.' }
+      format.html { redirect_to criminal_records_url, notice: 'Esta ficha penal fue eliminada' }
       format.json { head :no_content }
     end
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

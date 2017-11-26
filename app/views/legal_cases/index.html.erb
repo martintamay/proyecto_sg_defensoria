@@ -1,6 +1,8 @@
-
+<link rel="stylesheet" type="text/css" href="print.css" />
+<link rel="stylesheet" type="text/css" href="Style.css" />
 <!-- PANEL PRINCIPAL -->
-  <div class="box">
+<input type="button" value="Print" class="btn" onclick="PrintDoc()"/>
+  <div id= "printarea" class="box">
             <div class="box-header">
               <h3 class="box-title">LISTA DE CASOS</h3>
                <div class="box-tools">
@@ -45,7 +47,7 @@
                               <div class="btn-group">
                                 <%= link_to (fa_icon 'eye' ), legal_case ,class: "btn btn-default" %>
                                 <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case),class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+                               
                               </div>
                             </td>
                           </tr>

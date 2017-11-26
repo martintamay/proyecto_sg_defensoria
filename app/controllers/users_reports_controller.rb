@@ -2,6 +2,7 @@ class UsersReportsController < ApplicationController
 	#para el formato pdf
     def index
     	@usuario = User.order("id DESC").all
+
 		respond_to do |format|
 			format.html
 			format.pdf do
@@ -9,6 +10,7 @@ class UsersReportsController < ApplicationController
 				send_data pdf.render, filename: 'Reporte_de_Usuario.pdf', type: 'application/pdf', disposition: "inline"
             end       
          end
+
     end
 
 	def listar_defensores

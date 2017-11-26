@@ -19,7 +19,7 @@
       </div>
       <!-- formulario -->
       <div class="panel-body " >
-        <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte" %>
+        <%= form.collection_select :court_id, Court.all, :id, :name_with_initial, label: "Corte", required: "true", placeholder: 'Este campo es Obligatorio' %>
         <%= form.fields_for :entity, @judge.entity do |ent| %>
           <%= render "shared/entity_fields", :form => ent %>
         <% end %>
