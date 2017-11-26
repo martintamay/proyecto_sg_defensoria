@@ -1,12 +1,11 @@
 class User < ApplicationRecord
-  audited
   after_create :assign_default_role
   resourcify
-  rolify
+  rolify 
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable :registerable,:recoverable,
-  devise :database_authenticatable,
+  # :confirmable, :lockable, :timeoutable and :omniauthable :registerable,:recoverable, 
+  devise :database_authenticatable, 
          :rememberable, :trackable, :validatable
 
   belongs_to :entity
@@ -17,15 +16,12 @@ class User < ApplicationRecord
   has_many :shift
   has_many :transfer_case
 
-  def name_with_initial
+  def name_with_initial 
     "#{entity.full_name}"
   end
 
   def assign_default_role
-    if self.roles.blank?
-      self.add_role(:default)
-      self.add_role(:assistant)
-    end
+    self.add_role(:default) if self.roles.blank?
   end
 
 end

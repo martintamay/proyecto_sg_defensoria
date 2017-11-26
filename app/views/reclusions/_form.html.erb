@@ -17,25 +17,19 @@
           <div class="panel panel-default" >
             <!-- encabezado -->
               <div class="panel-heading ">
-                <b class="panel-title">Recluso</b>
+                <b class="panel-title">Recluido</b>
                 
               </div>
               <!-- formulario -->
               <div class="panel-body " >
-
-                
-                <div class="col-md-6"> 
-              
-               
-              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Nombre", required: "true", placeholder: 'Este campo es Obligatorio' %>
-              <%= form.text_field :place, id: :reclusion_place,label:"Lugar de Reclusión", required: "true", placeholder: 'Este campo es Obligatorio' %>
-              
-
-              <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada", required: "true", placeholder: 'Este campo es Obligatorio' %>
-
-             
+                <div>&nbsp;</div>
+              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
+              <%= form.text_field :place, id: :reclusion_place,label:"Lugar" %>
+              <div>&nbsp;</div>
+              <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada" %>
+              <div>&nbsp;</div>
               <%= form.date_select :date_out, id: :reclusion_date_out,label:"Fecha De Salida" %>
-  </div>
+  <div>&nbsp;</div>
              <div class="col-md-12">    
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
@@ -46,5 +40,5 @@
         
             </div>
         </div>
-        
+        <hr></hr>
       </div>

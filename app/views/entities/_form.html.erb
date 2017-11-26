@@ -23,20 +23,20 @@
               <div class="panel-body " >
 <div>&nbsp;</div>
                      <div class="col-md-6">
-                    <%= form.text_field :name, id: :entity_name, label: "Nombre", required: "true", placeholder: 'Este campo es Obligatorio' %></div>
+                    <%= form.text_field :name, id: :entity_name, label: "Nombre" %></div>
 
                      <div class="col-md-6">
-                    <%= form.text_field :last_name, id: :entity_last_name, label: "Apellido", required: "true", placeholder: 'Este campo es Obligatorio'%></div>
+                    <%= form.text_field :last_name, id: :entity_last_name, label: "Apellido"%></div>
                       
 <div>&nbsp;</div>
                      <div class="col-md-6">
-                    <%= form.phone_field :phone, id: :entity_phone, label: "Teléfono", required: "true", placeholder: 'Este campo es Obligatorio'%></div>
+                    <%= form.phone_field :phone, id: :entity_phone, label: "Teléfono"%></div>
 
                      <div class="col-md-6">
-                    <%= form.date_select :birthdate, id: :entity_birthdate, label: "Nacimiento", start_year: 1850, use_month_numbers: true, end_year: 2050, required: "true", placeholder: 'Este campo es Obligatorio' %></div>
+                    <%= form.date_select :birthdate, id: :entity_birthdate, label: "Nacimiento", start_year: 1850, use_month_numbers: true, end_year: 2050 %></div>
 <div>&nbsp;</div>
                      <div class="col-md-6">
-                    <%= form.email_field :email, id: :entity_email, label: "Email", required: "true", placeholder: ""%></div>
+                    <%= form.email_field :email, id: :entity_email, label: "Email"%></div>
 <div>&nbsp;</div>
                     <div class="col-md-12">
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>

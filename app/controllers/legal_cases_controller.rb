@@ -47,14 +47,8 @@ end
 
     respond_to do |format|
       if @legal_case.save
-
-        format.html { redirect_to legal_cases_url , notice: 'Legal case was successfully created.' }
+        format.html { render :new, notice: 'Legal case was successfully created.' }
         format.json { render :show, status: :created, location: @legal_case }
-
-        UserMailer.notificar(@legal_case.user, "Notificaion de caso", "Se le asignó un caso").deliver()
-        format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully created.' }
-        format.json { render :show, status: :created, location: @legal_case }   
-
       else
         format.html { render :new }
         format.json { render json: @legal_case.errors, status: :unprocessable_entity }
@@ -67,7 +61,7 @@ end
   def update
     respond_to do |format|
       if @legal_case.update(legal_case_params)
-        format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully updated.' }
+        format.html { render :new, notice: 'Legal case was successfully updated.' }
         format.json { render :show, status: :ok, location: @legal_case }
       else
         format.html { render :edit }
@@ -78,7 +72,13 @@ end
 
   # DELETE /legal_cases/1
   # DELETE /legal_cases/1.json
-  #No se puede eliminar un caso
+  def destroy
+    @legal_case.destroy
+    respond_to do |format|
+      format.html { render :new, notice: 'Legal case was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
 

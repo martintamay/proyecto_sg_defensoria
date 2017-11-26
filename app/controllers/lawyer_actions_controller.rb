@@ -29,7 +29,7 @@ class LawyerActionsController < ApplicationController
 
     respond_to do |format|
       if @lawyer_action.save
-        format.html { redirect_to lawyer_actions_url, notice: 'Lawyer action was successfully created.' }
+        format.html { redirect_to @lawyer_action, notice: 'Lawyer action was successfully created.' }
         format.json { render :show, status: :created, location: @lawyer_action }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class LawyerActionsController < ApplicationController
   def update
     respond_to do |format|
       if @lawyer_action.update(lawyer_action_params)
-        format.html { redirect_to @lawyer_actions_url, notice: 'Lawyer action was successfully updated.' }
+        format.html { redirect_to @lawyer_action, notice: 'Lawyer action was successfully updated.' }
         format.json { render :show, status: :ok, location: @lawyer_action }
       else
         format.html { render :edit }

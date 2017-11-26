@@ -29,7 +29,7 @@ class ReclusionsController < ApplicationController
 
     respond_to do |format|
       if @reclusion.save
-        format.html { redirect_to reclusions_url, notice: 'Reclusion was successfully created.' }
+        format.html { redirect_to @reclusion, notice: 'Reclusion was successfully created.' }
         format.json { render :show, status: :created, location: @reclusion }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ReclusionsController < ApplicationController
   def update
     respond_to do |format|
       if @reclusion.update(reclusion_params)
-        format.html { redirect_to reclusions_url, notice: 'Reclusion was successfully updated.' }
+        format.html { redirect_to @reclusion, notice: 'Reclusion was successfully updated.' }
         format.json { render :show, status: :ok, location: @reclusion }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class ReclusionsController < ApplicationController
   def destroy
     @reclusion.destroy
     respond_to do |format|
-      format.html { redirect_to reclusions_url, notice: 'La Reclusion fue eliminada' }
+      format.html { redirect_to reclusions_url, notice: 'Reclusion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

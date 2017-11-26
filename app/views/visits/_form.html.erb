@@ -23,9 +23,9 @@
               <!-- formulario -->
               <div class="panel-body " >
                 <div>&nbsp;</div>
-              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado", required: "true", placeholder: 'Este campo es Obligatorio' %>
+              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
 <div>&nbsp;</div>
-              <%= form.text_field :name_visit, id: :visit_name_visit,label:"Nombre", required: "true", placeholder: 'Este campo es Obligatorio' %>
+              <%= form.text_field :name_visit, id: :visit_name_visit,label:"Nombre" %>
 <div>&nbsp;</div>
               <%= form.date_select :date_visit, id: :visit_date_visit ,label:"Dia De La Visita"%>
               <div>&nbsp;</div>

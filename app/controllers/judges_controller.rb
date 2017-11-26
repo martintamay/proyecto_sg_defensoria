@@ -31,7 +31,7 @@ class JudgesController < ApplicationController
 
     respond_to do |format|
       if @judge.save
-        format.html { redirect_to judges_url, notice: 'Judge was successfully created.' }
+        format.html { redirect_to @judge, notice: 'Judge was successfully created.' }
         format.json { render :show, status: :created, location: @judge }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class JudgesController < ApplicationController
   def update
     respond_to do |format|
       if @judge.update(judge_params)
-        format.html { redirect_to judges_url, notice: 'Judge was successfully updated.' }
+        format.html { redirect_to @judge, notice: 'Judge was successfully updated.' }
         format.json { render :show, status: :ok, location: @judge }
       else
         format.html { render :edit }
@@ -57,18 +57,11 @@ class JudgesController < ApplicationController
   # DELETE /judges/1
   # DELETE /judges/1.json
   def destroy
-    casos= LegalCase.all().where(judge: @judge);
-    if casos.length>0
-      respond_to do |format|
-      format.html { redirect_to judges_url, alert: 'Este Juez esta en un caso y no se puede eliminar'}
-    end
-  else
     @judge.destroy
     respond_to do |format|
       format.html { redirect_to judges_url, notice: 'Judge was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
   end
 
   private

@@ -1,39 +1,14 @@
-#development:
-#      :address: smtp.gmail.com
-#      :port: 587
-#      :authentication: plain
-#      :user_name: deysi.santacruz76@gmail.com
-#      :password: in1951519515
-#      :enable_starttls_auto: true
-#production:
-#      :address: smtp.gmail.com
-#      :port: 587
-#      :authentication: plain
-#      :user_name: deysi.santacruz76@gmail.com
-#      :password: in1951519515
-#      :enable_starttls_auto: true
-
-production:
-  delivery_method: :smtp
-  smtp_settings:
-    tls: true
-    address: "smtp.gmail.com"
-    port: '587'
-    domain: "smtp.gmail.com"
-    authentication: :plain
-   user_name: deysi.santacruz76@gmail.com
-      password: in1951519515
-
 development:
-  delivery_method: :smtp
-  smtp_settings:
-    tls: true
-    address: "smtp.gmail.com"
-    port: '587'
-    domain: "smtp.gmail.com"
-    authentication: :plain
-    user_name: deysi.santacruz76@gmail.com
-      password: in1951519515
-
-test:
-  delivery_method: :test
+      :address: smtp.gmail.com
+      :port: 587
+      :authentication: plain
+      :user_name: martintamay9@gmail.com
+      :password: newr0ad776
+      :enable_starttls_auto: true
+production:
+      :address: smtp.gmail.com
+      :port: 587
+      :authentication: plain
+      :user_name: martintamay9@gmail.com
+      :password: newr0ad776
+      :enable_starttls_auto: true

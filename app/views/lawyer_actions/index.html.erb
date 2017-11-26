@@ -1,46 +1,40 @@
 
-<p id="notice"><%= notice %></p>
-
 <!-- PANEL PRINCIPAL -->
-  <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">ACCIONES DE DEFENSORES</h3>
-               <div class="box-tools">
-                  <ul class=" no-margin pull-right">
-                    <%= link_to (fa_icon 'plus', text: 'Crear'), new_lawyer_action_path, class: 'btn btn-primary' %>
-                  </ul> 
-               </div>
-            </div>
-                         
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Acciones Defensores</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_lawyer_action_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
 
-              <!-- TABLA -->
-            <div class="panel-body "  >   
-                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
-                    <thead>  <!-- TITULOS DE LA TABLE --> 
-                      <tr>
-                        <th>Fecha de Accion</th>
-                        <th>Caso</th>
-                        <th>Comentario</th>
-                        <th class="col-md-2"></th>
-                      </tr>
-                    </thead>
 
-                    <tbody>
-                      <% @lawyer_actions.each do |lawyer_action| %>
-                        <tr>
-                          <td><%= lawyer_action.action_date %></td>
-                          <td><%= lawyer_action.legal_case.name %></td>
-                          <td><%= lawyer_action.comment %></td>
-                           <td align="center" >
-                              <div class="btn-group">
-                                <%= link_to (fa_icon 'eye' ), lawyer_action ,class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'pencil'), edit_lawyer_action_path(lawyer_action),class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'trash'), lawyer_action, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
-                              </div>
-                            </td>
-                          </tr>
-                        <% end %>
-                    </tbody>
-              </table>
-</div>
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Fecha de Accion</th>
+          <th>Caso</th>
+          <th>Comentario</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @lawyer_actions.each do |lawyer_action| %>
+          <tr>
+            <td><%= lawyer_action.action_date %></td>
+            <td><%= lawyer_action.legal_case.name %></td>
+            <td><%= lawyer_action.comment %></td>
+              <td align="center" ><%= link_to (fa_icon 'eye'), lawyer_action, class: 'btn btn-info'  %>
+             <%= link_to (fa_icon 'pencil'), edit_lawyer_action_path(lawyer_action), class: 'btn btn-success' %>
+             <%= link_to (fa_icon 'trash'), lawyer_action, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

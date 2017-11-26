@@ -32,7 +32,7 @@ end
 
     respond_to do |format|
       if @suspect.save
-        format.html { redirect_to suspects_url, notice: 'Suspect was successfully created.' }
+        format.html { redirect_to @suspect, notice: 'Suspect was successfully created.' }
         format.json { render :show, status: :created, location: @suspect }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ end
   def update
     respond_to do |format|
       if @suspect.update(suspect_params)
-        format.html { redirect_to suspects_url, notice: 'Suspect was successfully updated.' }
+        format.html { redirect_to @suspect, notice: 'Suspect was successfully updated.' }
         format.json { render :show, status: :ok, location: @suspect }
       else
         format.html { render :edit }
@@ -58,18 +58,10 @@ end
   # DELETE /suspects/1
   # DELETE /suspects/1.json
   def destroy
-    casos= LegalCase.all().where(suspect: @suspect);
-    fichas= CriminalRecord.all().where(suspect: @suspect);
-    if casos.length()>0 or fichas.length()>0
-      respond_to do |format|
-        format.html { redirect_to suspects_url, alert: 'Este sospechoso esta en un caso o en una ficha penal y no se puede eliminar' }
-      end
-    else
-      @suspect.destroy
-      respond_to do |format|
-        format.html { redirect_to suspects_url, notice: 'Este sospechoso fue eliminado' }
-        format.json { head :no_content }
-      end
+    @suspect.destroy
+    respond_to do |format|
+      format.html { redirect_to suspects_url, notice: 'Suspect was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

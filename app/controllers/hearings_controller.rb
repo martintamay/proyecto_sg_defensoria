@@ -4,16 +4,8 @@ class HearingsController < ApplicationController
 
   load_and_authorize_resource
 
-
   def index
-
-        
-    @hearings = Hearing.all()   
-  end
-  def obtenerListado
-    @hearings = Hearing.all
-   
-
+    @hearings = Hearing.all    
   end
 
 
@@ -38,7 +30,7 @@ end
 
     respond_to do |format|
       if @hearing.save
-        format.html { redirect_to @hearing , notice: '' }
+        format.html { render :new , notice: '' }
         format.json { render :new, status: :created, location: @hearing }
       else
         format.html { render :new }

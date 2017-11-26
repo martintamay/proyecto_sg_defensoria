@@ -30,16 +30,12 @@
             <td><%= visit.name_visit %></td>
             <td><%= visit.date_visit %></td>
             <td><%= visit.observation %></td>
-             <td align="center" >
-                              <div class="btn-group">
-                                <%= link_to (fa_icon 'eye' ), visit ,class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'pencil'), edit_visit_path(visit),class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'trash'), visit, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
-                              </div>
-                            </td>
-                          </tr>
-                        <% end %>
-                    </tbody>
-              </table>
-</div>
+             <td align="center" ><%= link_to (fa_icon 'eye'), visit, class: 'btn btn-info'  %>
+             <%= link_to (fa_icon 'pencil'), edit_visit_path(visit), class: 'btn btn-success' %>
+             <%= link_to (fa_icon 'trash'), visit, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
