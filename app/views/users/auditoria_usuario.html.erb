@@ -1,0 +1,37 @@
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">
+      Cambios para <%= @user.entity.full_name %>
+    </h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_user_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
+
+
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <%= @audits.to_s %>
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Accion</th>
+          <th>Por Usuario</th>
+          <th>Cambios</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @audits.each do |audit| %>
+          <tr>
+            <td><%= audit[:action].to_s %></td>
+            <td><%= audit[:user].to_s %></td>
+            <td><%= audit[:changes].to_s %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

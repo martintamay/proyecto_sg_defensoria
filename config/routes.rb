@@ -36,17 +36,18 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :cambiar_rol
+      get :auditoria_usuario
     end
   end
- 
-  
+
+
  resources :cases_reports do
 
     collection do
        get "listar_casos"
     end
   end
-  
+
  resources :suspects_reports do
      collection do
        get "listar_imputados"
@@ -77,5 +78,5 @@ Rails.application.routes.draw do
        get "listar_transferencias"
      end
  end
- 
+
  end

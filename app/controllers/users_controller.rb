@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :cambiar_rol]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :cambiar_rol, :auditoria_usuario]
   #before_action :authenticate_user!
   #load_and_authorize_resource
 
@@ -98,8 +98,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/1/auditoria_usuario
   def auditoria_usuario
-
+    #@audits = obtenerAuditoria(@user)
+    @audits = @user.audits.collect { |aud|
+      {
+        :user => aud.user_id,
+        :changes => aud.audited_changes,
+        :action => aud.action
+      }
+    }
   end
 
 
@@ -119,9 +127,11 @@ class UsersController < ApplicationController
     # obtain audited changes from an object
     def obtenerAuditoria(user)
       user.audits.collect { |aud|
-        {"user" => aud.user_id,
-        "changes" => aud.audited_changes,
-        "action" => aud.action}
+        {
+          "user" => aud.user_id,
+          "changes" => aud.audited_changes,
+          "action" => aud.action
+        }
       }
     end
 
