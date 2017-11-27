@@ -39,7 +39,7 @@
 }
 
 /*MENU*/
-.navbar-inverse {   
+.navbar-inverse {
   border-radius: 0 0 0 0;
   -moz-border-radius: 0 0 0 0;
   -webkit-border-radius: 0 0 0 0;
@@ -63,7 +63,8 @@ p.notice, p.alert {
     margin: 0 0;
     padding: 3px 20px;
     color: white;
-    font-weight: bolder
+    font-weight: bolder;
+    text-align: right;
 }
 
 p.alert {
@@ -86,21 +87,21 @@ p.notice {
 }
 
 .color_and_margin{
-  background: #8395ad; 
-  height: 90px; 
+  background: #8395ad;
+  height: 90px;
   width: 100%;
 }
 
 
-/* LOGIN CSS 
+/* LOGIN CSS
 FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
 */
 #loginbox {
     margin-top: 30px;
 }
 
-#loginbox > div:first-child {        
-    padding-bottom: 10px;    
+#loginbox > div:first-child {
+    padding-bottom: 10px;
 }
 
 .iconmelon {
@@ -123,7 +124,7 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
 #logenbox {
   text-align: center;
 }
-#loginbox .panel {    
+#loginbox .panel {
     background-color: transparent;
     max-width: 450px;
 }
@@ -155,7 +156,7 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    top: 0;                        
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;

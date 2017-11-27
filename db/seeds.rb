@@ -5,5 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-entity = Entity.create({name: 'Admin', last_name: '', phone: '', birthdate: '2017-01-01', email: 'admin'})
-User.new({email: 'admin', encrypted_password: '21232f297a57a5a743894a0e4a801fc3', entity: entity}).save
+entity = Entity.new
+entity.name= 'Admin'
+entity.last_name= ''
+entity.phone= ''
+entity.birthdate= '2017-01-01'
+entity.email= 'admin@defensoria.com'
+entity.save
+
+admin = User.new
+admin.email = "admin@defensoria.com"
+admin.password = "123456"
+admin.entity = entity
+admin.save
+admin.revoke :default
+admin.add_role :admin

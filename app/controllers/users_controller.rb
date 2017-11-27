@@ -32,12 +32,22 @@ class UsersController < ApplicationController
         format.html { render :edit, notice: 'Se cambió el rol del usuario.' }
       end
     end
-   end
+  end
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:tipo_rol]
+      if params[:tipo_rol] == "lawyer"
+        @users = User.with_role(:lawyer)
+        @titulo = "Defensores"
+      elsif params[:tipo_rol] == "assistant"
+        @users = User.with_role(:assistant)
+        @titulo = "Asistentes"
+      end
+    else
+      @users = User.all
+    end
   end
 
   # GET /users/1
@@ -88,10 +98,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def auditoria_usuario
+
+  end
+
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if @user.email != admin
+    if @user.email != "admin@defensoria.com"
       @user.destroy
       respond_to do |format|
         format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -101,6 +116,16 @@ class UsersController < ApplicationController
   end
 
   private
+    # obtain audited changes from an object
+    def obtenerAuditoria(user)
+      user.audits.collect { |aud|
+        {"user" => aud.user_id,
+        "changes" => aud.audited_changes,
+        "action" => aud.action}
+      }
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       if params[:id] == 'sign_out'

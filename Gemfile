@@ -47,6 +47,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'audited'
 
 #gema para paginacion
 gem 'kaminari'
@@ -78,6 +79,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'prawn-rails'
 #admin lte
-source 'http://insecure.rails-assets.org/' do 
+source 'http://insecure.rails-assets.org/' do
   gem 'rails-assets-adminlte'
 end

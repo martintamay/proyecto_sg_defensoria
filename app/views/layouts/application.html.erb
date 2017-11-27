@@ -78,7 +78,9 @@
           <ul class="treeview-menu">
             <li><a href="<%=courts_path %>"><i class="fa fa-circle-o"></i>Juzgados </a></li>
             <li><a href="<%=judges_path %>"><i class="fa fa-circle-o"></i>Jueces </a></li>
-            <li><a href="<%=users_path %>"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+            <!--li><a href="<%=users_path %>"><i class="fa fa-circle-o"></i>Usuarios</a></li-->
+            <li><a href="<%= users_path({tipo_rol: "lawyer"}) %>"><i class="fa fa-circle-o"></i>Defensores</a></li>
+            <li><a href="<%= users_path({tipo_rol: "assistant"}) %>"><i class="fa fa-circle-o"></i>Asistentes</a></li>
             <li><a href="<%=suspects_path %>"><i class="fa fa-circle-o"></i> Imputados</a></li>
 
           </ul>
