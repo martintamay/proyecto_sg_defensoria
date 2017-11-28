@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 entity = Entity.new
 entity.name= 'Admin'
-entity.last_name= ''
+entity.last_name= 'Admin'
 entity.phone= ''
 entity.birthdate= '2017-01-01'
 entity.email= 'admin@defensoria.com'
@@ -19,4 +19,6 @@ admin.password = "123456"
 admin.entity = entity
 admin.save
 admin.revoke :default
+admin.revoke :assistant
 admin.add_role :admin
+admin.add_role :lawyer

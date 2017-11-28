@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :cambiar_rol, :auditoria_usuario]
-  #before_action :authenticate_user!
-  #load_and_authorize_resource
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
 
   def cambiar_rol
