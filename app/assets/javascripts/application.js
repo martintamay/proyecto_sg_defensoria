@@ -34,7 +34,7 @@
 //= require bootstrap.min.js
 
 //= require_tree .
-
+//
 
 $(document).ready(function() {
     $('#dato').DataTable( {
