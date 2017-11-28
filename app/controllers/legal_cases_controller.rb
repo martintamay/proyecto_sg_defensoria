@@ -1,6 +1,6 @@
 class LegalCasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_legal_case, only: [:show, :edit, :update, :destroy, :reporte_completo_caso]
+  before_action :set_legal_case, only: [:show, :edit, :update, :destroy, :reporte_completo_caso, :auditoria_caso]
   load_and_authorize_resource
 
   # GET /legal_cases
@@ -85,8 +85,58 @@ class LegalCasesController < ApplicationController
     end
   end
 
-  private
+  # GET /legal_cases/1/auditoria_caso
+  def auditoria_caso
+    @nomenu = true
+    @audits = @legal_case.audits.collect { |aud|
+      {
+        :user => User.find(aud.user_id).entity.full_name,
+        :changes => Hash[aud.audited_changes.map { |elemento, cambio|
+          #se setean las referencias como sus valores correctos
+          #si ese un id
+          if elemento.include?("_id") && cambio[1]!=0
+            if elemento=="user_id"
+              elemento = "user"
+              cambio = [User.find(cambio[0]).entity.full_name , User.find(cambio[1]).entity.full_name]
+            elsif elemento=="suspect_id"
+              elemento = "suspect"
+              cambio = [Suspect.find(cambio[0]).entity.full_name , Suspect.find(cambio[1]).entity.full_name]
+            elsif elemento=="judge_id"
+              elemento = "judge"
+              cambio = [Judge.find(cambio[0]).entity.full_name , Judge.find(cambio[1]).entity.full_name]
+            elsif elemento=="court_id"
+              elemento = "court"
+              cambio = [Court.find(cambio[0]).name , Court.find(cambio[1]).name]
+            elsif elemento=="criminal_record_id"
+              elemento = "criminal_record"
+              cambio = [CriminalRecord.find(cambio[0]).inquire_number , CriminalRecord.find(cambio[1]).inquire_number]
+            end
+          elsif elemento.include?("_id") && cambio[1]==0
+            if elemento=="user_id"
+              elemento = "user"
+              cambio = User.find(cambio[0]).entity.full_name
+            elsif elemento=="suspect_id"
+              elemento = "suspect"
+              cambio = Suspect.find(cambio[0]).entity.full_name
+            elsif elemento=="judge_id"
+              elemento = "judge"
+              cambio = Judge.find(cambio[0]).entity.full_name
+            elsif elemento=="court_id"
+              elemento = "court"
+              cambio = Court.find(cambio[0]).name
+            elsif elemento=="criminal_record_id"
+              elemento = "criminal_record"
+              cambio = CriminalRecord.find(cambio[0]).inquire_number
+            end
+          end
+          [elemento, cambio]
+        }],
+        :action => aud.action
+      }
+    }
+  end
 
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_legal_case
       @legal_case = LegalCase.find(params[:id])

@@ -31,8 +31,7 @@
 //= require AdminLTE/dist/js/adminlte.min.js
 //= require AdminLTE/dist/js/pages/dashboard.js
 //= require AdminLTE/dist/js/demo.js
-//= require AdminLTE/bower_components/morris.js/morris.min.js
-//= require  bootstrap.min.js
+//= require bootstrap.min.js
 
 //= require_tree .
 
@@ -42,51 +41,72 @@ $(document).ready(function() {
         "paging":   false,
         "ordering": false,
         "info":     false
-       
-        
-    
+
+
+
     } );
 } );
 $(document).ready( function() {
-			     $('#table_di').DataTable( {
-			     	lengthMenu: [[4, 25, 50, -1],[4, 25, 50, "Todas"]],
-			        language: {
-			          search: ' <i class=" btn btn-default fa fa-search"></i>',
-			          sLengthMenu:'Mostrar _MENU_ registros',
-			          sInfo:'Total de registros: _TOTAL_',
-			          sInfoEmpty: 'No hay datos registrados',
-			        oPaginate:{
-			          	sNext: '<i class="fa fa-arrow-circle-right"></i>',
-			          	sPrevious:'<i class="fa fa-arrow-circle-left"></i>'}
-						
-			        }
-			      } );
-			    });
+ $('#table_di').DataTable( {
+   	lengthMenu: [[4, 25, 50, -1],[4, 25, 50, "Todas"]],
+      language: {
+        search: ' <i class=" btn btn-default fa fa-search"></i>',
+        sLengthMenu:'Mostrar _MENU_ registros',
+        sInfo:'Total de registros: _TOTAL_',
+        sInfoEmpty: 'No hay datos registrados',
+      oPaginate:{
+      	sNext: '<i class="fa fa-arrow-circle-right"></i>',
+      	sPrevious:'<i class="fa fa-arrow-circle-left"></i>'}
+      }
+    });
+});
 
 /*-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --*/
 $.widget.bridge('uibutton', $.ui.button);
 
 /*--This JavaScript method for Print command--*/
-    function PrintDoc() {
-        var toPrint = document.getElementById('printarea');
-        var popupWin = window.open('', '_blank', 'width=350,height=150,location=no,left=200px');
-        popupWin.document.open();
-        popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
-        popupWin.document.write(toPrint.innerHTML);
-        popupWin.document.write('</html>');
-        popupWin.document.close();
-    }
+function PrintDoc() {
+    var toPrint = document.getElementById('printarea');
+    var popupWin = window.open('', '_blank', 'width=350,height=150,location=no,left=200px');
+    popupWin.document.open();
+    popupWin.document.write('<html><title>::Preview::</title><link rel="stylesheet" type="text/css" href="print.css" /></head><body onload="window.print()">')
+    popupWin.document.write(toPrint.innerHTML);
+    popupWin.document.write('</html>');
+    popupWin.document.close();
+}
 /*--This JavaScript method for Print Preview command--*/
-    function PrintPreview() {
-        var toPrint = document.getElementById('printarea');
-        var popupWin = window.open('', '_blank', 'width=350,height=150,location=no,left=200px');
-        popupWin.document.open();
-        popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body">')
-        popupWin.document.write(toPrint.innerHTML);
-        popupWin.document.write('</html>');
-        popupWin.document.close();
-    }
+function PrintPreview() {
+    var toPrint = document.getElementById('printarea');
+    var popupWin = window.open('', '_blank', 'width=350,height=150,location=no,left=200px');
+    popupWin.document.open();
+    popupWin.document.write('<html><title>::Print Preview::</title><link rel="stylesheet" type="text/css" href="Print.css" media="screen"/></head><body">')
+    popupWin.document.write(toPrint.innerHTML);
+    popupWin.document.write('</html>');
+    popupWin.document.close();
+}
 
+function mostrar_modificaciones(link, tabla){
+  //se setea el cargando
+  var newhtml = "";
+  newhtml += "<div class='text-center' style='padding: 50px;'>";
+  newhtml += "  <i class='fa fa-spinner fa-spin fa-3x fa-fw'></i>";
+  newhtml += "</div>";
+  document.getElementById("auditoria-"+tabla).innerHTML = newhtml;
+
+  $.get(link, {}, function (datos, estado, xhr){
+    var div = document.getElementById("auditoria-"+tabla);
+    if (div!=null) {
+      div.innerHTML = datos;
+      adjustFooter();
+    }
+  });
+}
+
+function cerrar_modificaciones(tabla){
+  //se setea el cargando
+  var newhtml = "";
+  document.getElementById("auditoria-"+tabla).innerHTML = newhtml;
+}
 
 /**
  * Particleground
@@ -98,21 +118,21 @@ $.widget.bridge('uibutton', $.ui.button);
  * Inspired by:
  * http://requestlab.fr/
  * http://disruptivebydesign.com/
- * 
+ *
  * @license The MIT License (MIT)
- * 
+ *
  * Copyright (c) 2014 Jonathan Nicol - @mrjnicol
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -130,7 +150,7 @@ $.widget.bridge('uibutton', $.ui.button);
 function(){for(var a=0,b=["ms","moz","webkit","o"],c=0;c<b.length&&!window.requestAnimationFrame;++c)window.requestAnimationFrame=window[b[c]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[b[c]+"CancelAnimationFrame"]||window[b[c]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(b){var c=(new Date).getTime(),d=Math.max(0,16-(c-a)),e=window.setTimeout(function(){b(c+d)},d);return a=c+d,e}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(a){clearTimeout(a)})}();
 
 $(function(){
-            
+
     $('#particles').particleground({
         minSpeedX: 0.1,
         maxSpeedX: 0.7,
@@ -149,4 +169,3 @@ $(function(){
     });
 
 });
-

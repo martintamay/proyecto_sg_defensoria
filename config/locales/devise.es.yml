@@ -1,0 +1,62 @@
+es:
+  devise:
+    confirmations:
+      confirmed: "Tu dirección de correo ha sido exitosamente confirmado."
+      send_instructions: "Recibirás un mensaje sobre como confirmar tu email en unos momentos."
+      send_paranoid_instructions: "Si tu email se encuentra en nuestra base de datos recibirás instrucciones de como confirmarlo en unos momentos."
+    failure:
+      already_authenticated: "Ya has iniciado sesión."
+      inactive: "Tu cuenta aún no ha sido confirmada."
+      invalid: "%{authentication_keys} o contraseña equivocadas."
+      locked: "Tu cuenta está bloqueada."
+      last_attempt: "Tienes un intento más antes de que tu cuenta se bloquee."
+      not_found_in_database: "%{authentication_keys} o contrseñas inválidas."
+      timeout: "Tu sesión ha expirado. Vuelve a iniciar sesión para continuar."
+      unauthenticated: "Tienes que iniciar sesión o registrarte antes de continuar."
+      unconfirmed: "Tenes que confirmar tu email antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instruciones de Confirmación"
+      reset_password_instructions:
+        subject: "Instucciones de reseteo de contraseña"
+      unlock_instructions:
+        subject: "Instrucciones de Desbloqueo"
+      email_changed:
+        subject: "Correo cambiado"
+      password_change:
+        subject: "Contraseña cambiada"
+    omniauth_callbacks:
+      failure: "No pudimos autenticarlo desde %{kind} porque \"%{reason}\"."
+      success: "Autenticado exitosamente desde la cuenta %{kind}."
+    passwords:
+      no_token: "No puedes acceder aesta página a menos que vengas de un reseteo de confirmación."
+      send_instructions: "Recibirás instrucciones sobre como resetear tu contraseña en unos momentos."
+      send_paranoid_instructions: "Si tu correo está en nuestra base de datos recibirás un link para el reseteo en unos momentos."
+      updated: "Tu contraseña fue cambiada exitosamente. Ya se ha iniciado sesión."
+      updated_not_active: "Tu contraseña fue camiada exitosamente."
+    registrations:
+      destroyed: "Tu cuenta fue cancelada exitosamente. Esperamos volver a verte pronto."
+      signed_up: "Bienvenido! Te has registrado exitosamente."
+      signed_up_but_inactive: "Te has registrado exitosamente pero no puedes iniciar sesión porque no has confirmado tu cuenta."
+      signed_up_but_locked: "Te has registrado exitosamente pero no puedes iniciar sesión porque tu cuenta está bloqueada."
+      signed_up_but_unconfirmed: "Un mensaje con el link de confirmación fue enviado a tu correo. Sigue las instrucciones para confirmar tu cuenta."
+      update_needs_confirmation: "Has actualizado tu cuenta exitosamente pero necesitamos volver a confirmar tu correo. Sigue las instrucciones que te fueron enviadas."
+      updated: "Tu cuenta fue actualizada exitosamente."
+    sessions:
+      signed_in: "Has iniciado sesión exitosamente."
+      signed_out: "Te has deslogueado exitosamente."
+      already_signed_out: "Ya te has deslogueado."
+    unlocks:
+      send_instructions: "Recibirás instrucciones sobre como desbloquear tu cuenta en unos momentos."
+      send_paranoid_instructions: "Si tu cuenta existe recibirás instrucciones para desbloquearlo en unos momentos."
+      unlocked: "Tu cuenta fue desbloqueada exitosamente. Para continuar inicia sesión."
+  errors:
+    messages:
+      already_confirmed: "ya fue confirmado, intenta iniciar sesión"
+      confirmation_period_expired: "necesita ser confirmado antes de %{period}, por favor pide uno nuevo"
+      expired: "ha expirado, solicita uno nuevo"
+      not_found: "no se encuentra"
+      not_locked: "no estába bloqueada"
+      not_saved:
+        one: "1 error evita que %{resource} sea guardado:"
+        other: "%{count} errores evitan que %{resource} sea guardado:"

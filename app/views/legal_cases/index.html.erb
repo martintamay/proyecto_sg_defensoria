@@ -1,58 +1,72 @@
 <link rel="stylesheet" type="text/css" href="print.css" />
 <link rel="stylesheet" type="text/css" href="Style.css" />
 <!-- PANEL PRINCIPAL -->
-<input type="button" value="Print" class="btn" onclick="PrintDoc()"/>
-  <div id= "printarea" class="box">
-            <div class="box-header">
-              <h3 class="box-title">LISTA DE CASOS</h3>
-               <div class="box-tools">
-                  <ul class=" no-margin pull-right">
-                    <%= link_to (fa_icon 'plus', text: 'Crear'), new_legal_case_path, class: 'btn btn-primary' %>
-                  </ul>
-               </div>
-            </div>
+<div id= "printarea" class="box">
+  <div class="box-header">
+    <h3 class="box-title">LISTA DE CASOS</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <input type="button" value="Imprimir" class="btn" onclick="PrintDoc()"/>
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_legal_case_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
 
 
-              <!-- TABLA -->
-            <div class="panel-body "  >
-                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
-                    <thead>  <!-- TITULOS DE LA TABLE -->
-                        <tr>
-                          <!-- <th>Formulario de Entrada</th>-->
-                          <th>Nombre del Caso</th>
-                          <th>Defensor</th>
-                          <th>Juzgado</th>
-                          <th>Juez</th>
-                          <th>Imputado</th>
-                          <th>Ficha Penal Nro.</th>
-                          <!--<th>Comentario</th>-->
-                          <th>Sentencia</th>
-                          <th class="col-md-2"></th>
-                        </tr>
-                    </thead>
-                    <!-- CAMPOS QUE CONTENDRA -->
-                    <tbody>
-                        <% @legal_cases.each do |legal_case| %>
-                          <tr>
-                            <!--td><%= legal_case.entry_form %></td> -->
-                            <td><%= legal_case.name %></td>
-                            <td><%= legal_case.user.entity.full_name %></td>
-                            <td><%= legal_case.court.name %></td>
-                            <td><%= legal_case.judge.entity.full_name %></td>
-                            <td><%= legal_case.suspect.entity.full_name %></td>
-                            <td><%= legal_case.criminal_record.inquire_number %></td>
-                            <!--<td><%= legal_case.comment %></td>-->
-                            <td><%= legal_case.final_sentence %></td>
-                            <td align="center" >
-                              <div class="btn-group">
-                                <%= link_to (fa_icon 'eye' ), legal_case ,class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case),class: "btn btn-default" %>
-                                <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
-                              </div>
-                            </td>
-                          </tr>
-                        <% end %>
-                    </tbody>
-              </table>
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>  <!-- TITULOS DE LA TABLE -->
+        <tr>
+          <!-- <th>Formulario de Entrada</th>-->
+          <th>Nombre del Caso</th>
+          <th>Defensor</th>
+          <th>Juzgado</th>
+          <th>Juez</th>
+          <th>Imputado</th>
+          <th>Ficha Penal Nro.</th>
+          <!--<th>Comentario</th>-->
+          <th>Sentencia</th>
+          <th class="col-md-2" />
+          <th />
+        </tr>
+      </thead>
+      <!-- CAMPOS QUE CONTENDRA -->
+      <tbody>
+        <% @legal_cases.each do |legal_case| %>
+          <tr>
+            <!--td><%= legal_case.entry_form %></td> -->
+            <td><%= legal_case.name %></td>
+            <td><%= legal_case.user.entity.full_name %></td>
+            <td><%= legal_case.court.name %></td>
+            <td><%= legal_case.judge.entity.full_name %></td>
+            <td><%= legal_case.suspect.entity.full_name %></td>
+            <td><%= legal_case.criminal_record.inquire_number %></td>
+            <!--<td><%= legal_case.comment %></td>-->
+            <td><%= legal_case.final_sentence %></td>
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), legal_case ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_legal_case_path(legal_case),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), legal_case, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
+            </td>
+            <td>
+              <a href="#auditoria_casos" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_caso_legal_case_url(legal_case)%>', 'casos')">
+                <% if legal_case.audits.count < 10 %>
+                  <%= legal_case.audits.count %>
+                <% else %>
+                  9+
+                <% end %>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-</div>
+
+
+<!-- PANEL PRINCIPAL AUDITORIA -->
+<div id="auditoria-casos"></div>

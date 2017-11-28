@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="skin-blue sidebar-mini">
-<% if user_signed_in? %>
+<% if user_signed_in? and (@nomenu==nil || !@nomenu) %>
 <div class="wrapper">
 
   <header class="main-header">
@@ -134,12 +134,6 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-
-      <footer class="footer">
-        <div class="container">
-          <span>Copyright © 2017 - Univeridad Nacional de Itapúa - Facultad de Ingeniería.</span>
-        </div>
-    </footer>
   <% end %>
 
   <!-- Content Wrapper. Contains page content -->
@@ -149,14 +143,19 @@
   <% if alert %>
     <p class= "alert"><%= alert %></p>
   <% end %>
-  <% if user_signed_in? %>
+  <% if user_signed_in? and (@nomenu==nil || !@nomenu) %>
   <div class="content-wrapper">
     <section class="content container-fluid">
       <% end %>
       <%= yield %>
-      <% if user_signed_in? %>
+      <% if user_signed_in? and (@nomenu==nil || !@nomenu) %>
     </section>
   </div>
+  <footer class="page-footer footer">
+      <div class="container-fluid">
+        <span>Copyright © 2017 - Univeridad Nacional de Itapúa - Facultad de Ingeniería.</span>
+      </div>
+  </footer>
 
 </div>
 <!-- ./wrapper -->

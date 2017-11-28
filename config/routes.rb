@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     member do
       get "reporte_completo_caso"
+      get :auditoria_caso
     end
   end
   # get "legal_cases/reporte", to: 'legal_cases#reporte'

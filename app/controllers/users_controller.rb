@@ -100,13 +100,19 @@ class UsersController < ApplicationController
 
   # GET /users/1/auditoria_usuario
   def auditoria_usuario
-    #@audits = obtenerAuditoria(@user)
+    @nomenu = true
     @audits = @user.audits.collect { |aud|
       {
-        :user => aud.user_id,
-        :changes => aud.audited_changes.each do |elemento|
-                      
-                    end,
+        :user => User.find(aud.user_id).entity.full_name,
+        :changes => Hash[aud.audited_changes.map { |elemento, cambio|
+          #se setean las referencias como sus valores correctos
+          #si ese un entity
+          if elemento=="entity_id"
+            elemento = "entity"
+            cambio = [Entity.find(cambio[0]).full_name , Entity.find(cambio[1]).full_name]
+          end
+          [elemento, cambio]
+        }],
         :action => aud.action
       }
     }
@@ -126,6 +132,7 @@ class UsersController < ApplicationController
   end
 
   private
+
     # obtain audited changes from an object
     def obtenerAuditoria(user)
       user.audits.collect { |aud|

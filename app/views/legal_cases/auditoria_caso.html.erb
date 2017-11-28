@@ -2,11 +2,11 @@
 <div class="box">
   <div class="box-header">
     <h3 class="box-title">
-      Cambios para <%= @user.entity.full_name %>
+      Cambios para <%= @legal_case.name %>
     </h3>
      <div class="box-tools">
         <ul class=" no-margin pull-right">
-          <button onclick="cerrar_modificaciones('usuarios')" class="btn btn-default">Cerrar</button>
+          <button onclick="cerrar_modificaciones('casos')" class="btn btn-default">Cerrar</button>
         </ul>
      </div>
   </div>
@@ -27,7 +27,11 @@
             <td><%= audit[:user].to_s %></td>
             <td>
               <% audit[:changes].each do |campo, valor| %>
-                <b><%= t campo %>:</b> <%= valor[0] %> <%= (fa_icon 'arrow-right') %> <%= valor[1] %>  <br>
+                <% if valor.is_a? String %>
+                  <b><%= t campo %>:</b> <%= valor %>  <br>
+                <% else %>
+                  <b><%= t campo %>:</b> <%= valor[0] %> <%= (fa_icon 'arrow-right') %> <%= valor[1] %>  <br>
+                <% end %>
               <% end %>
             </td>
           </tr>

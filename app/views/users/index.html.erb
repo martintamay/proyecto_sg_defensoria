@@ -1,3 +1,5 @@
+
+
 <!-- PANEL PRINCIPAL -->
 <div class="box">
   <div class="box-header">
@@ -15,7 +17,6 @@
      </div>
   </div>
 
-
   <!-- TABLA -->
   <div class="panel-body "  >
     <table id="table_di" class= "table table-hover   table-bordered table-striped" >
@@ -27,7 +28,8 @@
           <th>Nacimiento</th>
           <th>Email (Entidad)</th>
           <th>Tipo de Usuario</th>
-          <th class="col-md-2"></th>
+          <th class="col-md-2" />
+          <th />
         </tr>
       </thead>
       <tbody>
@@ -39,12 +41,26 @@
             <td><%= user.entity.birthdate %></td>
             <td><%= user.entity.email %></td>
             <td><%= user.type_user %></td>
-            <td align="center" ><%= link_to (fa_icon 'eye'), user, class: 'btn btn-info'  %>
-             <%= link_to (fa_icon 'pencil'), edit_user_path(user), class: 'btn btn-success' %>
-             <%= link_to (fa_icon 'trash'), user, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+            <td align="center" >
+              <%= link_to (fa_icon 'eye'), user, class: 'btn btn-info'  %>
+              <%= link_to (fa_icon 'pencil'), edit_user_path(user), class: 'btn btn-success' %>
+              <%= link_to (fa_icon 'trash'), user, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+            </td>
+            <td>
+              <a href="#auditoria_usuarios" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_usuario_user_url(user)%>', 'usuarios')">
+                <% if user.audits.count < 10 %>
+                  <%= user.audits.count %>
+                <% else %>
+                  9+
+                <% end %>
+              </a>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
+
+<!-- PANEL PRINCIPAL AUDITORIA -->
+<div id="auditoria-usuarios"></div>
