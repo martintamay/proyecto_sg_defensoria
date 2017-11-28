@@ -17,33 +17,30 @@
             <!-- encabezado -->
               <div class="panel-heading ">
                 <b class="panel-title">Transferencia de Caso</b>
-                
+
               </div>
               <!-- formulario -->
               <div class="panel-body " >
-              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor Anterior" %>
+              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Nuevo Defensor Encargado" %>
 
-              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor Nuevo" %>
-           
               <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %>
 
                <%= form.date_select :date_ttransfer, id: :transfer_case_date_transfer, label: "Fecha de Transferencia" %>
-              
+
               <%= form.text_area :comentary, id: :transfer_case_comentary, label: "Comentario" %>
 
-             
-           
+
+
               <!-- Botones -->
-             <div class="col-md-12">    
+             <div class="col-md-12">
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
+                      <% end %>
                       <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  transfer_cases_path, class: 'btn btn-default pull-left' %>
-                    </div>  
-                
+                    </div>
 
-            <% end %>          
+
+            <% end %>
           </div> <!-- fin panel default -->
         </div> <!-- fin group -->
         </div>
-   

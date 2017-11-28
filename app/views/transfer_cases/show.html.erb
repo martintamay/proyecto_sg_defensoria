@@ -1,21 +1,17 @@
 
 <div class="col-md-4"></div>
-<div class="col-md-5"><!-- Tamaño del formulario --> 
- <!-- Formulario --> 
+<div class="col-md-5"><!-- Tamaño del formulario -->
+ <!-- Formulario -->
   <div class="panel panel-info">
     <div class="panel-heading " align="center">
-      <h3>Nuevo Caso Transferido</h3> 
+      <h3>Nuevo Caso Transferido</h3>
     </div>
         <div class="panel-body">
               <ul class="list-group">
                 <li class="list-group-item">
-                  <strong>Usuario Anterior:</strong>
+                  <strong>Nuevo Defensor Encargado:</strong>
                   <%= @transfer_case.user.entity.full_name %>
                  </li>
-                <li class="list-group-item">
-                  <strong>Usuario Nuevo:</strong>
-                  <%= @transfer_case.user.entity.full_name %>
-                </li>
                 <li class="list-group-item">
                   <strong>Caso:</strong>
                   <%= @transfer_case.legal_case.name %>
@@ -33,7 +29,4 @@
               <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), transfer_cases_path, class: 'btn btn-default pull-left' %>
             </div>
           </div>
-          </div> 
-
-          
-              
+          </div>

@@ -1,28 +1,20 @@
-  <div class="box">
-            <div class="box-header">
-              <h3 class="box-title" > CASO </h3>
-              
-              <div>&nbsp;</div>
-           
-           
-             <ul class="col-md-12">
-                      <li class="list-group-item"><strong>Nombre del caso: &nbsp;</strong><%= @legal_case.name %></li>
-                      <li class="list-group-item"><strong>Imputado: &nbsp;</strong><%= @legal_case.suspect.entity.full_name %></li>
-                      <li class="list-group-item"><strong>Defensor: &nbsp;</strong><%= @legal_case.user.entity.full_name %></li>
-                      <li class="list-group-item"><strong>Juzgado: &nbsp;</strong><%= @legal_case.court.name %></li>
-                      <li class="list-group-item"><strong>Juez: &nbsp;</strong><%= @legal_case.judge.entity.full_name %></li>
-                      <li class="list-group-item"><strong>Ficha Penal: &nbsp;</strong><%= @legal_case.criminal_record.inquire_number %></li>
-                      <li class="list-group-item"><strong>Sentencia Final: &nbsp;</strong><%= @legal_case.final_sentence %></li>
-                      <li class="list-group-item"><strong>Comentario: &nbsp;</strong><%= @legal_case.comment %></li>
-                  </ul>
-      
-                    <div class="col-md-12" >
-                         <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_legal_case_path(@legal_case), class: 'btn btn-success pull-right' %>
-                         <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), legal_cases_path, class: 'btn btn-default pull-left' %>
-                    </div> 
-           </div>
-                  
-              
-            </div>
-            </div>
-              
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title" > CASO </h3>
+    <div>&nbsp;</div>
+    <ul class="col-md-12">
+      <li class="list-group-item"><strong>Nombre del caso: &nbsp;</strong><%= @legal_case.name %></li>
+      <li class="list-group-item"><strong>Imputado: &nbsp;</strong><%= @legal_case.suspect.entity.full_name %></li>
+      <li class="list-group-item"><strong>Defensor: &nbsp;</strong><%= @legal_case.user.entity.full_name %></li>
+      <li class="list-group-item"><strong>Juzgado: &nbsp;</strong><%= @legal_case.court.name %></li>
+      <li class="list-group-item"><strong>Juez: &nbsp;</strong><%= @legal_case.judge.entity.full_name %></li>
+      <li class="list-group-item"><strong>Ficha Penal: &nbsp;</strong><%= @legal_case.criminal_record.inquire_number %></li>
+      <li class="list-group-item"><strong>Sentencia Final: &nbsp;</strong><%= @legal_case.final_sentence %></li>
+      <li class="list-group-item"><strong>Comentario: &nbsp;</strong><%= @legal_case.comment %></li>
+    </ul>
+    <div class="col-md-12" >
+     <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_legal_case_path(@legal_case), class: 'btn btn-success pull-right' %>
+     <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), legal_cases_path, class: 'btn btn-default pull-left' %>
+    </div>
+  </div>
+</div>

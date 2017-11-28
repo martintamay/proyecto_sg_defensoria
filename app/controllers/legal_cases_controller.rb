@@ -1,17 +1,22 @@
 class LegalCasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_legal_case, only: [:show, :edit, :update, :destroy]
+  before_action :set_legal_case, only: [:show, :edit, :update, :destroy, :reporte_completo_caso]
   load_and_authorize_resource
 
   # GET /legal_cases
   # GET /legal_cases.json
 
-def reporte
-  # @legal_cases = LegalCase.all
-  @hearings = Hearing.includes(:legal_case).all
- @transfers = TransferCase.includes(:legal_case).all
-end
+  def reporte
+    # @legal_cases = LegalCase.all
+    @hearings = Hearing.includes(:legal_case).all
+    @transfers = TransferCase.includes(:legal_case).all
+  end
 
+  def reporte_completo_caso
+    @criminal_record = @legal_case.criminal_record
+    @hearings = @legal_case.hearings
+    @transfers = @legal_case.transfer_cases
+  end
 
   def index
     @legal_cases = LegalCase.all

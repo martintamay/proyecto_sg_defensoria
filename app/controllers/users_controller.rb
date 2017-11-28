@@ -104,7 +104,9 @@ class UsersController < ApplicationController
     @audits = @user.audits.collect { |aud|
       {
         :user => aud.user_id,
-        :changes => aud.audited_changes,
+        :changes => aud.audited_changes.each do |elemento|
+                      
+                    end,
         :action => aud.action
       }
     }

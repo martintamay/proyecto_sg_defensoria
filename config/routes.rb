@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     collection do
       get "reporte"
     end
+    member do
+      get "reporte_completo_caso"
+    end
   end
   # get "legal_cases/reporte", to: 'legal_cases#reporte'
   resources :criminal_records
