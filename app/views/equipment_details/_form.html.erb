@@ -19,8 +19,11 @@
       </div>
       <!-- formulario -->
       <div class="panel-body " >
-        <%= form.text_field :legal_case_id, Legal_case.all, :id, :name_with_initial, label: "Caso" %>
-        <%= form.text_field :user_id, User.all, :id, :name_with_initial, label: "Defensor" %>
+
+        <div class="col-md-6"><%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %></div>
+
+        <div class="col-md-6"><%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Defensor" %></div>
+        
        <!-- Boton agregar -->
         <div>&nbsp;</div>
         <div class="col-md-12">
