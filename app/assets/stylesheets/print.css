@@ -5,6 +5,9 @@
     {
         display: none;
     }
+    #ocultar{
+        display: none;
+    }
     .tble
     {
         background-color: #CD853F;
@@ -29,4 +32,8 @@
         background-color: #CD853F;
         border:1px solid green;
     }
+
+    
+  
   }
+

@@ -91,7 +91,6 @@ class LegalCasesController < ApplicationController
     @audits = @legal_case.audits.collect { |aud|
       {
         :user => User.find(aud.user_id).entity.full_name,
-        :date => aud.created_at,
         :changes => Hash[aud.audited_changes.map { |elemento, cambio|
           #se setean las referencias como sus valores correctos
           #si ese un id

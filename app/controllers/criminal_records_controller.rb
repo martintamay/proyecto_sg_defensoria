@@ -1,6 +1,5 @@
 class CriminalRecordsController < ApplicationController
-  before_action :set_criminal_record, only: [:show, :edit, :update, :destroy, :auditoria_ficha_penal]
-  before_action :authenticate_user!
+  before_action :set_criminal_record, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
   # GET /criminal_records
@@ -62,20 +61,6 @@ class CriminalRecordsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-    # GET /criminal_record/1/auditoria_ficha_penal
-    def auditoria_ficha_penal
-      @nomenu = true
-      @audits = @criminal_record.audits.collect { |aud|
-        {
-          :user => User.find(aud.user_id).entity.full_name,
-          :date => aud.created_at,
-          :changes => aud.audited_changes,
-          :action => aud.action
-        }
-      }
-    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

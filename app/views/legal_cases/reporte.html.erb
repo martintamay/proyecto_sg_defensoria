@@ -1,7 +1,11 @@
   <!-- TABLA -->
+  <link rel="stylesheet" type="text/css" href="print.css" />
+<link rel="stylesheet" type="text/css" href="Style.css" />
             <div class="panel-body "  >
-                <table id="table_di" class= "table table-hover   table-bordered table-striped" >
-                    <thead>  <!-- TITULOS DE LA TABLE -->
+             
+             <%= link_to (fa_icon 'file-pdf-o', text:'Imprimir' ),"javascript:PrintDoc()" ,class: "btn btn-default" %>
+                <table id="dato" class= "table table-hover   table-bordered table-striped" >
+                    <thead id ="printarea">  <!-- TITULOS DE LA TABLE -->
                         <tr>
                           <!-- <th>Formulario de Entrada</th>-->
                           <th>Nombre del Caso</th>

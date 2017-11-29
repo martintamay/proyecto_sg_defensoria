@@ -1,13 +1,22 @@
-<p id="notice"><%= notice %></p>
-<h1 align="center">Turnos <%= link_to (fa_icon 'plus', text: ''), new_shift_path, class: 'btn btn-primary' %></h1>
 
- <hr>     
-      
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Turnos</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_shift_path, class: 'btn btn-primary' %> 
+     </div>
+  </div>
+
+
+  <!-- TABLA -->
+  <div class="panel-body table-responsive "  >
 <table id="table_di" class= "table table-hover  table-striped table-bordered" >
   <thead>
     <tr>
       <th>Fecha de Turno</th>
-      <th>Usuario</th>
+      <th>Defensor</th>
       <th class="col-md-2"></th>
     </tr>
   </thead>

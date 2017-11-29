@@ -1,5 +1,5 @@
 class SuspectsController < ApplicationController
-  before_action :set_suspect, only: [:show, :edit, :update, :destroy, :auditoria_sospechosos]
+  before_action :set_suspect, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 def reporte
   @suspects = Suspect.all
@@ -8,7 +8,7 @@ end
   # GET /suspects.json
   def index
     @suspects = Suspect.all
-  end
+  end 
 
   # GET /suspects/1
   # GET /suspects/1.json
@@ -63,39 +63,6 @@ end
       format.html { redirect_to suspects_url, notice: 'Suspect was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-
-
-  # GET /suspects/1/auditoria_sospechosos
-  def auditoria_sospechosos
-    @nomenu = true
-    @audits = @suspect.audits.collect { |aud|
-      {
-        :user => User.where(id: aud.user_id).count>0 ? User.find(aud.user_id).entity.full_name : "Undefined",
-        :date => aud.created_at,
-        :changes => Hash[aud.audited_changes.map { |elemento, cambio|
-          #se setean las referencias como sus valores correctos
-          #si ese un id
-          if elemento.include?("_id") && cambio[1]!=0
-            if elemento=="entity_id"
-              elemento = "entity"
-              cambio = [Entity.find(cambio[0]).full_name , Entity.find(cambio[1]).full_name]
-            end
-          elsif elemento.include?("_id") && cambio[1]==0
-            if elemento=="entity_id"
-              elemento = "entity"
-              cambio = Entity.where(id: cambio[0]).count>0 ? Entity.find(cambio[0]).full_name : nil
-            end
-          end
-          if cambio==nil
-            cambio="Sin Definir"
-          end
-          [elemento, cambio]
-        }],
-        :action => aud.action
-      }
-    }
   end
 
   private

@@ -7,7 +7,7 @@ class EquipmentDetailsController < ApplicationController
   # GET /equipment_details.json
   def index
     @equipment_details = EquipmentDetail.all
-    @judges = Judge.all
+  
   end
 
   # GET /equipment_details/1

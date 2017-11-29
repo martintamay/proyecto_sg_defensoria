@@ -1,7 +1,7 @@
 class JudgesController < ApplicationController
   before_action :set_judge, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   # GET /judges
   # GET /judges.json
