@@ -1,5 +1,5 @@
 class TransferCasesController < ApplicationController
-  before_action :set_transfer_case, only: [:show, :edit, :update, :destroy]
+  before_action :set_transfer_case, only: [:show, :edit, :update, :destroy, :auditoria_transferencia]
   load_and_authorize_resource
 
   # GET /transfer_cases
@@ -60,6 +60,43 @@ class TransferCasesController < ApplicationController
       format.html { redirect_to transfer_cases_url, notice: 'Transfer case was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /transfer_cases/1/auditoria_transferencia
+  def auditoria_transferencia
+    @nomenu = true
+    @audits = @transfer_case.audits.collect { |aud|
+      {
+        :user => User.where(id: aud.user_id).count>0 ? User.find(aud.user_id).entity.full_name : "Eliminado => "+aud.user_id,
+        :date => aud.created_at,
+        :changes => Hash[aud.audited_changes.map { |elemento, cambio|
+          #se setean las referencias como sus valores correctos
+          #si ese un id
+          if elemento.include?("_id") && cambio[1]!=0
+            if elemento=="user_id"
+              elemento = "user"
+              cambio = [User.find(cambio[0]).entity.full_name , User.find(cambio[1]).entity.full_name]
+            elsif elemento=="legal_case_id"
+              elemento = "legal_case"
+              cambio = [LegalCase.find(cambio[0]).name , LegalCase.find(cambio[1]).name]
+            end
+          elsif elemento.include?("_id") && cambio[1]==0
+            if elemento=="user_id"
+              elemento = "user"
+              cambio = User.where(id: cambio[0]).count>0 ? User.find(cambio[0]).entity.full_name : nil
+            elsif elemento=="legal_case_id"
+              elemento = "legal_case"
+              cambio = LegalCase.where(id: cambio[0]).count>0 ? LegalCase.find(cambio[0]).name : nil
+            end
+          end
+          if cambio==nil
+            cambio="Sin Definir"
+          end
+          [elemento, cambio]
+        }],
+        :action => aud.action
+      }
+    }
   end
 
   private

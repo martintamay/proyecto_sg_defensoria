@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   after_create :assign_default_role
-  audited
+  audited except: [:reset_password_token, :reset_password_sent_at, :last_sign_in_at, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :remember_created_at]
   resourcify
   rolify
 

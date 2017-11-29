@@ -103,13 +103,28 @@ class UsersController < ApplicationController
     @nomenu = true
     @audits = @user.audits.collect { |aud|
       {
-        :user => User.find(aud.user_id).entity.full_name,
+        :user => User.where(id: aud.user_id).count>0 ? User.find(aud.user_id).entity.full_name : "Eliminated => "+aud.user_id,
+        :date => aud.created_at,
         :changes => Hash[aud.audited_changes.map { |elemento, cambio|
           #se setean las referencias como sus valores correctos
-          #si ese un entity
-          if elemento=="entity_id"
-            elemento = "entity"
-            cambio = [Entity.find(cambio[0]).full_name , Entity.find(cambio[1]).full_name]
+          #si ese un id
+          if elemento.include?("_id") && cambio[1]!=0
+            if elemento=="entity_id"
+              elemento = "entity"
+              cambio = [Entity.find(cambio[0]).full_name , Entity.find(cambio[1]).full_name]
+            end
+          elsif elemento.include?("_id") && cambio[1]==0
+            if elemento=="entity_id"
+              elemento = "entity"
+              cambio = Entity.where(id: cambio[0]).count>0 ? Entity.find(cambio[0]).full_name : nil
+            end
+          end
+          if elemento == "encrypted_password"
+            elemento = "Contraseña"
+            cambio = "Cambio de contraseña"
+          end
+          if cambio==nil
+            cambio="Sin Definir"
           end
           [elemento, cambio]
         }],
