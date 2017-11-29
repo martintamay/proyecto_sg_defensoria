@@ -26,21 +26,22 @@
                <%= render "shared/entity_fields", :form => ent %>
               <% end %></div>
               <div class="col-md-6">
-              <%= form.text_field :ci, id: :suspect_ci, label: 'CI' %></div>
+              <%= form.text_field :ci, id: :suspect_ci, label: 'CI', required: 'true', placeholder: 'Este campo es obligatorio', type: 'number' %></div>
               <div class="col-md-6">
-              <%= form.text_field :reason, id: :suspect_reason, label: 'Causa' %></div>
+              <%= form.text_field :reason, id: :suspect_reason, label: 'Causa', required: "true", placeholder: 'Este campo es Obligatorio' %></div>
               <div class="col-md-6">
-              <%= form.text_field :mothers_name, id: :suspect_mothers_name, label: 'Nombre de Madre' %></div>
+              <%= form.text_field :mothers_name, id: :suspect_mothers_name, label: 'Nombre de Madre', placeholder: 'Este campo es obligatorio'  %></div>
               <div class="col-md-6">
-              <%= form.text_field :fathers_name, id: :suspect_fathers_name, label: 'Nombre de Padre' %></div>
               <div class="col-md-6">
-              <%= form.text_field :criminal_record, id: :suspect_record, label: 'Antecedentes' %></div>
+              <%= form.text_field :fathers_name, id: :suspect_fathers_name, label: 'Nombre de Padre', placeholder: 'Este campo es obligatorio'  %></div>
               <div class="col-md-6">
-              <%= form.text_field :present_status, id: :suspect_present_status, label: 'Estado Actual' %></div>
+              <%= form.text_field :criminal_record, id: :suspect_record, label: 'Antecedentes', placeholder: 'Este campo es obligatorio'  %></div>
               <div class="col-md-6">
-              <%= form.text_field :nationality, id: :suspect_nationality, label: 'Nacionalidad' %></div>
+              <%= form.text_field :present_status, id: :suspect_present_status, label: 'Estado Actual',required: "true", placeholder: 'Este campo es Obligatorio' %></div>
               <div class="col-md-6">
-              <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio' %></div>
+              <%= form.text_field :nationality, id: :suspect_nationality, label: 'Nacionalidad', required: "true", placeholder: 'Este campo es Obligatorio' %></div>
+              <div class="col-md-6">
+              <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio', placeholder: 'Este campo es obligatorio' %></div>
               <!-- Boton agregar -->
 
                     <div class="col-md-12">    

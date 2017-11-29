@@ -23,10 +23,10 @@
               <!-- formulario -->
               <div class="panel-body " >
                 <div>&nbsp;</div>
-              <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado" %>
-              <%= form.text_field :place, id: :reclusion_place,label:"Lugar" %>
+               <%= form.collection_select :suspect_id, Suspect.all, :id, :name_with_initial, label:"Imputado", required: "true", placeholder: 'Este campo es Obligatorio' %>
+              <%= form.text_field :place, id: :reclusion_place,label:"Lugar", required: "true", placeholder: 'Este campo es Obligatorio' %>
               <div>&nbsp;</div>
-              <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada" %>
+              <%= form.date_select :date_entry, id: :reclusion_date_entry,label:"Fecha De Entrada", required: "true", placeholder: 'Este campo es Obligatorio' %>
               <div>&nbsp;</div>
               <%= form.date_select :date_out, id: :reclusion_date_out,label:"Fecha De Salida" %>
   <div>&nbsp;</div>

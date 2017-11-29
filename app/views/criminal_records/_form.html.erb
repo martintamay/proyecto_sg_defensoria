@@ -20,28 +20,28 @@
       <!-- formulario -->
       <div class="panel-body  " >
         <div class="col-md-6">
-          <%= form.text_field :procedural_stage, id: :criminal_record_procedural_stage, label: "Etapa Procesal" %>
+           <%= form.text_field :procedural_stage, id: :criminal_record_procedural_stage, label: "Etapa Procesal " ,required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
-          <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente" %>
+ <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente",required: "true", placeholder: 'Este campo es Obligatorio', type: "number"  %>
         </div>
         <div class="col-md-6">
-          <%= form.date_field :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion" %>
+          <%= form.date_select :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
-          <%= form.date_field :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision" %>
+                    <%= form.date_select :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
-          <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito" %>
+            <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
-          <%= form.text_field :commission_place, id: :criminal_record_commission_place, label: "Lugar de Comision" %>
+          <%= form.text_field :commission_place, id: :criminal_record_commission_place, label: "Lugar de Comision", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
-          <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion" %>
+          <%= form.text_area :precautionary_measures, id: :criminal_record_precautionary_measures, label: "Medida de Prevencion", required: "true", placeholder: 'Este campo es Obligatorio'%>
         </div>
         <div class="col-md-6">
-          <%= form.text_field :prosecutor_unit, id: :criminal_record_prosecutor_unit, label: "Unidad Fiscal" %>
+                 <%= form.text_field :prosecutor_unit, id: :criminal_record_prosecutor_unit, label: "Unidad Fiscal", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-12">
           <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>

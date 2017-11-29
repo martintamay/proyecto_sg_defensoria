@@ -18,8 +18,8 @@
         <%= render "shared/entity_fields", :form => ent %>
       <% end %>
 
-      <%= form.password_field :password, id: :user_password, label: "Contraseña", :autocomplete => :off %>
-      <%= form.password_field :password_confirmation, id: :user_password_confirmation, label: "Confirmar Contraseña", autocomplete: false %>
+      <%= form.password_field :password, id: :user_password, label: "Contraseña", :autocomplete => :off, required: "true", placeholder: 'Este campo es Obligatorio' %>
+      <%= form.password_field :password_confirmation, id: :user_password_confirmation, label: "Confirmar Contraseña",required: "true", placeholder: 'Este campo es Obligatorio', autocomplete: false %>
       <% if @user!=nil && !@user.new_record? %>
         <div class="form-group">
           <p><b>Roles:</b>

@@ -58,10 +58,18 @@ end
   # DELETE /suspects/1
   # DELETE /suspects/1.json
   def destroy
-    @suspect.destroy
-    respond_to do |format|
-      format.html { redirect_to suspects_url, notice: 'Suspect was successfully destroyed.' }
-      format.json { head :no_content }
+       casos= LegalCase.all().where(suspect: @suspect);
+    fichas= CriminalRecord.all().where(suspect: @suspect);
+    if casos.length()>0 or fichas.length()>0
+      respond_to do |format|
+        format.html { redirect_to suspects_url, alert: 'Este sospechoso esta en un caso o en una ficha penal y no se puede eliminar' }
+      end
+    else
+      @suspect.destroy
+      respond_to do |format|
+        format.html { redirect_to suspects_url, notice: 'Este sospechoso fue eliminado' }
+        format.json { head :no_content }
+      end
     end
   end
 
