@@ -26,10 +26,10 @@
  <%= form.text_field :inquire_number, id: :criminal_record_inquire_number, label: "Numero de Expediente",required: "true", placeholder: 'Este campo es Obligatorio', type: "number"  %>
         </div>
         <div class="col-md-6">
-          <%= form.date_select :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion", required: "true", placeholder: 'Este campo es Obligatorio' %>
+          <%= form.date_field :intervention_date, id: :criminal_record_intervention_date, label:"Fecha de Intervencion", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
-                    <%= form.date_select :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision", required: "true", placeholder: 'Este campo es Obligatorio' %>
+                    <%= form.date_field :commission_date, id: :criminal_record_commission_date, label: "Fecha de Comision", required: "true", placeholder: 'Este campo es Obligatorio' %>
         </div>
         <div class="col-md-6">
             <%= form.text_field :type_of_crime, id: :criminal_record_type_of_crime, label: "Clasificacion de Delito", required: "true", placeholder: 'Este campo es Obligatorio' %>

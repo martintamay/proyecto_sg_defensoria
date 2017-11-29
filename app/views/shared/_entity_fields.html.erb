@@ -1,5 +1,5 @@
 <%= form.text_field :name, label: "Nombres", id: :entity_name,class:'form-control', required: "true", placeholder: 'Este campo es Obligatorio' %>
 <%= form.text_field :last_name, label: "Apellidos", id: :entity_last_name,class:'form-control', required: "true", placeholder: 'Este campo es Obligatorio' %>
 <%= form.phone_field :phone, label: "Teléfono", id: :entity_phone, class:'form-control', type: "number"%>
-<%= form.date_select :birthdate, label: "Cumpleaños", id: :entity_birthdate, label: "Nacimiento", start_year: 1850, use_month_numbers: true, end_year: 2050 %>
+<%= form.date_field :birthdate, label: "Cumpleaños", id: :entity_birthdate, label: "Nacimiento", start_year: 1850, use_month_numbers: true, end_year: 2050 %>
 <%= form.email_field :email, label: "Correo", id: :entity_email,class:'form-control' %>
