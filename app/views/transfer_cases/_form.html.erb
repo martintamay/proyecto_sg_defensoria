@@ -21,11 +21,11 @@
               </div>
               <!-- formulario -->
               <div class="panel-body " >
-              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Nuevo Defensor Encargado" %>
+              <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Nuevo Defensor Encargado", required: true, placeholder: 'Este campo es obligatorio'  %>
 
-              <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso" %>
+              <%= form.collection_select :legal_case_id, LegalCase.all, :id, :name_with_initial, label: "Caso", required: true, placeholder: 'Este campo es obligatorio' %>
 
-               <%= form.date_select :date_ttransfer, id: :transfer_case_date_transfer, label: "Fecha de Transferencia" %>
+               <%= form.date_field :date_ttransfer, id: :transfer_case_date_transfer, label: "Fecha de Transferencia" %>
 
               <%= form.text_area :comentary, id: :transfer_case_comentary, label: "Comentario" %>
 

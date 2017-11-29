@@ -57,13 +57,19 @@ class JudgesController < ApplicationController
   # DELETE /judges/1
   # DELETE /judges/1.json
   def destroy
+    casos= LegalCase.all().where(judge: @judge);
+    if casos.length>0
+      respond_to do |format|
+      format.html { redirect_to judges_url, alert: 'Este Juez esta en un caso y no se puede eliminar'}
+    end
+  else
     @judge.destroy
     respond_to do |format|
       format.html { redirect_to judges_url, notice: 'Judge was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_judge

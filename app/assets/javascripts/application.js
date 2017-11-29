@@ -101,7 +101,11 @@ function mostrar_modificaciones(link, tabla){
     }
   });
 }
-
+$(document).ready(function(){
+    $("form").validate({lang: "es"});
+    console.log($("form"));
+    console.log("Se ejecuto");
+});
 function cerrar_modificaciones(tabla){
   //se setea el cargando
   var newhtml = "";

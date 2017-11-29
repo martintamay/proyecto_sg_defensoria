@@ -55,11 +55,19 @@ class CourtsController < ApplicationController
 
   # DELETE /courts/1
   # DELETE /courts/1.json
-  def destroy
-    @court.destroy
-    respond_to do |format|
-      format.html { redirect_to courts_url, notice: 'El Juzgado Fue Eliminado' }
-      format.json { head :no_content }
+    def destroy
+       jueces= Judge.all().where(court: @court);
+    if jueces.length()>0
+      respond_to do |format|
+        format.html { redirect_to courts_url, alert: 'El juzgado no puede ser eliminado porque tiene al menos un juez' }
+        format.json { render json: @court.errors, status: :unprocessable_entity }
+      end
+    else
+      @court.destroy
+      respond_to do |format|
+        format.html { redirect_to courts_url, notice: 'El Juzgado Fue Eliminado' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -77,4 +85,5 @@ class CourtsController < ApplicationController
     def court_params
       params.require(:court).permit(:name, :phone, :address)
     end
+
 end
