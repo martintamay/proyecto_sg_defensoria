@@ -3,7 +3,7 @@ class SuspectsReportsController < ApplicationController
     
 #para el formato pdf
     def index
-    	@sospechoso = Suspect.order("id DESC").all
+    	@suspect = Suspect.order("id DESC").all
 		respond_to do |format|
 			format.html
 			format.pdf do
@@ -14,7 +14,7 @@ class SuspectsReportsController < ApplicationController
     end
 
 	def listar_imputados
-		@sospechoso = Suspect.all
+		@suspect = Suspect.all
 
 	end
 
