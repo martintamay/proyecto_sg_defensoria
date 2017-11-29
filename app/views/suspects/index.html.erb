@@ -38,9 +38,21 @@
               <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
               <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
             </td>
+            <td>
+              <a href="#auditoria-sospechosos" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_sospechosos_suspect_url(suspect)%>', 'sospechosos')">
+                <% if suspect.audits.count < 10 %>
+                  <%= suspect.audits.count %>
+                <% else %>
+                  9+
+                <% end %>
+              </a>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
+
+<!-- PANEL PRINCIPAL AUDITORIA -->
+<div id="auditoria-sospechosos"></div>

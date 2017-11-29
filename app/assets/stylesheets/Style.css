@@ -1,5 +1,6 @@
 @media screen /*--This is for Screen--*/
 {
+  body { color: #000; font: 100%/150% Georgia, "Times New Roman", Times, serif; }
     .btn
     {
         background-color: #AFAFAF;
@@ -10,4 +11,11 @@
         background-color: #E5E5E5;
         border: 1px solid #CD853F;
     }
+
+
+#cabecera, #menu, #lateral, #comentarios {
+  display: none !important;
+}
+
+
 }
