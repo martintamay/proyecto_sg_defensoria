@@ -12,7 +12,10 @@
   <% end %>
 
   <!-- Formulario -->
-  <div class="panel panel-primary" >
+  <div class="panel panel-default" >
+    <div class="panel-heading ">
+      <b align="center panel-title" >Usuario</b>
+    </div>
     <div class="panel-body">
       <%= form.fields_for :entity, @user.entity do |ent| %>
         <%= render "shared/entity_fields", :form => ent %>
