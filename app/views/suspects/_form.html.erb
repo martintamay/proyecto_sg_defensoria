@@ -17,7 +17,7 @@
             <!-- encabezado -->
               <div class="panel-heading ">
                 <b class="panel-title">Imputado</b>
-               
+
               </div>
               <!-- formulario -->
               <div class="panel-body " >
@@ -43,16 +43,14 @@
               <div class="col-md-6">
               <%= form.text_field :home_adress, id: :suspect_home_adress, label: 'Domicilio', placeholder: 'Este campo es obligatorio' %></div>
               <!-- Boton agregar -->
+              <div class="col-md-12">
+                <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
+                  <%= fa_icon 'floppy-o' %> Guardar
+                <% end %>
+                 <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), suspects_path, class: 'btn btn-default pull-left' %>
+              </div>
 
-                    <div class="col-md-12">    
-                      <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
-                        <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
-                       <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), suspects_path, class: 'btn btn-default pull-left' %>
-                    </div>  
-                
 
-            <% end %>          
+            <% end %>
           </div> <!-- fin panel default -->
         </div> <!-- fin group -->
-   

@@ -1,29 +1,70 @@
-<p id="notice"><%= notice %></p>
-<h1 align="center">Audiencias <%= link_to (fa_icon 'plus', text: ''), new_hearing_path,class: 'btn btn-primary' %></h1>
- <%= link_to "Reporte (PDF)",hearings_path(format: 'pdf'), class: "btn btn-info" %>
- <hr>      
-<table id="table_di" class= "table table-hover  table-striped table-bordered" >
+
+
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Audiencias</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_hearing_path,class: 'btn btn-primary' %>
+          <%= link_to "Reporte (PDF)",hearings_path(format: 'pdf'), class: "btn btn-info" %>
+          </ul>
+     </div>
+  </div>
+   <!-- TABLA -->   
+  <div class="panel-body table-responsive "  >    
+<table id="table_di" class= "table table-hover  table-striped table-bordered " >
   <thead>
     <tr>
       <th>Fecha de Audiencia</th>
-      <th>Usuario</th>
+      <th>Defensor</th>
       <th>Caso</th>
       <th class="col-md-2"></th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @hearings.each do |hearing| %>
-      <tr>
-        <td><%= hearing.audiencia %></td>
-        <td><%= hearing.user.entity.full_name %></td>
-        <td><%= hearing.legal_case.name %></td>
-        <td align="center" ><%= link_to (fa_icon 'eye'), hearing, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_hearing_path(hearing), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), hearing, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">LISTA DE AUDIENCIAS</h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+         <%= link_to "Reporte (PDF)",hearings_path(format: 'pdf'), class: "btn btn-info" %>
+          <%= link_to (fa_icon 'plus', text: 'Crear'), new_legal_case_path, class: 'btn btn-primary' %>
+        </ul>
+     </div>
+  </div>
 
-<br>
+
+
+    <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>  <!-- TITULOS DE LA TABLE -->
+        <tr>
+          <th>Fecha de Audiencia</th>
+          <th>Defensor</th>
+          <th>Caso</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @hearings.each do |hearing| %>
+          <tr>
+            <td><%= hearing.hearing_date %></td>
+            <td><%= hearing.user.entity.full_name %></td>
+            <td><%= hearing.legal_case.name %></td>
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), hearing ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_hearing_path(hearing),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), hearing, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -202,3 +202,101 @@ FROM: https://bootsnipp.com/snippets/featured/particle-background-login-form;
 .modifications-count[title]:hover:after {
   font-weight: bold;
 }
+
+ul {
+  list-style-type: none;
+}
+/*Text format*/
+.texto-12 {
+  font-size: 12px;
+}
+
+/* Month header */
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+    text-align: center;
+}
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.weekdays .weekday {
+    display: inline-block;
+    color: #666;
+    text-align: center;
+    width: 14%;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+    align-items: center;
+}
+
+.days .row {
+  margin: 0;
+}
+
+.days .day-item {
+  display: inline-block;
+  width: 14.28%;
+  min-height: 120px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+.days .day-item p {
+  text-align: center;
+  height: 100%;
+}
+
+/* Highlight the "current" day */
+.days .active {
+    background: #1abc9c;
+    color: white !important;
+}
+
+/*formulario*/
+.formulario{
+  text-align: center;
+  margin-top: 35px;
+}
+
+.btn-editar {
+  font-size: 12px !important;
+  line-height: 14px !important;
+}

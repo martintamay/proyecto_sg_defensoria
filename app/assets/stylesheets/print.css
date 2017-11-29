@@ -1,13 +1,17 @@
 @media print /*--This is for Print--*/
 {
+  body { color: #000; font: 100%/150% Georgia, "Times New Roman", Times, serif; }
     .btn
     {
+        display: none;
+    }
+    #ocultar{
         display: none;
     }
     .tble
     {
         background-color: #CD853F;
-  font-family: "Tahoma", "Geneva", sans-serif;
+
   line-height: 130%
 
         border:1px solid green;
@@ -28,4 +32,8 @@
         background-color: #CD853F;
         border:1px solid green;
     }
+
+    
+  
   }
+

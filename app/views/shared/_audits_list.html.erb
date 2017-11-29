@@ -1,0 +1,46 @@
+<!-- PANEL PRINCIPAL -->
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">
+      Cambios para <%= name %>
+    </h3>
+     <div class="box-tools">
+        <ul class=" no-margin pull-right">
+          <button onclick="cerrar_modificaciones('<%= tabla %>')" class="btn btn-default">Cerrar</button>
+        </ul>
+     </div>
+  </div>
+  <!-- TABLA -->
+  <div class="panel-body "  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Accion</th>
+          <th>Fecha</th>
+          <th>Por Usuario</th>
+          <th>Cambios</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @audits.each do |audit| %>
+          <tr>
+            <td><%= t audit[:action].to_s %></td>
+            <td><%= audit[:date].strftime("%Y/%m/%d a las %I:%M%p") %></td>
+            <td><%= audit[:user].to_s %></td>
+            <td>
+              <% audit[:changes].each do |campo, valor| %>
+                <% if valor.is_a? String%>
+                  <b><%= t campo %>:</b> <%= valor %>  <br>
+                <% elsif valor.is_a? Date %>
+                  <b><%= t campo %>:</b> <%= valor.strftime("%Y/%m/%d") %>  <br>
+                <% else %>
+                  <b><%= t campo %>:</b> <%= valor[0] %> <%= (fa_icon 'arrow-right') %> <%= valor[1] %>  <br>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

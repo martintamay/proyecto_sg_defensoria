@@ -12,8 +12,8 @@
 
 
   <!-- TABLA -->
-  <div class="panel-body "  >
-    <table id="table_di" class= "table table-hover   table-bordered table-striped" >
+  <div class="panel-body table-responsive"  >
+    <table id="table_di" class= "table table-hover   table-bordered table-striped " >
       <thead>
         <tr>
           <th>Etapa Procesal</th>
@@ -25,6 +25,7 @@
           <th>Unidad Fiscal</th>
           <th>Medida de Prevención</th>
           <th class="col-md-2"></th>
+          <th />
         </tr>
       </thead>
       <tbody>
@@ -43,9 +44,21 @@
               <%= link_to (fa_icon 'pencil'), edit_criminal_record_path(criminal_record), class: 'btn btn-success' %>
               <%= link_to (fa_icon 'trash'), criminal_record, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
             </td>
+            <td>
+              <a href="#auditoria-fichas_penales" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_ficha_penal_criminal_record_url(criminal_record) %>', 'fichas_penales')">
+                <% if criminal_record.audits.count < 10 %>
+                  <%= criminal_record.audits.count %>
+                <% else %>
+                  9+
+                <% end %>
+              </a>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
+
+<!-- PANEL PRINCIPAL AUDITORIA -->
+<div id="auditoria-fichas_penales"></div>

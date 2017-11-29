@@ -21,3 +21,6 @@ config/database.yml
 Gemfile.lock
 *.lock
 Gemfile
+/public/packs
+/public/packs-test
+/node_modules

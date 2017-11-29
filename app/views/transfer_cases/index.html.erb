@@ -12,7 +12,7 @@
 
 
   <!-- TABLA -->
-  <div class="panel-body "  >
+  <div class="panel-body table-responsive "  >
     <table id="table_di" class= "table table-hover   table-bordered table-striped" >
       <thead>
         <tr>
@@ -21,6 +21,7 @@
           <th>Fecha de Transferencia</th>
           <th>Comentario</th>
           <th class="col-md-2"></th>
+          <th />
         </tr>
       </thead>
 
@@ -33,10 +34,23 @@
             <td><%= transfer_case.comentary %></td>
             <td align="center" ><%= link_to (fa_icon 'eye'), transfer_case, class: 'btn btn-info'  %>
              <%= link_to (fa_icon 'pencil'), edit_transfer_case_path(transfer_case), class: 'btn btn-success' %>
-             <%= link_to (fa_icon 'trash'), transfer_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+             <%= link_to (fa_icon 'trash'), transfer_case, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+           </td>
+           <td>
+             <a href="#auditoria-transferencias" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_transferencia_transfer_case_url(transfer_case)%>', 'transferencias')">
+               <% if transfer_case.audits.count < 10 %>
+                 <%= transfer_case.audits.count %>
+               <% else %>
+                 9+
+               <% end %>
+             </a>
+           </td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
+
+<!-- PANEL PRINCIPAL AUDITORIA -->
+<div id="auditoria-transferencias"></div>

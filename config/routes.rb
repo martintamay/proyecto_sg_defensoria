@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :equipment_details
-  resources :transfer_cases
+  resources :transfer_cases do
+    member do
+      get :auditoria_transferencia
+    end
+  end
   # resources :legal_cases
   resources :legal_cases do
     collection do
@@ -16,8 +20,13 @@ Rails.application.routes.draw do
       get :auditoria_caso
     end
   end
+  resources :turnos
   # get "legal_cases/reporte", to: 'legal_cases#reporte'
-  resources :criminal_records
+  resources :criminal_records do
+    member do
+      get :auditoria_ficha_penal
+    end
+  end
   resources :people
   resources :shifts
   resources :lawyer_actions
@@ -31,6 +40,9 @@ Rails.application.routes.draw do
   resources :suspects do
     collection do
       get "reporte"
+    end
+    member do
+      get :auditoria_sospechosos
     end
   end
   resources :courts

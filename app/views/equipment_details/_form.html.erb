@@ -1,4 +1,4 @@
-<%= form_with(model: equipment_detail, local: true) do |form| %>
+<%= bootstrap_form_for(@equipment_detail) do |form| %>
   <% if equipment_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(equipment_detail.errors.count, "error") %> prohibited this equipment_detail from being saved:</h2>
@@ -19,7 +19,7 @@
       </div>
       <!-- formulario -->
       <div class="panel-body " >
-               <%= form.text_field :legal_case_id, Legal_case.all, :id, :name_with_initial, label: "Caso", required: "true", placeholder: 'Este campo es Obligatorio' %>
+        <%= form.text_field :legal_case_id, Legal_case.all, :id, :name_with_initial, label: "Caso", required: "true", placeholder: 'Este campo es Obligatorio' %>
         <%= form.text_field :user_id, User.all, :id, :name_with_initial, label: "Defensor", required: "true", placeholder: 'Este campo es Obligatorio' %>
        <!-- Boton agregar -->
         <div>&nbsp;</div>
