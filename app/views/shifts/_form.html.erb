@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
- <div class="container">
+
   <!-- Muestra el panel de agregacion -->
       <div class="panel-group" >
           <div class="panel panel-default" >
@@ -22,7 +22,7 @@
               <!-- formulario -->
               <div class="panel-body " >
                 <div>&nbsp;</div>
-              <%= form.date_select :shift_date, id: :shift_shift_date, label:"Fecha de Turno" %>
+              <%= form.date_field :shift_date, id: :shift_shift_date, label:"Fecha de Turno" %>
               <div>&nbsp;</div>
               <%= form.collection_select :user_id, User.all, :id, :name_with_initial, label: "Usuario" %>
               <!-- Botones -->
