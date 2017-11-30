@@ -3,15 +3,15 @@
   <div class="panel-heading"><h2>Transferencia</h2></div>
   <table class="table">
    <thead>
-     <th>Nuevo defensor encargado</th>
      <th>Caso</th>
+     <th>Nuevo defensor encargado</th>
      <th>Fecha de transferencia</th>
      <th>Comentario</th>
    </thead>
    <tbody>
     <tr>
-      <td><%= @transfer_case.user.entity.full_name %></td>
       <td><%= @transfer_case.legal_case.name %></td>
+      <td><%= @transfer_case.user.entity.full_name %></td>
       <td><%= @transfer_case.date_ttransfer %></td>
       <td><%= @transfer_case.comentary %></td>
      </tr> 
