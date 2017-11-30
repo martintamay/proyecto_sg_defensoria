@@ -1,5 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
   load_and_authorize_resource
 
   # GET /shifts
@@ -26,7 +27,6 @@ class ShiftsController < ApplicationController
   # POST /shifts.json
   def create
     @shift = Shift.new(shift_params)
-
     respond_to do |format|
       if @shift.save
         format.html { redirect_to shifts_url, notice: 'Se ha creado un Turno ' }

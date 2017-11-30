@@ -51,7 +51,7 @@ const FormTurno = ({open, dia, turnos, closeModal, deleteTurno, saveTurno, usuar
             <div className="table table-heading">
               <h1>Nuevo Defensor</h1>
             </div>
-            <SelectorUsuario usuarios={usuarios} saveTurno={saveTurno}/>
+            <SelectorUsuario usuarios={usuarios} saveTurno={saveTurno} dia={dia} />
           </div>
         </div>
       </Modal>

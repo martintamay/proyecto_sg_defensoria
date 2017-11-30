@@ -31,6 +31,11 @@ resources :hearings do
       get "reporte"
     end
 end
+resources :visits do
+    member do
+      get "reporte_visitas"
+    end
+end
 
 
 

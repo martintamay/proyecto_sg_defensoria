@@ -1,29 +1,26 @@
 <div class="table-responsive">  
 <div class="panel panel-info">
-  <div class="panel-heading"><h2>Transferencia</h2></div>
+  <div class="panel-heading"><h2>Visitas</h2></div>
   <table class="table">
    <thead>
-     <th>Nuevo defensor encargado</th>
-     <th>Caso</th>
-     <th>Fecha de transferencia</th>
-     <th>Comentario</th>
+          <th>Imputado</th>
+          <th>Nombre del Visitante</th>
+          <th>Dia Visitado</th>
+          <th>Observacion</th>
    </thead>
    <tbody>
     <tr>
-      <td><%= @transfer_case.user.entity.full_name %></td>
-      <td><%= @transfer_case.legal_case.name %></td>
-      <td><%= @transfer_case.date_ttransfer %></td>
-      <td><%= @transfer_case.comentary %></td>
+            <td><%= @visit.suspect.entity.full_name %></td>
+            <td><%= @visit.name_visit %></td>
+            <td><%= @visit.date_visit %></td>
+            <td><%= @visit.observation %></td>
      </tr> 
    </tbody>
   </table>
 
  
 </div>
-              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_transfer_case_path(@transfer_case), class: 'btn btn-default pull-right' %>
-
-              <%= link_to (fa_icon 'file-text-o', text: 'Reporte'), reporte_completo_transfer_transfer_case_path(@transfer_case), class: 'btn btn-default pull-right' %>
-
-              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), transfer_cases_path, class: 'btn btn-default pull-left' %>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_visit_path(@visit), class: 'btn btn-default pull-right' %>
+               <%= link_to (fa_icon 'file-text-o', text: 'Reporte'), reporte_visitas_visit_path(@visit), class: 'btn btn-default pull-right' %>
+              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), visits_path, class: 'btn btn-default pull-left' %>
 </div>
-
