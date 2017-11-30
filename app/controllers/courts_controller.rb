@@ -30,7 +30,7 @@ class CourtsController < ApplicationController
 
     respond_to do |format|
       if @court.save
-        format.html { redirect_to courts_url, notice: 'Juzgado creado' }
+        format.html { redirect_to courts_url, notice: 'Se ha creado un Juzgado' }
         format.json { render :show, status: :created, location: @court }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class CourtsController < ApplicationController
     else
       @court.destroy
       respond_to do |format|
-        format.html { redirect_to courts_url, notice: 'El Juzgado Fue Eliminado' }
+        format.html { redirect_to courts_url, notice: 'Se ha eliminado un Juzgado' }
         format.json { head :no_content }
       end
     end

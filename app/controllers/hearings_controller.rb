@@ -32,7 +32,7 @@ end
 
     respond_to do |format|
       if @hearing.save
-        format.html { redirect_to @hearing, notice: '' }
+        format.html { redirect_to @hearing, notice: 'Se ha creado una Audiencia' }
         format.json { render :new, status: :created, location: @hearing }
       else
         format.html { redirect_to @hearing }
@@ -46,7 +46,7 @@ end
   def update
     respond_to do |format|
       if @hearing.update(hearing_params)
-        format.html { redirect_to :@hearing, notice: '' }
+        format.html { redirect_to :@hearing , notice: 'Audiencia Modificada' }
         format.json { render :new, status: :ok, location: @hearing }
       else
         format.html { redirect_to :@hearing }
@@ -60,7 +60,7 @@ end
   def destroy
     @hearing.destroy
     respond_to do |format|
-      format.html { redirect_to :@hearing, notice: '' }
+      format.html { redirect_to :@hearing, notice: 'Se ha eliminado una Audiencia' }
       format.json { head :no_content }
     end
   end
