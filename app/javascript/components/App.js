@@ -21,7 +21,8 @@ class App extends React.Component {
       turnos: [],
       usuarios: [],
       editando: false,
-      dia_editandose: []
+      dia_editandose: [],
+      ndia_editandose: 0
     };
 
     this.changeDate = this.changeDate.bind(this);
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.deleteTurno = this.deleteTurno.bind(this);
+    this.saveTurno = this.saveTurno.bind(this);
     this.getUsuarios = this.getUsuarios.bind(this);
 
 
@@ -40,10 +42,7 @@ class App extends React.Component {
   * Metodo encargado de solicitar al servidor los usuarios de manera asincrona
   */
   getUsuarios(){
-    const mes = this.state.mes, anho = this.state.anho;
-    console.log(mes, anho);
     $.getJSON(linkUsuarios+'.json', (response) => {
-      console.log(response);
       //se guardan los datos
       this.setState({
         usuarios: response
@@ -56,9 +55,7 @@ class App extends React.Component {
   */
   getTurnos(){
     const mes = this.state.mes, anho = this.state.anho;
-    console.log(mes, anho);
     $.getJSON(linkRecurso+'.json', { mes: mes, anho: anho }, (response) => {
-      console.log(response);
       //se guardan los datos
       this.setState({
         turnos: this.agruparTurnos(response)
@@ -68,16 +65,17 @@ class App extends React.Component {
 
   editar(dia){
     this.setState({
-      dia_editandose: this.state.turnos[dia-1]
+      dia_editandose: this.state.turnos[dia-1],
+      ndia_editandose: dia
     });
     this.openModal();
-    console.log(this.state.dia_editandose);
   }
 
   openModal() {
     this.setState({editando: true});
   }
   closeModal() {
+    this.getTurnos();
     this.setState({editando: false});
   }
 
@@ -134,12 +132,32 @@ class App extends React.Component {
 
   deleteTurno(turno){
     //eliminar
-    console.log("Eliminar "+turno.id);
+    console.log(linkRecurso+"/"+turno.id+".json");
+    $.ajax({
+      url: linkRecurso+"/"+turno.id+".json",
+      type: 'DELETE',
+      data: {},
+      success: (response) => {
+        alert("Turno Eliminado");
+      }
+    });
+    this.closeModal();
+
   }
 
-  saveTurno(defensor, dia){
+  saveTurno(defensor, dia, mes, anho){
     //guardar
-    console.console.log(`Guardar ${defensor} en fecha ${dia}-${this.state.mes}-${this.state.anho}`);
+    console.log(`Guardar ${defensor} en fecha ${dia}-${mes}-${anho}`);
+    $.ajax({
+      url: linkRecurso+".json",
+      type: 'POST',
+      data: { shift: { shift_date: `${dia}-${mes}-${anho}`, user_id: defensor } },
+      success: (response) => {
+        alert("Turno Guardado");
+      }
+    });
+    this.closeModal();
+
   }
 
   render(){
@@ -159,6 +177,8 @@ class App extends React.Component {
           closeModal={this.closeModal}
           turnos={this.state.dia_editandose}
           deleteTurno={this.deleteTurno}
+          dia={this.state.ndia_editandose}
+          saveTurno={(defensor, dia)=>{this.saveTurno(defensor, dia, this.state.mes, this.state.anho)}}
           usuarios={this.state.usuarios} />
       </div>
     );
