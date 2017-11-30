@@ -1,6 +1,7 @@
  <link rel="stylesheet" type="text/css" href="print.css" />
 <link rel="stylesheet" type="text/css" href="Style.css" />
 <div  class="box">
+  <%= link_to (fa_icon 'file-pdf-o', text:'Imprimir' ),"javascript:PrintDoc()" ,class: "btn btn-default" %>
   <div id = "printarea" class="box-header">
     <div class="text-center">
       <h3><b>Reporte de Visitas</b></h3>
@@ -33,6 +34,4 @@
       </li>
     </ul>
   </div>
-
-  <input type="button" value="Print" class="btn" onclick="PrintDoc()"/>
 </div>
