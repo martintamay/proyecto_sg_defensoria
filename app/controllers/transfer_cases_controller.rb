@@ -31,7 +31,10 @@ class TransferCasesController < ApplicationController
 
     respond_to do |format|
       if @transfer_case.save
-        format.html { redirect_to @transfer_case, notice: 'Se ha creado una transferencia de Caso' }
+
+         UserMailer.notificar("Notificaion de caso", "se le ha transferido un caso", @legal_case).deliver()
+        format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully created.' }
+
         format.json { render :show, status: :created, location: @transfer_case }
       else
         format.html { render :new }

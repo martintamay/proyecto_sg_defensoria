@@ -1,7 +1,16 @@
  <link rel="stylesheet" type="text/css" href="print.css" />
 <link rel="stylesheet" type="text/css" href="Style.css" />
+
+
 <div  class="box">
-  <div id = "printarea" class="box-header">
+  <%= @q %>
+  <form>
+ <input name=”q” <%= @q %> >
+ <button type=”submit”>Buscar</button>
+</form>
+<%= link_to (fa_icon 'file-pdf-o', text:'Imprimir' ),"javascript:PrintDoc()" ,class: "btn btn-default" %>
+  <div id ="printarea" class="box-header">
+
     <div class="text-center">
       <h3><b>Reporte de Caso</b></h3>
       <h4><b>Fecha: </b><%= DateTime.now.strftime("%d/%m/%Y %H:%M") %></h4>
@@ -19,12 +28,8 @@
 
       <!-- Detalle de su ficha penal -->
       <li class="list-group-item active"><strong>Ficha Penal </strong></li>
-      <li class="list-group-item"><strong>Etapa Procesal: </strong><%= @criminal_record.procedural_stage %></li>
-      <li class="list-group-item"><strong>Numero de Expediente: </strong><%= @criminal_record.inquire_number %></li>
-      <li class="list-group-item"><strong>Fecha de Intervencion: </strong><%= @criminal_record.intervention_date %></li>
-      <li class="list-group-item"><strong>Clasificacion de Delito: </strong><%= @criminal_record.type_of_crime %></li>
-      <li class="list-group-item"><strong>Lugar de Comision: </strong><%= @criminal_record.commission_place %></li>
-      <li class="list-group-item"><strong>Fecha de Comision: </strong><%= @criminal_record.commission_date %></li>
+     
+     
       <li class="list-group-item"><strong>Unidad Fiscal: </strong><%= @criminal_record.prosecutor_unit %></li>
       <li class="list-group-item"><strong>Medidas de Prevencion: </strong><%= @criminal_record.precautionary_measures %></li>
 
@@ -74,5 +79,5 @@
     </ul>
   </div>
 
-  <%= link_to onclick="PrintDoc()", class: 'btn btn-default pull-right' %>
+ 
 </div>

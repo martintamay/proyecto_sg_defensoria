@@ -8,6 +8,10 @@ class VisitsController < ApplicationController
     @visits = Visit.all
   end
 
+  def reporte_visitas
+      @visits = Visit.all  
+  end
+
   # GET /visits/1
   # GET /visits/1.json
   def show
