@@ -1,4 +1,4 @@
-class HearingsController < ApplicationController
+  class HearingsController < ApplicationController
   before_action :set_hearing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -7,7 +7,9 @@ class HearingsController < ApplicationController
   def index
     @hearings = Hearing.all    
   end
-
+      def reporte
+     @hearings = Hearing.all  
+  end
 
   # GET /hearings/1
   # GET /hearings/1.json
@@ -30,10 +32,10 @@ end
 
     respond_to do |format|
       if @hearing.save
-        format.html { render :new , notice: '' }
+        format.html { redirect_to @hearing, notice: 'Se ha creado una Audiencia' }
         format.json { render :new, status: :created, location: @hearing }
       else
-        format.html { render :new }
+        format.html { redirect_to @hearing }
         format.json { render json: @hearing.errors, status: :unprocessable_entity }
       end
     end
@@ -44,10 +46,10 @@ end
   def update
     respond_to do |format|
       if @hearing.update(hearing_params)
-        format.html { render :new, notice: '' }
+        format.html { redirect_to :@hearing , notice: 'Audiencia Modificada' }
         format.json { render :new, status: :ok, location: @hearing }
       else
-        format.html { render :new }
+        format.html { redirect_to :@hearing }
         format.json { render json: @hearing.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +60,7 @@ end
   def destroy
     @hearing.destroy
     respond_to do |format|
-      format.html { render :new, notice: '' }
+      format.html { redirect_to :@hearing, notice: 'Se ha eliminado una Audiencia' }
       format.json { head :no_content }
     end
   end

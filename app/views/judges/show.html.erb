@@ -1,30 +1,24 @@
-<div class="col-md-4"></div>
-<div class="col-md-5"><!-- Tamaño del formulario --> 
- <!-- Formulario --> 
-  <div class="panel panel-info">
-    <div class="panel-heading " align="center"><h3>Nuevo Juez </h3> </div>
-        <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item">
-				  <strong>Nombre:</strong>
-				  <%= @judge.entity.full_name %>
-				 </li>
-                <li class="list-group-item">
-				  <strong>Teléfono:</strong>
-				  <%= @judge.entity.phone %>
-				 </li>
-                <li class="list-group-item">
-				  <strong>Correo:</strong>
-				  <%= @judge.entity.email %>
-				 </li>
-                <li class="list-group-item">
-				  <strong>Corte:</strong>
-				  <%= @judge.court.name %>
-
-				 </li>
-              </ul>
-              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_judge_path(@judge), class: 'btn btn-success pull-right' %>
-              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), judges_path, class: 'btn btn-default pull-left' %>
-            </div>
-          </div>
-          </div> 
+<div class="table-responsive">  
+<div class="panel panel-info">
+  <div class="panel-heading"><h2>Juez</h2></div>
+  <table class="table">
+   <thead>
+     <th>Nombre</th>
+     <th>Teléfono</th>
+     <th>Correo</th>
+     <th>Corte</th>
+   </thead>
+   <tbody>
+    <tr>
+      <td><%= @judge.entity.full_name %></td>
+      <td><%= @judge.entity.phone %></td>
+      <td><%= @judge.entity.email %></td>
+      <td><%= @judge.court.name %></td>
+     </tr> 
+   </tbody>
+  </table>
+         
+</div>
+   <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_judge_path(@judge), class: 'btn btn-default pull-right' %>
+   <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), judges_path, class: 'btn btn-default pull-left' %>
+</div>

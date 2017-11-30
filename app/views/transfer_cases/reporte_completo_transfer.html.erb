@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="print.css" />
+<link rel="stylesheet" type="text/css" href="Style.css" />
+<div  class="box">
+  <div id = "printarea" class="box-header">
+    <div class="text-center">
+      <h3><b>Reporte de Transferencia</b></h3>
+      <h4><b>Fecha: </b><%= DateTime.now.strftime("%d/%m/%Y %H:%M") %></h4>
+    </div>
+    <ul class="col-md-12">
+      <li class="list-group-item active"><strong>Transferencias</strong></li>
+      <li class="list-group-item">
+        <table class= "table table-hover table-striped  table-bordered table-striped" >
+          <thead>
+            <tr>
+           <th>Nuevo Defensor</th>
+           <th>Caso</th>
+           <th>Fecha de Transferencia</th>
+           <th>Comentario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @transfers.each do |transfer_case| %>
+              <tr>
+                <td><%= transfer_case.user.entity.full_name %></td>
+                <td><%= transfer_case.legal_case.name %></td>
+                <td><%= transfer_case.date_ttransfer %></td>
+                <td><%= transfer_case.comentary %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </div>
+
+  <input type="button" value="Print" class="btn" onclick="PrintDoc()"/>
+</div>

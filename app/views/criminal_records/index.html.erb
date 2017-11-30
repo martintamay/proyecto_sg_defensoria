@@ -40,9 +40,11 @@
             <td><%= criminal_record.prosecutor_unit %></td>
             <td><%= criminal_record.precautionary_measures %></td>
             <td align="center" >
-              <%= link_to (fa_icon 'eye'), criminal_record, class: 'btn btn-info'  %>
-              <%= link_to (fa_icon 'pencil'), edit_criminal_record_path(criminal_record), class: 'btn btn-success' %>
-              <%= link_to (fa_icon 'trash'), criminal_record, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), criminal_record ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_criminal_record_path(criminal_record),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), criminal_record, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
             </td>
             <td>
               <a href="#auditoria-fichas_penales" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_ficha_penal_criminal_record_url(criminal_record) %>', 'fichas_penales')">
