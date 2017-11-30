@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal';
 import DescripcionTurno from './descripcion_turno'
+import SelectorUsuario from './selector-usuario'
 
 const customStyles = {
   content : {
@@ -13,14 +14,14 @@ const customStyles = {
   }
 };
 
-const FormTurno = ({open, dia, turnos, closeModal, deleteTurno, saveTurno}) => {
+const FormTurno = ({open, dia, turnos, closeModal, deleteTurno, saveTurno, usuarios}) => {
 
   let listaTurnos = [];
   if (turnos) {
     listaTurnos = turnos.map((turno)=>{
       return (
-        <div>
-          <DescripcionTurno turno={turno} onDelete={deleteTurno} key={turno.dia+"-"+turno.id} />
+        <div key={"desc"+turno.dia+"-"+turno.id}>
+          <DescripcionTurno turno={turno} onDelete={deleteTurno}  />
         </div>
       );
     });
@@ -50,14 +51,7 @@ const FormTurno = ({open, dia, turnos, closeModal, deleteTurno, saveTurno}) => {
             <div className="table table-heading">
               <h1>Nuevo Defensor</h1>
             </div>
-            <div className="table table-body">
-              <input type="text" id="nombre-defensor" placeholder="Nombre Defensor" className="input"></input>
-              <span className="buttons-group" id='botones'>
-                <button className="btn btn-default">
-                  <i className="fa fa-floppy-o" aria-hidden="true" onClick={() => saveTurno(nombreDefensor, dia)}></i>
-                </button>
-              </span>
-            </div>
+            <SelectorUsuario usuarios={usuarios} saveTurno={saveTurno}/>
           </div>
         </div>
       </Modal>

@@ -29,7 +29,7 @@ class CriminalRecordsController < ApplicationController
 
     respond_to do |format|
       if @criminal_record.save
-        format.html { redirect_to @criminal_record, notice: 'Criminal record was successfully created.' }
+        format.html { redirect_to criminal_records_url, notice: 'Se ha creado una Ficha Penal ' }
         format.json { render :show, status: :created, location: @criminal_record }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CriminalRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @criminal_record.update(criminal_record_params)
-        format.html { redirect_to @criminal_record, notice: 'Criminal record was successfully updated.' }
+        format.html { redirect_to criminal_records_url, notice: 'Ficha Penal Modificada' }
         format.json { render :show, status: :ok, location: @criminal_record }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class CriminalRecordsController < ApplicationController
 else
     @criminal_record.destroy
     respond_to do |format|
-      format.html { redirect_to criminal_records_url, notice: 'Esta ficha penal fue eliminada' }
+      format.html { redirect_to criminal_records_url, notice: 'Se ha eliminado una Ficha Penal ' }
       format.json { head :no_content }
     end
   end
