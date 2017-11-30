@@ -1,2 +1,23 @@
-
-<p><%= @mensaje %></p>
+<html>
+   
+   <head>
+      <meta content = 'text/html; charset = UTF-8' http-equiv = 'Content-Type' />
+   </head>
+   
+   <body>
+      <h1>Estimado defensor, <%= @legal_case.user.entity.full_name %></h1>
+      
+      <p>
+         Le saludamos del Sistema de la Defensoría Publica con el objetivo de informarle que <%= @razon %>: 
+         <%=@legal_case.name %>.<br>
+         El imputado en este caso es: <%=@legal_case.suspect.entity.full_name %>.
+         Le sugerimos que ingrese al Sistema de la Defensoría para observar los detalles del caso.
+      </p>
+      
+      <p>
+         Sin otro particular nos despedimos de usted deseandole éxitos en sus obligaciones.
+      </p>
+      
+ 
+   </body>
+</html>>

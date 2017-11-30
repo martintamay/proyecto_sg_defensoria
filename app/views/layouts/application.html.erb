@@ -7,8 +7,7 @@
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <%= javascript_pack_tag 'application' %>
-
+  
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
   <%= csrf_meta_tags %>
@@ -124,6 +123,15 @@
           <a href="<%= equipment_details_path %>">
             <i class="fa fa-circle-o"></i>
             <span>Detalles de equipo</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>        
+        <li>
+          <a href="<%= correo_index_path %>">
+            <i class="fa fa-circle-o"></i>
+            <span>Enviar Correo</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

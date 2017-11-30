@@ -43,7 +43,7 @@
             <td><%= user.type_user %></td>
             <td align="center" ><%= link_to (fa_icon 'eye'), user , class: 'btn btn-info'  %>
               <%= link_to (fa_icon 'pencil'), edit_user_path(user), class: 'btn btn-success' %>
-              <%= link_to (fa_icon 'trash'), user, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+              
             </td>
             <td>
               <a href="#auditoria_usuarios" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_usuario_user_url(user)%>', 'usuarios')">
