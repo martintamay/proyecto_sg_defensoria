@@ -13,9 +13,15 @@ class LegalCasesController < ApplicationController
   end
 
   def reporte_completo_caso
-    @criminal_record = @legal_case.criminal_record
+    
+    @q = params[:q]
+  if @q
+    @criminal_record = CriminalRecord.where("prosecutor_unit like ?", "%#{@q}%")
+  else
+     @criminal_record = @legal_case.criminal_record
     @hearings = @legal_case.hearings
     @transfers = @legal_case.transfer_cases
+   end
   end
 
   def index
