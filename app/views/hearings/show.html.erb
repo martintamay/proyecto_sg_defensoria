@@ -1,33 +1,24 @@
+<div class="table-responsive">  
+<div class="panel panel-info">
+  <div class="panel-heading"><h2>Audiencia</h2></div>
+  <table class="table">
+   <thead>
+     <th>Fecha de audiencia</th>
+     <th>Defensor</th>
+     <th>Caso</th>
+   </thead>
+   <tbody>
+    <tr>
+      <td><%= @hearing.hearing_date %></td>
+      <td><%= @hearing.user.entity.full_name %></td>
+      <td><%= @hearing.legal_case.name %></td>
+     </tr> 
+   </tbody>
+  </table>
+         
+</div>
+    <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_hearing_path(@hearing), class: 'btn btn-default pull-right' %>
 
-<div class="col-md-4"></div>
-<div class="col-md-5"><!-- Tamaño del formulario --> 
- <!-- Formulario --> 
-  <div class="panel panel-info">
-    <div class="panel-heading " align="center"><h3>Nueva Audiencia</h3> </div>
-        <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item">
-					<p>
-					  <strong>Fecha de Audiencia:</strong>
-					  <%= @hearing.hearing_date %>
-					</p>
-					</li>
-                <li class="list-group-item">
-					<p>
-					  <strong>Usuario:</strong>
-					  <%= @hearing.user.entity.full_name %>
-					</p>
-					</li>
-                <li class="list-group-item">
-					<p>
-					  <strong>Caso:</strong>
-					  <%= @hearing.legal_case.name %>
-					</p>
- 				</li>
-              </ul>
-              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_hearing_path(@hearing), class: 'btn btn-success pull-right' %>
-              <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), hearings_path, class: 'btn btn-default pull-left' %>
-             
-            </div>
-          </div>
-          </div> 
+     <%= link_to (fa_icon 'file-text-o', text: 'Reporte'), reporte_hearing_path(@hearing), class: 'btn btn-default pull-right' %>
+     <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), hearings_path, class: 'btn btn-default pull-left' %>
+</div>

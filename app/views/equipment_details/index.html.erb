@@ -27,9 +27,13 @@
       <tr>
         <td><%= equipment_detail.legal_case.name %></td>
         <td><%= equipment_detail.user.entity.full_name %></td>
-        <td align="center" ><%= link_to (fa_icon 'eye'), equipment_detail, class: 'btn btn-default'  %>
-         <%= link_to (fa_icon 'pencil'), edit_equipment_detail_path(equipment_detail), class: 'btn btn-default' %>
-         <%= link_to (fa_icon 'trash'), equipment_detail, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-default' %></td>
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), equipment_detail ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_equipment_detail_path(equipment_detail),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), equipment_detail, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
+            </td>
       </tr>
     <% end %>
   </tbody>

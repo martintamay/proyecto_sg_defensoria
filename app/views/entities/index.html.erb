@@ -29,10 +29,13 @@
         <td><%= entity.phone %></td>
         <td><%= entity.birthdate %></td>
         <td><%= entity.email %></td>
-         <td align="center" ><%= link_to (fa_icon 'eye'), entity, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_entity_path(entity), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), entity, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
-
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), entity ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_entity_path(entity),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), entity, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
+            </td>
       </tr>
     <% end %>
   </tbody>

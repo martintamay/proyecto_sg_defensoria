@@ -7,7 +7,9 @@ class TransferCasesController < ApplicationController
   def index
     @transfer_cases = TransferCase.all
   end
-
+    def reporte_completo_transfer
+     @transfers = TransferCase.all
+  end
   # GET /transfer_cases/1
   # GET /transfer_cases/1.json
   def show

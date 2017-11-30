@@ -34,9 +34,12 @@
             <td><%= suspect.entity.phone %></td>
             <td><%= suspect.ci %></td>
             <td><%= suspect.nationality %></td>
-            <td align="center" ><%= link_to (fa_icon 'eye'), suspect, class: 'btn btn-info'  %>
-              <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
-              <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), suspect ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_suspect_path(suspect),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
             </td>
             <td>
               <a href="#auditoria-sospechosos" class="modifications-count" title="Click para ver las modificaciones" onclick="mostrar_modificaciones('<%= auditoria_sospechosos_suspect_url(suspect)%>', 'sospechosos')">

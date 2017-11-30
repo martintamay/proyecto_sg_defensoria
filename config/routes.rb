@@ -20,6 +20,20 @@ Rails.application.routes.draw do
       get :auditoria_caso
     end
   end
+resources :transfer_cases do
+
+    member do
+      get "reporte_completo_transfer"
+    end
+  end
+resources :hearings do
+    member do
+      get "reporte"
+    end
+end
+
+
+
   resources :turnos
   # get "legal_cases/reporte", to: 'legal_cases#reporte'
   resources :criminal_records do
