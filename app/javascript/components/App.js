@@ -5,8 +5,11 @@ import Encabezado from './encabezado.js'
 import ListaTurnos from './lista_turnos.js'
 import FormTurno from './form-turno.js'
 
-const linkRecurso = "/shifts";
-class App extends React.Component {constructor(props){
+const linkRecurso = "http://localhost:3000/shifts";
+const linkUsuarios = "http://localhost:3000/users";
+
+class App extends React.Component {
+  constructor(props){
     super(props);
 
     let fechaActual = new Date();
@@ -26,9 +29,26 @@ class App extends React.Component {constructor(props){
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.deleteTurno = this.deleteTurno.bind(this);
+    this.getUsuarios = this.getUsuarios.bind(this);
 
 
     this.getTurnos();
+    this.getUsuarios();
+  }
+
+  /**
+  * Metodo encargado de solicitar al servidor los usuarios de manera asincrona
+  */
+  getUsuarios(){
+    const mes = this.state.mes, anho = this.state.anho;
+    console.log(mes, anho);
+    $.getJSON(linkUsuarios+'.json', (response) => {
+      console.log(response);
+      //se guardan los datos
+      this.setState({
+        usuarios: response
+      })
+    });
   }
 
   /**
@@ -36,7 +56,9 @@ class App extends React.Component {constructor(props){
   */
   getTurnos(){
     const mes = this.state.mes, anho = this.state.anho;
+    console.log(mes, anho);
     $.getJSON(linkRecurso+'.json', { mes: mes, anho: anho }, (response) => {
+      console.log(response);
       //se guardan los datos
       this.setState({
         turnos: this.agruparTurnos(response)
@@ -136,7 +158,8 @@ class App extends React.Component {constructor(props){
           open={this.state.editando}
           closeModal={this.closeModal}
           turnos={this.state.dia_editandose}
-          deleteTurno={this.deleteTurno} />
+          deleteTurno={this.deleteTurno}
+          usuarios={this.state.usuarios} />
       </div>
     );
   }

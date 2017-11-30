@@ -32,7 +32,7 @@ end
 
     respond_to do |format|
       if @suspect.save
-        format.html { redirect_to @suspect, notice: 'Suspect was successfully created.' }
+        format.html { redirect_to suspects_url, notice: 'Se ha creado un Imputado' }
         format.json { render :show, status: :created, location: @suspect }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ end
   def update
     respond_to do |format|
       if @suspect.update(suspect_params)
-        format.html { redirect_to @suspect, notice: 'Suspect was successfully updated.' }
+        format.html { redirect_to suspects_url, notice: 'Se ha modificado un Imputado' }
         format.json { render :show, status: :ok, location: @suspect }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ end
     else
       @suspect.destroy
       respond_to do |format|
-        format.html { redirect_to suspects_url, notice: 'Este sospechoso fue eliminado' }
+        format.html { redirect_to suspects_url, notice: 'Se ha eliminado un sospechoso' }
         format.json { head :no_content }
       end
     end

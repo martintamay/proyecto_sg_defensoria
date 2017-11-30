@@ -7,7 +7,9 @@ class TransferCasesController < ApplicationController
   def index
     @transfer_cases = TransferCase.all
   end
-
+    def reporte_completo_transfer
+     @transfers = TransferCase.all
+  end
   # GET /transfer_cases/1
   # GET /transfer_cases/1.json
   def show
@@ -29,8 +31,10 @@ class TransferCasesController < ApplicationController
 
     respond_to do |format|
       if @transfer_case.save
+
          UserMailer.notificar("Notificaion de caso", "se le ha transferido un caso", @legal_case).deliver()
         format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully created.' }
+
         format.json { render :show, status: :created, location: @transfer_case }
       else
         format.html { render :new }
@@ -44,7 +48,7 @@ class TransferCasesController < ApplicationController
   def update
     respond_to do |format|
       if @transfer_case.update(transfer_case_params)
-        format.html { redirect_to @transfer_case, notice: 'Transfer case was successfully updated.' }
+        format.html { redirect_to @transfer_case, notice: 'Transferencia de Caso Modificado' }
         format.json { render :show, status: :ok, location: @transfer_case }
       else
         format.html { render :edit }

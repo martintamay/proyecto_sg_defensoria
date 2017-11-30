@@ -1,32 +1,22 @@
-
-<div class="col-md-4"></div>
-<div class="col-md-5"><!-- Tamaño del formulario --> 
- <!-- Formulario --> 
-  <div class="panel panel-info">
-    <div class="panel-heading " align="center">
-      <h3>Juzgado Registrado </h3> 
-    </div>
-        <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <strong>Nombre:</strong>
-                	<%= @court.name %>
-                </li>
-                <li class="list-group-item">
-                	<strong>Teléfono:</strong>
-                	<%= @court.phone %>
-                </li>
-                <li class="list-group-item">
-                	<strong>Dirección:</strong>
-                	<%= @court.address %>
-                </li>
-              </ul>
-              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_court_path(@court), class: 'btn btn-success pull-right' %>
+<div class="table-responsive">  
+<div class="panel panel-info">
+  <div class="panel-heading"><h2>Juzgado</h2></div>
+  <table class="table">
+   <thead>
+     <th>Nombre</th>
+     <th>Telefono</th>
+     <th>Dirección</th>
+   </thead>
+   <tbody>
+    <tr>
+      <td><%= @court.name %></td>
+      <td><%= @court.phone %></td>
+      <td><%= @court.adress %></td>
+     </tr> 
+   </tbody>
+  </table>
+         
+</div>
+                <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_court_path(@court), class: 'btn btn-default pull-right' %>
               <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), courts_path, class: 'btn btn-default pull-left' %>
-            </div>
-          </div>
-          </div> 
-
-          
-              
-             
+</div>

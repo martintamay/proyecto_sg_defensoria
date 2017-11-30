@@ -5,7 +5,7 @@ const ListaTurnos = ({diasTurnos, anho, mes, onClickEditar}) => {
   //cuadros que se mostraran al final
   let cuadrosTurnos = [];
   //se calculan la cantidad de dias que va a tener el mes
-  const d = new Date(anho, mes-1, 0).getDate();
+  const d = new Date(anho, mes, 0).getDate();
 
   //se rellenan cuantos dias en blanco agregar para coincidir la semana
   const dia_semana = new Date(anho, mes-1, 1).getDay();

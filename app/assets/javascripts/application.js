@@ -32,7 +32,6 @@
 //= require AdminLTE/dist/js/pages/dashboard.js
 //= require AdminLTE/dist/js/demo.js
 //= require bootstrap.min.js
-
 //= require_tree .
 //
 

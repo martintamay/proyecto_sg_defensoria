@@ -13,9 +13,15 @@ class LegalCasesController < ApplicationController
   end
 
   def reporte_completo_caso
-    @criminal_record = @legal_case.criminal_record
+    
+    @q = params[:q]
+  if @q
+    @criminal_record = CriminalRecord.where("prosecutor_unit like ?", "%#{@q}%")
+  else
+     @criminal_record = @legal_case.criminal_record
     @hearings = @legal_case.hearings
     @transfers = @legal_case.transfer_cases
+   end
   end
 
   def index
@@ -52,8 +58,10 @@ class LegalCasesController < ApplicationController
 
     respond_to do |format|
       if @legal_case.save
+
         UserMailer.notificar("Notificaion de caso", "se le asignó el caso", @legal_case).deliver()
         format.html { redirect_to legal_cases_url, notice: 'Legal case was successfully created.' }
+
         format.json { render :show, status: :created, location: @legal_case }    
       else
         format.html { render :new }
@@ -67,7 +75,7 @@ class LegalCasesController < ApplicationController
   def update
     respond_to do |format|
       if @legal_case.update(legal_case_params)
-        format.html { render :new, notice: 'Legal case was successfully updated.' }
+        format.html { render legal_cases_url, notice: 'Caso Modificado' }
         format.json { render :show, status: :ok, location: @legal_case }
       else
         format.html { render :edit }

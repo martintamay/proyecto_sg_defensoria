@@ -32,9 +32,13 @@
         <td><%= reclusion.place %></td>
         <td><%= reclusion.date_entry %></td>
         <td><%= reclusion.date_out %></td>
-        <td align="center" ><%= link_to (fa_icon 'eye'), reclusion, class: 'btn btn-info'  %>
-         <%= link_to (fa_icon 'pencil'), edit_reclusion_path(reclusion), class: 'btn btn-success' %>
-         <%= link_to (fa_icon 'trash'), reclusion, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), reclusion ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_reclusion_path(reclusion),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), reclusion, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
+            </td>
       </tr>
     <% end %>
   </tbody>

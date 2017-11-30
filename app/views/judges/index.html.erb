@@ -31,9 +31,13 @@
             <td><%= judge.entity.phone %></td>
             <td><%= judge.entity.email %></td>
             <td><%= judge.court.name %></td>
-            <td align="center"><%= link_to (fa_icon 'eye'), judge, class: 'btn btn-info'  %>
-             <%= link_to (fa_icon 'pencil'), edit_judge_path(judge), class: 'btn btn-success' %>
-             <%= link_to (fa_icon 'trash'), judge, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %></td>
+            <td align="center" >
+              <div class="btn-group">
+                <%= link_to (fa_icon 'eye' ), judge ,class: "btn btn-default" %>
+                <%= link_to (fa_icon 'pencil'), edit_judge_path(judge),class: "btn btn-default" %>
+                <%= link_to (fa_icon 'trash'), judge, method: :delete, data: { confirm: 'Está seguro?' },class: "btn btn-default"  %>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

@@ -1,32 +1,29 @@
+<div class="table-responsive">  
+<div class="panel panel-info">
+  <div class="panel-heading"><h2>Transferencia</h2></div>
+  <table class="table">
+   <thead>
+     <th>Nuevo defensor encargado</th>
+     <th>Caso</th>
+     <th>Fecha de transferencia</th>
+     <th>Comentario</th>
+   </thead>
+   <tbody>
+    <tr>
+      <td><%= @transfer_case.user.entity.full_name %></td>
+      <td><%= @transfer_case.legal_case.name %></td>
+      <td><%= @transfer_case.date_ttransfer %></td>
+      <td><%= @transfer_case.comentary %></td>
+     </tr> 
+   </tbody>
+  </table>
 
-<div class="col-md-4"></div>
-<div class="col-md-5"><!-- Tamaño del formulario -->
- <!-- Formulario -->
-  <div class="panel panel-info">
-    <div class="panel-heading " align="center">
-      <h3>Nuevo Caso Transferido</h3>
-    </div>
-        <div class="panel-body">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <strong>Nuevo Defensor Encargado:</strong>
-                  <%= @transfer_case.user.entity.full_name %>
-                 </li>
-                <li class="list-group-item">
-                  <strong>Caso:</strong>
-                  <%= @transfer_case.legal_case.name %>
-                </li>
-                <li class="list-group-item">
-                  <strong>Comentario:</strong>
-                  <%= @transfer_case.comentary %>
-                </li>
-                <li class="list-group-item">
-                  <strong>Fecha de Transferencia:</strong>
-                  <%= @transfer_case.date_ttransfer %>
-                </li>
-              </ul>
-              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_transfer_case_path(@transfer_case), class: 'btn btn-success pull-right' %>
+ 
+</div>
+              <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_transfer_case_path(@transfer_case), class: 'btn btn-default pull-right' %>
+
+              <%= link_to (fa_icon 'file-text-o', text: 'Reporte'), reporte_completo_transfer_transfer_case_path(@transfer_case), class: 'btn btn-default pull-right' %>
+
               <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), transfer_cases_path, class: 'btn btn-default pull-left' %>
-            </div>
-          </div>
-          </div>
+</div>
+

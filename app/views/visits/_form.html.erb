@@ -11,14 +11,14 @@
       </ul>
     </div>
   <% end %>
- <div class="container">
+
   <!-- Muestra el panel de agregacion -->
       <div class="panel-group" >
           <div class="panel panel-default" >
             <!-- encabezado -->
               <div class="panel-heading ">
                 <b class="panel-title">Visita</b>
-                
+
               </div>
               <!-- formulario -->
               <div class="panel-body " >
@@ -27,21 +27,18 @@
 <div>&nbsp;</div>
                 <%= form.text_field :name_visit, id: :visit_name_visit,label:"Nombre", required: "true", placeholder: 'Este campo es Obligatorio' %>
 <div>&nbsp;</div>
-              <%= form.date_select :date_visit, id: :visit_date_visit ,label:"Dia De La Visita"%>
+              <%= form.date_field :date_visit, id: :visit_date_visit ,label:"Dia De La Visita"%>
               <div>&nbsp;</div>
               <%= form.text_field :observation, id: :visit_observation,label:"Observacion" %>
               <!-- Botones -->
-              <div class="col-md-12">    
+              <div class="col-md-12">
                       <%= button_tag(type: 'submit',class: "btn btn-primary pull-right") do %>
                         <%= fa_icon 'floppy-o' %> Guardar
-                      <% end %> 
+                      <% end %>
                       <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'),  visits_path, class: 'btn btn-default pull-left' %>
                     </div>
-             
-              <% end %>       
-        
+
+              <% end %>
+
             </div>
         </div>
-       
-  
-
