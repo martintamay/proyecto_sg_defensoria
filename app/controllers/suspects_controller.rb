@@ -1,14 +1,24 @@
 class SuspectsController < ApplicationController
   before_action :set_suspect, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-def reporte
-  @suspects = Suspect.all
-end
+
+
   # GET /suspects
   # GET /suspects.json
+ 
   def index
     @suspects = Suspect.all
   end 
+
+ def rep
+  @reclusions = Suspect.includes(:suspect).all
+  end
+
+    def reporte
+
+        @suspects = Suspect.all
+    
+      end
 
   # GET /suspects/1
   # GET /suspects/1.json

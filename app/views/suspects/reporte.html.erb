@@ -1,50 +1,59 @@
-
-<p id="notice"><%= notice %></p>
-
-
-   
-
- 
-     <div class="panel-group" >
-      <div class="panel panel-default" >
-            <!-- encabezado -->
-              <div class="panel-heading ">
-                <b class="panel-title"  >reporte</b>
-
-              </div>
-       <div class="panel-body "  >
-    <table id="dato" class= "table table-hover   table-bordered table-striped" >
-       <thead>
-         <tr>
-             <th>Nombre</th>
+ <link rel="stylesheet" type="text/css" href="print.css" />
+<link rel="stylesheet" type="text/css" href="Style.css" />
+<div  class="box">
+  <%= link_to (fa_icon 'file-pdf-o', text:'Imprimir' ),"javascript:PrintDoc()" ,class: "btn btn-default" %>
+  <div id = "printarea" class="box-header">
+    <div class="text-center">
+      <h3><b>Reporte de Imputados</b></h3>
+      <h4><b>Fecha: </b><%= DateTime.now.strftime("%d/%m/%Y %H:%M") %></h4>
+    </div>
+    <ul class="col-md-12">
+      <!--Detalle de sus transferencias-->
+      <li class="list-group-item active"><strong>Imputados</strong></li>
+      <li class="list-group-item">
+        <table class= "table table-hover table-striped  table-bordered table-striped" >
+          <thead>
+            <tr>
+            <th>Nombre</th>
              <th>Fecha de Nacimiento</th>
              <th>Correo</th>
              <th>Teléfono</th>
              <th>Cédula de Identidad</th>
              <th>Nacionalidad</th>
-             <th class="col-md-2"></th>
-          </tr>
-       </thead>
-      <tbody>
-        <% @suspects.each do |suspect| %>
-          <tr>
-            <td><%= suspect.entity.full_name %></td>
-            <td><%= suspect.entity.birthdate %></td>
-            <td><%= suspect.entity.email %></td>
-            <td><%= suspect.entity.phone %></td>
-            <td><%= suspect.ci %></td>
-            <td><%= suspect.nationality %></td>
-             <td align="center" ><% link_to (fa_icon 'eye'), suspect, class: 'btn btn-info'  %>
-              <% link_to (fa_icon 'pencil'), edit_suspect_path(suspect), class: 'btn btn-success' %>
-              <% link_to (fa_icon 'trash'), suspect, method: :delete, data: { confirm: 'Está seguro?' }, class: 'btn btn-danger' %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <input id="pdf-button" type="button" value="Download PDF" onclick="html_to_pdf()" />
+            </tr>
+          </thead>
+          <tbody>
+           <% @suspects.each do |suspect| %>
+                <tr>
+                  <td><%= suspect.entity.full_name %></td>
+                  <td><%= suspect.entity.birthdate %></td>
+                  <td><%= suspect.entity.email %></td>
+                  <td><%= suspect.entity.phone %></td>
+                  <td><%= suspect.ci %></td>
+                  <td><%= suspect.nationality %></td>
+                  </td>
+            <% end %>
+          </tbody>
+        </table>
+      </li>
+     <li class="list-group-item active"><strong>Reclusion</strong></li>
+      <li class="list-group-item">
+        <table class= "table table-hover table-bordered table-striped table-responsive" >
+          <thead>
+            <tr>
+              <th>Lugar</th>
+              <th>Fecha de entrada</th>
+              <th>Fecha de salida</th>
+            </tr>
+          </thead>
+
+        </table>
+      </li> 
+    </ul> 
+
   </div>
-  </div>
+</div>
+
 
 
 

@@ -36,6 +36,7 @@
          
 </div>
  <%= link_to (fa_icon 'pencil', text: 'Editar'), edit_suspect_path(@suspect), class: 'btn btn-default pull-right' %>
+    <%= link_to (fa_icon 'file-text-o', text: 'Reporte'), reporte_suspect_path(@suspect), class: 'btn btn-default pull-right' %>
               <%= link_to (fa_icon 'arrow-circle-left', text: 'Volver'), suspects_path, class: 'btn btn-default pull-left' %>
 </div>
 

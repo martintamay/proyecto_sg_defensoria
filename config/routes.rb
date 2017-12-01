@@ -36,6 +36,14 @@ resources :visits do
       get "reporte_visitas"
     end
 end
+resources :suspects do
+    collection do
+      get "rep"
+    end
+    member do
+      get "reporte"
+    end
+end
 
 
 
